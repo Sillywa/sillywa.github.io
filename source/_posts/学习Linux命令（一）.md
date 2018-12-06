@@ -1,10 +1,10 @@
 ---
-title: 再次测试
-date: 2018-12-04 22:36:11
-tags: 
-- html
-categories: 
-- 前端
+title: 学习Linux命令
+date: 2018-12-06 13:34:03
+tags:
+- Linux
+categories:
+- 操作系统
 ---
 # Linux系统
 * `pwd` 打印当前工作目录
@@ -31,6 +31,7 @@ categories:
 ```
     less /etc/passwd
 ```
+
 # 操作文件与目录
 * `mkdir` 创建目录
 ```

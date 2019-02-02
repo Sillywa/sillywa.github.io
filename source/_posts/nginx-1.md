@@ -65,13 +65,10 @@ server {
 sudo /etc/init.d/nginx reload
 ```
 
-之后就可以用 `https://www.example.com` 访问你的网站了。如果是第一次配置，访问到的就应该是 `Nginx` 的欢迎页面，该页面一般存放在我们前面说的  `/var/www/nginx-default` 文件夹下，这里的  `nginx-default` 一般为 `html` 文件夹，该文件夹下有一个 `html` 文件。
+之后就可以用 `https://www.example.com` 访问你的网站了。如果是第一次配置，访问到的就应该是 `Nginx` 的欢迎页面，该页面一般存放在我们前面说的  `/var/www/nginx-default` 文件夹下，这里的  `nginx-default` 一般为 `html` 文件夹，该文件夹下有一个 `.html` 文件。
 
-### 网站配置简单说明
 
-`Nginx` 的 `server` 配置文件放在 `/etc/nginx/sites-available`目录下的 `default` 文件中。
 
-{%  asset_img 1.png %}
 
-我们可以看到 `root` 后面的路径就是我们网站存放的位置，因此你可以根据实际情况自己修改，我的网站是放在 `/var/www/sillywa.blog` 目录下，`Nginx` 会自动寻找该目录下的 `index.html` 文件。
+
 

@@ -1,6 +1,7 @@
 ---
-title: 学习Linux命令
+title: 学习Linux基本命令
 date: 2018-12-06 13:34:03
+top: 100
 tags:
 - Linux
 categories:
@@ -13,7 +14,10 @@ categories:
     cd /usr/bin  绝对路径从根目录出发，到达目标目录
     cd ./usr 相对路径从工作目录出发，到达目标目录
     cd .. 到达父目录
-    cd 到达主目录
+    cd(cd ~) 到达家目录，如果未root用户，pwd会打印出 /root，其上一层为 根目录/
+    cd / (cd -) 回到根目录
+
+
 ```
 * `ls` 列出目录内容
 ```
@@ -21,6 +25,7 @@ categories:
     ls -t 按修改时间排序
     ls -r 以相反的顺序显示
     ls -S 按文件大小对结果进行排序
+    ls -R [文件夹] 列出文件树
     ......
 ```
 * `file` 确定文件类型
@@ -31,20 +36,25 @@ categories:
 ```
     less /etc/passwd
 ```
+* `touch` 新建文件
 
 # 操作文件与目录
 * `mkdir` 创建目录
 ```
     mkdir dir1              创建单个目录
     mkdir dir1 dir2 dir3    创建多个目录
+    mkdir -p dir{1..9}      创建多个目录a1到a9
+    mkdir -p a{1..3}/b{1..3}创建多个目录a1到a3，并且在每个目录下创建b1到b3
 ```
 * `cp` 复制文件或目录
 ```
     cp file1 file2          将文件file1复制到file2中,file2内容将会被覆盖
-    cp -r dir1 dir2         复制目录时一定要加 -r
+    cp -r dir1 dir2         复制目录时一定要加 -r，如果dir2目录存在，则会复制到dir2目录下和mv是一样的道理
     cp file1 file2 dir1     将多个文件复制到一个目录下
 ```
 `cp`命令选项
+
+`cp`在覆盖已存在的文件时默认情况下是 `cp -i`，即需要用户确认，我们可以这样 `\cp` 即可无需确认
 ```
     -i          在覆盖一个已存在的文件前，提示用户进行确认。
     -r          递归复制目录及其内容。复制目录时需要这个选项
@@ -82,4 +92,20 @@ categories:
 `file`为相对于`sym-link-name`的文件，即为相对路径，当然也可以是绝对路径
 ```
     ln -s ../file sym-link-name     file在当前目录的父目录中，即file相对于sym-link-name的位置
+```
+
+# 读写文件
+```
+echo "I am fine"                        打印 I am fine
+echo "I am fine" > /root/test.txt       将 I am fine写入/root/test.txt中
+echo "I am fine" >> /root/test.txt      将 I am fine追加到/root/test.txt末尾
+grep "关键字" test.txt                  在test.txt中查找含有关键字的行并打印
+grep -v "关键字" test.txt               在test.txt中查找不含有关键字的行并打印
+grep ^"关键字" test.txt                 在test.txt中查找以关键字开头的行并打印
+grep $"关键字" test.txt                 在test.txt中查找以关键字结尾的行并打印
+```
+
+# 管道
+```
+ls -l | grep "关键字" > /root/test.txt  列出当前目录文件信息并交给grep过滤，最后写入/root/test.txt
 ```

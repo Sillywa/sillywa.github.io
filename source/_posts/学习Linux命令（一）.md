@@ -5,7 +5,7 @@ top: 100
 tags:
 - Linux
 categories:
-- 操作系统
+- Linux
 ---
 # Linux系统
 * `pwd` 打印当前工作目录

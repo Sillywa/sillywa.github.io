@@ -3,9 +3,9 @@ title: Linux下阿里云镜像安装以及Nginx安装
 date: 2019-02-27 19:20:15
 top: 10
 tags:
-- Linux
+- Nginx
 categories:
-- 操作系统
+- Linux
 ---
 本篇文章主要记录了`CentOS 7`系统以及`RedHat 7`系统如何安装阿里云镜像以及`Nginx`，并对`Nginx`实现基本配置。
 

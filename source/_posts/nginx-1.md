@@ -1,5 +1,5 @@
 ---
-title: Ubuntu 系统 Nginx 服务下 ssl 证书配置
+title: Nginx 服务下 ssl 证书配置
 date: 2018-12-22 16:34:05
 top: 10
 tags:

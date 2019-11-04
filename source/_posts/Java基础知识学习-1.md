@@ -65,24 +65,24 @@ java MyProgram
 ```java
 import java.util.Scanner;
 public class Hello{
-	public static void main(String[] args) {
-		Scanner stdIn = new Scanner(System.in);
-		
-		// 读取整数
-		int a = stdIn.nextInt();
-		// 读取小数
-		double b = stdIn.nextDouble();
-		// 读取字符串
+  public static void main(String[] args) {
+    Scanner stdIn = new Scanner(System.in);
+    
+    // 读取整数
+    int a = stdIn.nextInt();
+    // 读取小数
+    double b = stdIn.nextDouble();
+    // 读取字符串
     // 使用此方法读取字符串时，空白符和制表符被视为字符串的分隔符，因此如果输入中包含空格或者制表符，需要使用nextLine()
-		String s = stdIn.next();
-		// 读取一整行
-		String sl = stdIn.nextLine();
-		
-		System.out.println(a);
-		System.out.println(b);
-		System.out.println(s);
-		System.out.println(sl);
-	}
+    String s = stdIn.next();
+    // 读取一整行
+    String sl = stdIn.nextLine();
+    
+    System.out.println(a);
+    System.out.println(b);
+    System.out.println(s);
+    System.out.println(sl);
+  }
 }
 ```
 

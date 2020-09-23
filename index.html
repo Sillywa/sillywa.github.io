@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"sillywa.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="个人学习记录博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sillywa&#39;s Blog">
+<meta property="og:url" content="https://sillywa.com/index.html">
+<meta property="og:site_name" content="Sillywa&#39;s Blog">
+<meta property="og:description" content="个人学习记录博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Sillywa">
+<meta property="article:tag" content="博客">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://sillywa.com/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Sillywa's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Sillywa's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://sillywa.com/2019/03/06/vi%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/logo.png">
+      <meta itemprop="name" content="Sillywa">
+      <meta itemprop="description" content="个人学习记录博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sillywa's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/03/06/vi%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" class="post-title-link" itemprop="url">vi基本操作</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-06 14:40:39" itemprop="dateCreated datePublished" datetime="2019-03-06T14:40:39+08:00">2019-03-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-23 15:39:09" itemprop="dateModified" datetime="2020-09-23T15:39:09+08:00">2020-09-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <a id="more"></a>
+
+<p>vi 是 Linux 常用的编辑器，本文记录了 vi 的基本操作。</p>
+<h2 id="三种模式"><a href="#三种模式" class="headerlink" title="三种模式"></a>三种模式</h2><ol>
+<li><p>命令模式<br>用 vi 打开一个文件即进入命令模式</p>
+</li>
+<li><p>输入模式<br>a i o 进入输入模式</p>
+</li>
+</ol>
+<ul>
+<li>a 光标后输入</li>
+<li>i 光标前输入</li>
+<li>o 光标下一行输入</li>
+<li>A 光标所在行的行尾输入</li>
+<li>O 光标所在行的上一行新建一行</li>
+<li>esc退回到命令模式</li>
+</ul>
+<ol start="3">
+<li>末行模式</li>
+</ol>
+<ul>
+<li>: 进入末行模式</li>
+<li>esc返回命令模式</li>
+</ul>
+<h2 id="光标移动"><a href="#光标移动" class="headerlink" title="光标移动"></a>光标移动</h2><ol>
+<li><p>行内跳转<br>home 或者 $ 跳转行首<br>end 或者 ^ 跳转行尾</p>
+</li>
+<li><p>行间跳转<br>末行模式输入 <code>set nu</code> 显示行数</p>
+<ul>
+<li><p>命令模式<br><code>#gg</code>     跳转到#行，#代表数字<br><code>G</code>       跳转到行尾<br><code>gg</code>      跳转到行首</p>
+</li>
+<li><p>末行模式<br><code>:#</code>      跳转到#行，#代表数字</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h2><ul>
+<li>命令模式<br><code>#yy</code>       从光标所在行开始，往下复制#行</li>
+<li>末行模式<br><code>:#y</code>       复制第#行<br><code>:m,ny</code>     复制从第m行到第n行</li>
+</ul>
+<h2 id="粘贴"><a href="#粘贴" class="headerlink" title="粘贴"></a>粘贴</h2><ul>
+<li><code>p</code> 光标后粘贴</li>
+<li><code>P</code> 光标前粘贴</li>
+</ul>
+<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><ul>
+<li><p>命令模式<br><code>x或者del</code>     删除光标所在字符<br><code>#dd</code>         删除从光标所在行开始，往下数#行</p>
+</li>
+<li><p>末行模式<br><code>:#d </code>        删除第#行<br><code>:m,nd</code>       删除从第m行到第n行</p>
+</li>
+</ul>
+<h2 id="剪切"><a href="#剪切" class="headerlink" title="剪切"></a>剪切</h2><p>  删除 + 粘贴     </p>
+<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><p>命令模式<br>  <code>/word</code> 从上往下查找word，小写n，查找下一个匹配的<br>  <code>?word</code> 从下往上查找word，大写N，查找上一个匹配的</p>
+<h2 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h2><p>末行模式<br>  <code>:s/old/new</code>   将光标所在行，满足的第一个old替换成new<br>  <code>:s#old#new</code>  </p>
+<p>  <code>:s/old/new/g</code> 光标所在行的所有old替换成new<br>  <code>:s#old#new#g</code>  </p>
+<p>  <code>:m,ns/old/new</code> 第m行到第n行，每行第一个满足的old替换成new</p>
+<p>  <code>:%s/old/new/g</code>   全文替换<br>  <code>:%s#old#new#g</code></p>
+<h2 id="写入文件"><a href="#写入文件" class="headerlink" title="写入文件"></a>写入文件</h2><p>末行模式<br>  <code>:r /root/test.txt</code> 在光标下一行写入文件/root/test.txt</p>
+<h2 id="保存退出"><a href="#保存退出" class="headerlink" title="保存退出"></a>保存退出</h2><ul>
+<li>末行模式<br>:wq<br>:x</li>
+<li>命令模式<br>ZZ</li>
+</ul>
+<h2 id="其他退出"><a href="#其他退出" class="headerlink" title="其他退出"></a>其他退出</h2><ul>
+<li>强制退出<br>:q!</li>
+<li>强制保存退出<br>:wq!</li>
+<li>正常退出<br>:q</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://sillywa.com/2018/12/06/%E5%AD%A6%E4%B9%A0Linux%E5%91%BD%E4%BB%A4%EF%BC%88%E4%B8%80%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/logo.png">
+      <meta itemprop="name" content="Sillywa">
+      <meta itemprop="description" content="个人学习记录博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sillywa's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/06/%E5%AD%A6%E4%B9%A0Linux%E5%91%BD%E4%BB%A4%EF%BC%88%E4%B8%80%EF%BC%89/" class="post-title-link" itemprop="url">学习Linux基本命令</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-06 13:34:03" itemprop="dateCreated datePublished" datetime="2018-12-06T13:34:03+08:00">2018-12-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-23 11:51:06" itemprop="dateModified" datetime="2020-09-23T11:51:06+08:00">2020-09-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Linux系统"><a href="#Linux系统" class="headerlink" title="Linux系统"></a>Linux系统</h1><ul>
+<li><code>pwd</code> 打印当前工作目录</li>
+<li><code>cd</code> 改变目录<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;bin  绝对路径从根目录出发，到达目标目录</span><br><span class="line">cd .&#x2F;usr 相对路径从工作目录出发，到达目标目录</span><br><span class="line">cd .. 到达父目录</span><br><span class="line">cd(cd ~) 到达家目录，如果未root用户，pwd会打印出 &#x2F;root，其上一层为 根目录&#x2F;</span><br><span class="line">cd &#x2F; (cd -) 回到根目录</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><code>ls</code> 列出目录内容<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ls -l 使用长格式显示结果</span><br><span class="line">ls -t 按修改时间排序</span><br><span class="line">ls -r 以相反的顺序显示</span><br><span class="line">ls -S 按文件大小对结果进行排序</span><br><span class="line">ls -R [文件夹] 列出文件树</span><br><span class="line">......</span><br></pre></td></tr></table></figure></li>
+<li><code>file</code> 确定文件类型<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file filename</span><br></pre></td></tr></table></figure></li>
+<li><code>less</code> 查看文件内容<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">less &#x2F;etc&#x2F;passwd</span><br></pre></td></tr></table></figure></li>
+<li><code>touch</code> 新建文件</li>
+</ul>
+<h1 id="操作文件与目录"><a href="#操作文件与目录" class="headerlink" title="操作文件与目录"></a>操作文件与目录</h1><ul>
+<li><code>mkdir</code> 创建目录<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir dir1              创建单个目录</span><br><span class="line">mkdir dir1 dir2 dir3    创建多个目录</span><br><span class="line">mkdir -p dir&#123;1..9&#125;      创建多个目录a1到a9</span><br><span class="line">mkdir -p a&#123;1..3&#125;&#x2F;b&#123;1..3&#125;创建多个目录a1到a3，并且在每个目录下创建b1到b3</span><br></pre></td></tr></table></figure></li>
+<li><code>cp</code> 复制文件或目录<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cp file1 file2          将文件file1复制到file2中,file2内容将会被覆盖</span><br><span class="line">cp -r dir1 dir2         复制目录时一定要加 -r，如果dir2目录存在，则会复制到dir2目录下和mv是一样的道理</span><br><span class="line">cp file1 file2 dir1     将多个文件复制到一个目录下</span><br></pre></td></tr></table></figure>
+<code>cp</code>命令选项</li>
+</ul>
+<p><code>cp</code>在覆盖已存在的文件时默认情况下是 <code>cp -i</code>，即需要用户确认，我们可以这样 <code>\cp</code> 即可无需确认</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-i          在覆盖一个已存在的文件前，提示用户进行确认。</span><br><span class="line">-r          递归复制目录及其内容。复制目录时需要这个选项</span><br><span class="line">-u          将文件从一个目录复制到另一个目录时，只会复制目标目录不存在的文件或是目标目录相应文件的更新文件</span><br><span class="line">-v          复制文件时显示信息性消息</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>mv</code> 重命名或移动文件和目录<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mv item1 item2              将文件或目录item1移动或重命名为item2</span><br><span class="line">mv item1 item2 item3 dir1   将多个条目移动到dir1目录下</span><br></pre></td></tr></table></figure>
+<code>mv</code>命令选项与<code>cp</code>大致相同，<code>mv</code>没有<code>-r</code>选项<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-i          在覆盖一个已存在的文件前，提示用户进行确认。</span><br><span class="line">-u          将文件从一个目录移动到另一个目录时，只会移动目标目录不存在的文件或是目标目录相应文件的更新文件</span><br><span class="line">-v          移动时显示信息性消息</span><br></pre></td></tr></table></figure></li>
+<li><code>rm</code> 删除文件或目录<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rm -r item1 item2 item3         删除item1,item2,item3,删除目录时需要-r</span><br><span class="line">rm *.html                       删除以.html结尾的文件</span><br></pre></td></tr></table></figure>
+<code>rm</code>命令选项<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-i          删除前提示用户确认</span><br><span class="line">-r          递归删除目录及其内容。删除目录时需要这个选项</span><br><span class="line">-f          忽略不存在的文件，并无需提示确认</span><br><span class="line">-v          删除时显示信息性消息</span><br></pre></td></tr></table></figure></li>
+<li><code>ln</code> 创建硬链接和符号链接<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ln file hard-link-name      创建file文件的硬链接</span><br><span class="line">ln -s file sym-link-name    创建file文件的符号链接，符号链接指向源文件，与源文件内容保持一致</span><br></pre></td></tr></table></figure>
+<code>file</code>为相对于<code>sym-link-name</code>的文件，即为相对路径，当然也可以是绝对路径<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s ..&#x2F;file sym-link-name     file在当前目录的父目录中，即file相对于sym-link-name的位置</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h1 id="读写文件"><a href="#读写文件" class="headerlink" title="读写文件"></a>读写文件</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;I am fine&quot;                        打印 I am fine</span><br><span class="line">echo &quot;I am fine&quot; &gt; &#x2F;root&#x2F;test.txt       将 I am fine写入&#x2F;root&#x2F;test.txt中</span><br><span class="line">echo &quot;I am fine&quot; &gt;&gt; &#x2F;root&#x2F;test.txt      将 I am fine追加到&#x2F;root&#x2F;test.txt末尾</span><br><span class="line">grep &quot;关键字&quot; test.txt                  在test.txt中查找含有关键字的行并打印</span><br><span class="line">grep -v &quot;关键字&quot; test.txt               在test.txt中查找不含有关键字的行并打印</span><br><span class="line">grep ^&quot;关键字&quot; test.txt                 在test.txt中查找以关键字开头的行并打印</span><br><span class="line">grep $&quot;关键字&quot; test.txt                 在test.txt中查找以关键字结尾的行并打印</span><br></pre></td></tr></table></figure>
+
+<h1 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -l | grep &quot;关键字&quot; &gt; &#x2F;root&#x2F;test.txt  列出当前目录文件信息并交给grep过滤，最后写入&#x2F;root&#x2F;test.txt</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://sillywa.com/2019/09/16/TypeScript-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/logo.png">
+      <meta itemprop="name" content="Sillywa">
+      <meta itemprop="description" content="个人学习记录博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sillywa's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/09/16/TypeScript-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-3/" class="post-title-link" itemprop="url">TypeScript 面向对象(三)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-16 20:34:27" itemprop="dateCreated datePublished" datetime="2019-09-16T20:34:27+08:00">2019-09-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-23 11:51:06" itemprop="dateModified" datetime="2020-09-23T11:51:06+08:00">2020-09-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>TypeScript 的核心原则之一是对值所具有的结构进行类型检查，其被称为“鸭式辨型法”或“结构式子类型化”。</p>
+<p>在 TypeScript 里，接口的作用就是为这些类型命名和为你的代码或第三方代码定义契约。</p>
+<h3 id="接口初探"><a href="#接口初探" class="headerlink" title="接口初探"></a>接口初探</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getName</span>(<span class="params">my_object: &#123; name: <span class="built_in">string</span> &#125;</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(my_object.name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> my_object = &#123; age: <span class="number">22</span>, name: <span class="string">&quot;Sillywa&quot;</span> &#125;;</span><br><span class="line"></span><br><span class="line">getName(my_object);</span><br></pre></td></tr></table></figure>
+
+<p>以上代码我们规定 getName 函数具有一个参数，且该参数必须含有一个 string 类型的 name 属性。需要注意的是，我们传入的参数实际包含很多属性，但是编译器只会检查那些必须的属性是否存在，并且其类型需要匹配。</p>
+<p>下面我们重写这个例子，使用接口来进行描述：必须包含一个 string 类型的 name 属性：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> ObjectValue &#123;</span><br><span class="line">  name: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getName</span>(<span class="params">my_object: ObjectValue</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(my_obj.name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> my_object = &#123; age: <span class="number">22</span>, name: <span class="string">&quot;Sillywa&quot;</span> &#125;;</span><br><span class="line"></span><br><span class="line">getName(my_object);</span><br></pre></td></tr></table></figure>
+
+<p>我们使用 interface 关键字来定义一个接口，以上代码中 objectValue 为接口的名字，花括号里面为接口所具有的约束。</p>
+<p>需要注意的是，类型检查器不会去检查属性的顺序，只要相应属性存在即可。</p>
+<h3 id="可选属性"><a href="#可选属性" class="headerlink" title="可选属性"></a>可选属性</h3><p>接口里的属性不全都是必须的。可选属性在应用在 “option bags” 模式时很常用，即给函数传入的参数中只有部分属性赋值了。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> SquareConfig &#123;</span><br><span class="line">  color?: <span class="built_in">string</span>;</span><br><span class="line">  width?: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createSquare</span>(<span class="params">config: SquareConfig</span>): </span>&#123; color: <span class="built_in">string</span>; area: <span class="built_in">number</span> &#125; &#123;</span><br><span class="line">  <span class="keyword">let</span> newSquare = &#123; color: <span class="string">&quot;white&quot;</span>, area: <span class="number">100</span>&#125;;</span><br><span class="line">  <span class="keyword">if</span> (config.color) &#123;</span><br><span class="line">    newSquare.color = config.color;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (config.width) &#123;</span><br><span class="line">    newSquare.area = config.width * config.width;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> newSquare;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> mySquare = createSquare(&#123; color: <span class="string">&quot;black&quot;</span> &#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="只读属性"><a href="#只读属性" class="headerlink" title="只读属性"></a>只读属性</h3><p>只读属性只能在对象刚刚创建是为其赋值，无法修改其值。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Point &#123;</span><br><span class="line">  <span class="keyword">readonly</span> x: <span class="built_in">number</span>;</span><br><span class="line">  <span class="keyword">readonly</span> y: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> p1: Point = &#123; x: <span class="number">12</span>, y: <span class="number">90</span>&#125;;</span><br><span class="line"></span><br><span class="line">p1.x = <span class="number">80</span>;   <span class="comment">// error</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>TypeScript 具有 ReadonlyArray<T> 类型，它与 Array<T> 类似，只是把所有可变方法去掉了，因此可以保证数组被创建后再也无法被修改：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a: <span class="built_in">number</span>[] = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">let</span> ro: ReadonlyArray&lt;<span class="built_in">number</span>&gt; = a;</span><br><span class="line"></span><br><span class="line">ro[<span class="number">1</span>] = <span class="number">13</span>;   <span class="comment">// error</span></span><br><span class="line">ro.push(<span class="number">0</span>);  <span class="comment">// error</span></span><br><span class="line">ro.length = <span class="number">90</span>;  <span class="comment">// error</span></span><br><span class="line">a = ro;       <span class="comment">// error</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>上面代码的最后一行，可以看到就算把整个ReadonlyArray赋值到一个普通数组也是不可以的。</p>
+<p><code>readonly</code> vs <code>const</code></p>
+<p>判断该使用 readonly 还是 const 的方法是看要把它当作变量使用还是属性使用。作为变量使用时用 const，作属性使用时用 readonly。</p>
+<h3 id="额外的属性检查"><a href="#额外的属性检查" class="headerlink" title="额外的属性检查"></a>额外的属性检查</h3><p>TypeScript 在检查对象字面量时会特殊对待而且会经过额外的属性检查，当他们赋值给变量或作为参数传递的时候。如果一个对象字面量存在任何”目标类型“不包含的属性时，你会得到一个错误。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> SquareConfig &#123;</span><br><span class="line">    color?: <span class="built_in">string</span>;</span><br><span class="line">    width?: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createSquare</span>(<span class="params">config: SquareConfig</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">createSquare(&#123; e_color: <span class="string">&quot;red&quot;</span>, width: <span class="number">100</span> &#125;);   <span class="comment">// error</span></span><br></pre></td></tr></table></figure>
+<p>绕开这些检查非常简单，最简单的方法是使用类型断言：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">createSquare(&#123; e_color: <span class="string">&quot;red&quot;</span>, width: <span class="number">100</span> &#125; <span class="keyword">as</span> SquareConfig);</span><br></pre></td></tr></table></figure>
+
+<p>然而，最佳的方式是能够添加一个字符串索引签名，前提是你能够确定这个对象可能具有某些做为特殊用途使用的额外属性。 如果 SquareConfig 带有上面定义的类型的 color 和 width 属性，并且还会带有任意数量的其它属性，那么我们可以这样定义它：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> SquareConfig &#123;</span><br><span class="line">  color?: <span class="built_in">string</span>;</span><br><span class="line">  width?: <span class="built_in">number</span>;</span><br><span class="line">  [propName: <span class="built_in">string</span>]: <span class="built_in">any</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里我们要表示的是 SquareConfig 可以有任意数量的属性，并且只要他们不是 color 和 width，那么就无所谓它的类型是什么。</p>
+<p>还有最后一种跳过检查的方法，它就是将这个对象赋值给另一个变量：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> squareOptions = &#123; colour: <span class="string">&quot;red&quot;</span>, width: <span class="number">100</span> &#125;;</span><br><span class="line"><span class="keyword">let</span> mySquare = createSquare(squareOptions);</span><br></pre></td></tr></table></figure>
+
+<h3 id="函数类型"><a href="#函数类型" class="headerlink" title="函数类型"></a>函数类型</h3><p>接口除了描述带有属性的普通对象外，接口也可以描述函数类型。</p>
+<p>为了使接口能描述函数类型，需要给接口定义一个调用签名。它就像是一个只有参数列表和返回值类型的函数定义。参数列表里的每个参数都需要名字和类型。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> SearchFunc &#123;</span><br><span class="line">  (source: <span class="built_in">string</span>, subString: <span class="built_in">string</span>): <span class="built_in">boolean</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> mySearch: SearchFunc = <span class="function"><span class="keyword">function</span>(<span class="params">source: <span class="built_in">string</span>, subString: <span class="built_in">string</span></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> result = source.search(subString);</span><br><span class="line">  <span class="keyword">return</span> result &gt; <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>对于函数类型的类型检查来说，函数的参数名不需要与接口里定义的名字相匹配。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> SearchFunc &#123;</span><br><span class="line">  (source: <span class="built_in">string</span>, subString: <span class="built_in">string</span>): <span class="built_in">boolean</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> mySearch: SearchFunc = <span class="function"><span class="keyword">function</span>(<span class="params">src: <span class="built_in">string</span>, sub: <span class="built_in">string</span></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> result = src.search(sub);</span><br><span class="line">  <span class="keyword">return</span> result &gt; <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>函数的参数会逐个进行类型检查，要求对应位置上的参数类型是兼容的。如果不指定类型， TypeScript 的类型系统会推断出参数类型。</p>
+<h3 id="类类型"><a href="#类类型" class="headerlink" title="类类型"></a>类类型</h3><h4 id="实现接口"><a href="#实现接口" class="headerlink" title="实现接口"></a>实现接口</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> PersonInterface &#123;</span><br><span class="line">  age: <span class="built_in">number</span>;</span><br><span class="line">  name: <span class="built_in">string</span>;</span><br><span class="line">  getAge(): <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> Person <span class="keyword">implements</span> PersonInterface &#123;</span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params"><span class="keyword">public</span> name: <span class="built_in">string</span>, <span class="keyword">public</span> age: <span class="built_in">number</span></span>) &#123;&#125;;</span><br><span class="line">  getAge(): <span class="built_in">number</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.age</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>接口只描述了类的共有部分，而不是公共和私有两部分。它不会帮忙检查类是否具有某些私有成员。</p>
+<h3 id="继承接口"><a href="#继承接口" class="headerlink" title="继承接口"></a>继承接口</h3><p>和类一样，接口也可以相互继承。这样我们可以从一个接口里复制成员到另一个接口里，可以更灵活地将接口分割到可重用的模块里。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Shape &#123;</span><br><span class="line">  color: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> Square <span class="keyword">extends</span> Shape &#123;</span><br><span class="line">  sideLength: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> square = &lt;Square&gt;&#123;&#125;;</span><br><span class="line"></span><br><span class="line">square.color = <span class="string">&quot;blue&quot;</span>;</span><br><span class="line">square.sideLength = <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+<p>一个接口可以继承多个接口，创建出多个接口的合成接口。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Shape &#123;</span><br><span class="line">    color: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> PenStroke &#123;</span><br><span class="line">    penWidth: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> Square <span class="keyword">extends</span> Shape, PenStroke &#123;</span><br><span class="line">    sideLength: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> square = &lt;Square&gt;&#123;&#125;;</span><br><span class="line">square.color = <span class="string">&quot;blue&quot;</span>;</span><br><span class="line">square.sideLength = <span class="number">10</span>;</span><br><span class="line">square.penWidth = <span class="number">5.0</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://sillywa.com/2019/09/08/TypeScript%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/logo.png">
+      <meta itemprop="name" content="Sillywa">
+      <meta itemprop="description" content="个人学习记录博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sillywa's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/09/08/TypeScript%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-2/" class="post-title-link" itemprop="url">TypeScript 面向对象(二)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-08 15:42:57" itemprop="dateCreated datePublished" datetime="2019-09-08T15:42:57+08:00">2019-09-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-23 15:30:59" itemprop="dateModified" datetime="2020-09-23T15:30:59+08:00">2020-09-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>前面介绍了 TypeScript 面向对象的基本特性，现在我们接着前面继续学习 TypeScript 面向对象的其他特性，包含 readonly 修饰符、参数属性、存储器、静态属性、抽象类。</p>
+<h2 id="readonly-修饰符"><a href="#readonly-修饰符" class="headerlink" title="readonly 修饰符"></a>readonly 修饰符</h2><p>readonly 关键字将属性设置为只读的，只读属性必须在声明时或构造函数里被初始化。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Person &#123;</span><br><span class="line">  <span class="keyword">readonly</span> name: <span class="built_in">string</span>;</span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params">my_name: <span class="built_in">string</span>, <span class="keyword">readonly</span> age: <span class="built_in">number</span></span>) &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = my_name;</span><br><span class="line">  &#125;</span><br><span class="line">  getName(): <span class="built_in">string</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.name;</span><br><span class="line">  &#125;</span><br><span class="line">  getAge(): <span class="built_in">number</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> p1 = <span class="keyword">new</span> Person(<span class="string">&quot;sillywa&quot;</span>, <span class="number">23</span>);</span><br><span class="line"></span><br><span class="line">p1.getName();</span><br><span class="line">p1.getAge();</span><br><span class="line">p1.name;</span><br><span class="line">p1.age;</span><br><span class="line"></span><br><span class="line">p1.name = <span class="string">&quot;hahah&quot;</span>;      <span class="comment">// 错误，name是只读属性</span></span><br><span class="line">p1.age = <span class="number">45</span>;            <span class="comment">// 错误，age是只读属性</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>在上述例子中，name属性为只读，在构造函数外声明，age 属性也是只读，在构造函数里初始化，需要注意的是，在构造函数里初始化的属性不用再使用 this 关键字为其赋值。</p>
+<p>除 readonly 修饰符外，其它带有修饰符的属性也可以在构造函数里初始化，这种初始化属性的方式称为 参数属性：</p>
+<h2 id="参数属性"><a href="#参数属性" class="headerlink" title="参数属性"></a>参数属性</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Person &#123;</span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params"><span class="keyword">public</span> name:<span class="built_in">string</span>, <span class="keyword">private</span> age: <span class="built_in">number</span>, <span class="keyword">protected</span> sex: <span class="built_in">string</span></span>) &#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  getInfo(): <span class="built_in">string</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`my name is <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span>,and I am <span class="subst">$&#123;<span class="built_in">this</span>.age&#125;</span> years old, I am <span class="subst">$&#123;<span class="built_in">this</span>.sex&#125;</span>`</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> p1 = <span class="keyword">new</span> Person(<span class="string">&quot;Sillywa&quot;</span>,<span class="number">23</span>,<span class="string">&quot;男&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>参数属性通过给构造函数参数前面添加一个访问限定符来声明。 使用 private 限定一个参数属性会声明并初始化一个私有成员；对于 public 和 protected 来说也是一样。</p>
+<h2 id="存取器"><a href="#存取器" class="headerlink" title="存取器"></a>存取器</h2><p>TypeScript 支持通过 getters/setters 来截取对对象成员的访问。 它能帮助你有效的控制对对象成员的访问。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fullNameMaxLength = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> Employee &#123;</span><br><span class="line">    <span class="keyword">private</span> _fullName: <span class="built_in">string</span>;</span><br><span class="line"></span><br><span class="line">    get fullName(): <span class="built_in">string</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>._fullName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    set fullName(newName: <span class="built_in">string</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (newName &amp;&amp; newName.length &gt; fullNameMaxLength) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&quot;fullName has a max length of &quot;</span> + fullNameMaxLength);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">this</span>._fullName = newName;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> employee = <span class="keyword">new</span> Employee();</span><br><span class="line">employee.fullName = <span class="string">&quot;Bob Smith&quot;</span>;</span><br><span class="line"><span class="keyword">if</span> (employee.fullName) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(employee.fullName);</span><br><span class="line">&#125;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>首先，存取器要求你将编译器设置为输出ECMAScript 5或更高。 不支持降级到ECMAScript 3。 其次，只带有 get不带有 set的存取器自动被推断为 readonly。 这在从代码生成 .d.ts文件时是有帮助的，因为利用这个属性的用户会看到不允许够改变它的值。</p>
+<h2 id="静态属性"><a href="#静态属性" class="headerlink" title="静态属性"></a>静态属性</h2><p>前面我们讨论的都是类的实例成员，即那些仅当实例被初始化的时候才会被初始化的属性。</p>
+<p>我们也可以使用 static 关键字创建类的静态成员，*** 这些属性存在于类本身上面而不是类的实例上 ***，我们使用 类名.静态成员 来访问这些静态成员。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Person &#123;</span><br><span class="line">  <span class="keyword">static</span> fullName:<span class="built_in">string</span> = <span class="string">&quot;sillywa&quot;</span></span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params"><span class="keyword">public</span> age:<span class="built_in">number</span></span>) &#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  getInfo(): <span class="built_in">string</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`my name is <span class="subst">$&#123;Person.fullName&#125;</span>,age is <span class="subst">$&#123;<span class="built_in">this</span>.age&#125;</span>`</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> p1 = <span class="keyword">new</span> Person(<span class="number">23</span>);</span><br><span class="line"></span><br><span class="line">p1.getInfo();</span><br></pre></td></tr></table></figure>
+
+<p>编译之后生成如下 JavaScript 代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Person = <span class="comment">/** @class */</span> (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">age</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">    Person.prototype.getInfo = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;my name is &quot;</span> + Person.fullName + <span class="string">&quot;,age is &quot;</span> + <span class="built_in">this</span>.age;</span><br><span class="line">    &#125;;</span><br><span class="line">    Person.fullName = <span class="string">&quot;sillywa&quot;</span>;    <span class="comment">// 静态属性</span></span><br><span class="line">    <span class="keyword">return</span> Person;</span><br><span class="line">&#125;());</span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person(<span class="number">23</span>);</span><br><span class="line">p1.getInfo();</span><br></pre></td></tr></table></figure>
+
+<h2 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h2><p>抽象类做为其它子类的父类使用。 它们一般不会直接被实例化。 不同于接口，抽象类可以包含成员的实现细节。 </p>
+<p>abstract 关键字是用于定义抽象类和在抽象类内部定义抽象方法。</p>
+<p><strong>* 需要注意的是如果一个子类继承了一个抽象类，则该子类必须实现该抽象类中的抽象方法。 *</strong></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> Person &#123;</span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params"><span class="keyword">public</span> name: <span class="built_in">string</span></span>)&#123; &#125;;</span><br><span class="line"></span><br><span class="line">  getName(): <span class="built_in">string</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.name;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">abstract</span> getAge(): <span class="built_in">number</span>;  <span class="comment">// 必须在子类中实现</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> Student <span class="keyword">extends</span> Person &#123;</span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params">my_name: <span class="built_in">string</span>, <span class="keyword">public</span> age: <span class="built_in">number</span></span>) &#123;</span><br><span class="line">    <span class="built_in">super</span>(my_name);</span><br><span class="line">  &#125;</span><br><span class="line">  getAge(): <span class="built_in">number</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> stu1 = <span class="keyword">new</span> Student(<span class="string">&quot;Sillywa&quot;</span>,<span class="number">23</span>);</span><br><span class="line"></span><br><span class="line">stu1.getAge();</span><br><span class="line">stu1.getName()</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://sillywa.com/2019/09/07/TypeScript-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/logo.png">
+      <meta itemprop="name" content="Sillywa">
+      <meta itemprop="description" content="个人学习记录博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sillywa's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/09/07/TypeScript-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-1/" class="post-title-link" itemprop="url">TypeScript 面向对象(一)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-07 20:32:38" itemprop="dateCreated datePublished" datetime="2019-09-07T20:32:38+08:00">2019-09-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-23 11:51:06" itemprop="dateModified" datetime="2020-09-23T11:51:06+08:00">2020-09-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>TypeScript 可以采用面向对象的方式来进行编程，以下介绍一些面向对象的基本特性，包含类、继承、super关键字和访问控制修饰符。</p>
+<h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><p>TypeScript 使用如下方式声明一个类：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Person &#123;</span><br><span class="line">  name: <span class="built_in">string</span>;</span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params">my_name: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = my_name;</span><br><span class="line">  &#125;</span><br><span class="line">  sayName():<span class="built_in">string</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`my name is <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span>`</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> p1 = <span class="keyword">new</span> Person(<span class="string">&quot;Sillywa&quot;</span>);</span><br><span class="line"></span><br><span class="line">p1.sayName();    </span><br><span class="line">p1.name;  </span><br></pre></td></tr></table></figure>
+
+<p>我们声明了一个 Person 类，他有一个 name 属性，一个构造函数和一个 sayName 方法。</p>
+<p>我们在引用任何一个类成员的时候都使用了 this 关键字，表示我们要访问的类成员。</p>
+<p>接着我们用 new 关键字创建了一个 Person 类的实例对象 p1，由于其构造函数接受一个 my_name 参数，因此我们在实例化 p1 时，传递给一个参数。</p>
+<p>最后 p1 就可以使用 Person 类的属性和方法。</p>
+<p>以上代码通过 TypeScript 的编译会得到如下 JavaScript 代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Person = <span class="comment">/** @class */</span> (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">my_name</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.name = my_name;</span><br><span class="line">    &#125;</span><br><span class="line">    Person.prototype.sayName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;my name is &quot;</span> + <span class="built_in">this</span>.name;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> Person;</span><br><span class="line">&#125;());</span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person(<span class="string">&quot;Sillywa&quot;</span>);</span><br><span class="line">p1.sayName();</span><br><span class="line">p1.name;</span><br></pre></td></tr></table></figure>
+
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>在 TypeScript 里，我们可以使用常用的面向对象模式。 基于类的程序设计中一种最基本的模式是允许使用继承来扩展现有的类。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> Person &#123;</span><br><span class="line">  sayName():<span class="built_in">string</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;name&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> Student <span class="keyword">extends</span> Person &#123;</span><br><span class="line">  saySchool():<span class="built_in">string</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;school&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> stu1 = <span class="keyword">new</span> Student();</span><br><span class="line">stu1.saySchool();</span><br><span class="line">stu1.sayName();</span><br></pre></td></tr></table></figure>
+
+<p>与其他语言类似，在 TypeScript 中也是使用 extends 关键字实现继承。在上述例子中，Student 类继承 Person 类，Student 为子类或派生类，Person 类为父类或基类。</p>
+<p>需要注意的是子类除了不能继承父类的私有成员(方法和属性)和构造函数，其他的都可以继承。</p>
+<p>TypeScript 一次只能继承一个类，不支持继承多个类，但 TypeScript 支持多重继承（A 继承 B，B 继承 C）。</p>
+<h2 id="super-关键字"><a href="#super-关键字" class="headerlink" title="super 关键字"></a>super 关键字</h2><p><strong>* 如果子类包含了一个构造函数，它必须调用 super()，它会执行父类的构造函数。 而且，在构造函数里访问 this 的属性之前，我们一定要调用 super()。 这个是TypeScript强制执行的一条重要规则。 *</strong></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Person &#123;</span><br><span class="line">  name: <span class="built_in">string</span>;</span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params">my_name: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = my_name;</span><br><span class="line">  &#125;</span><br><span class="line">  sayName(): <span class="built_in">string</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> Teacher <span class="keyword">extends</span> Person &#123;</span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params">tea_name: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">    <span class="comment">// 派生类包含了一个构造函数，它必须调用 super()</span></span><br><span class="line">    <span class="built_in">super</span>(tea_name);</span><br><span class="line">  &#125;</span><br><span class="line">  sayTeaName(): <span class="built_in">void</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;teacher name&quot;</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">super</span>.sayName());    <span class="comment">// 调用父类的函数</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> Student <span class="keyword">extends</span> Person &#123;</span><br><span class="line">  school: <span class="built_in">string</span>;</span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params">stu_name: <span class="built_in">string</span>, my_school: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">    <span class="comment">// 在构造函数里访问 this 的属性之前，我们一定要调用 super()</span></span><br><span class="line">    <span class="built_in">super</span>(stu_name);</span><br><span class="line">    <span class="built_in">this</span>.school = my_school;</span><br><span class="line">  &#125;</span><br><span class="line">  saySchool():<span class="built_in">string</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.school;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> tea1 = <span class="keyword">new</span> Teacher(<span class="string">&quot;math teacher&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> stu1 = <span class="keyword">new</span> Student(<span class="string">&quot;middle student&quot;</span>,<span class="string">&quot;peaking university&quot;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">tea1.sayTeaName();</span><br><span class="line"><span class="built_in">console</span>.log(stu1.saySchool());</span><br></pre></td></tr></table></figure>
+
+<p>以上我们声明了三个类，其中 Teacher 类和 Student 类都继承 Person 类。由于子类包含了一个构造函数，它必须调用 super()，执行父类的构造函数。如果构造函数接受参数，需要显式传递参数给 super 方法。</p>
+<p>从 Teacher 类我们可以看出，super 不仅可以调用父类的构造函数，还可以调用父类的其它共有方法。</p>
+<p>从 Student 类可以看出，当子类包含自己的属性时，需要在访问子类的属性之前调用 super()。</p>
+<h2 id="访问控制修饰符"><a href="#访问控制修饰符" class="headerlink" title="访问控制修饰符"></a>访问控制修饰符</h2><p>TypeScript 中，可以使用访问控制符来保护对类、变量、方法和构造方法的访问。TypeScript 支持 3 种不同的访问权限。、</p>
+<ul>
+<li><p>public：类的所有成员如果没有访问控制符的话，默认为 public，共有，可以在任何地方被访问。</p>
+</li>
+<li><p>private：私有，只能被其定义所在的类访问。</p>
+</li>
+<li><p>protected：受保护，可以被其自身以及其子类或父类访问。</p>
+</li>
+</ul>
+<p>前面我们写的类的成员都没有访问控制修饰符，因此默认为 public，可以在任何地方被访问。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Person &#123;</span><br><span class="line">  <span class="keyword">private</span> name: <span class="built_in">string</span>;</span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params">my_name: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = my_name;</span><br><span class="line">  &#125;</span><br><span class="line">  logName() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> Student <span class="keyword">extends</span> Person&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params">stu_name: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">    <span class="built_in">super</span>(stu_name);</span><br><span class="line">  &#125;</span><br><span class="line">  sayName() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.name);    <span class="comment">// 报错，私有成员无法在其它类中被访问</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> stu1 = <span class="keyword">new</span> Student(<span class="string">&quot;Sillywa&quot;</span>);</span><br><span class="line">stu1.sayName()</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> p1 = <span class="keyword">new</span> Person(<span class="string">&quot;Sillywa father&quot;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p1.name);       <span class="comment">// 报错，私有成员只能在其所属类中被访问</span></span><br><span class="line"></span><br><span class="line">p1.logName();               <span class="comment">// 正确，私有成员只能在其所属类中被访问</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>以上代码我们定义了一个 Person 类，其有一个私有属性 name，我们可以看到，无论我们通过何种方法，私有属性 name 只能在其所属类中被访问，其他地方都访问不了。</p>
+<p>而 protected 修饰符与 private 有一点不同，protected 成员可以被其自身以及其子类或父类访问。</p>
+<p>同样是以上代码，我们将 name 的修饰符换为 protected</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Person &#123;</span><br><span class="line">  <span class="keyword">protected</span> name: <span class="built_in">string</span>;</span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params">my_name: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = my_name;</span><br><span class="line">  &#125;</span><br><span class="line">  logName() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> Student <span class="keyword">extends</span> Person&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params">stu_name: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">    <span class="built_in">super</span>(stu_name);</span><br><span class="line">  &#125;</span><br><span class="line">  sayName() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.name);    <span class="comment">// 正确，受保护成员可以在其子类中被访问</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> stu1 = <span class="keyword">new</span> Student(<span class="string">&quot;Sillywa&quot;</span>);</span><br><span class="line">stu1.sayName()</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> p1 = <span class="keyword">new</span> Person(<span class="string">&quot;Sillywa father&quot;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p1.name);       <span class="comment">// 报错，受保护成员只能在其所属类或其子类或父类中被访问</span></span><br><span class="line"></span><br><span class="line">p1.logName();               <span class="comment">// 正确，受保护成员可以在其所属类中被访问</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://sillywa.com/2019/09/05/TypeScript%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/logo.png">
+      <meta itemprop="name" content="Sillywa">
+      <meta itemprop="description" content="个人学习记录博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sillywa's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/09/05/TypeScript%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">TypeScript基础</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-05 14:01:50" itemprop="dateCreated datePublished" datetime="2019-09-05T14:01:50+08:00">2019-09-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-23 11:51:06" itemprop="dateModified" datetime="2020-09-23T11:51:06+08:00">2020-09-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="TypeScript-介绍"><a href="#TypeScript-介绍" class="headerlink" title="TypeScript 介绍"></a>TypeScript 介绍</h2><p>TypeScript 是微软开发的自由和开源的编程语言，它是 JavaScript 的超集。TypeScript 在 JavaScript 的基础上添加了可选的静态类型和基于类的面向对象编程。</p>
+<p>TypeScript 是基于 JavaScript 的，在运行时需要先编译成 JavaScript 代码，其设计目的是开发大型应用，便于多人协作。</p>
+<p>与 JavaScript 的对比：</p>
+<ul>
+<li>TypeScript 更适合开发大型应用。</li>
+<li>TypeScript 是 JavaScript 的超集，可以编译成纯 JavaScript 代码。</li>
+<li>任何可以运行 JavaScript 的地方都可以运行 TypeScript 代码。</li>
+<li>提供类、模块和接口等，能更好的构建和维护组件。</li>
+</ul>
+<p>其给 JavaScript 添加了一些语言扩展，包括：</p>
+<ul>
+<li>类型批注和编译时类型检查</li>
+<li>类型推断</li>
+<li>类型擦除</li>
+<li>接口</li>
+<li>枚举</li>
+<li>Mixin</li>
+<li>泛型编程</li>
+<li>名字空间</li>
+<li>元组</li>
+<li>Await</li>
+</ul>
+<p>同时其从 ECMAScript5 移植了以下语法：</p>
+<ul>
+<li>类</li>
+<li>模块</li>
+<li>lambda 函数的箭头语法</li>
+<li>可选参数及默认参数</li>
+</ul>
+<h2 id="TypeScript-安装"><a href="#TypeScript-安装" class="headerlink" title="TypeScript 安装"></a>TypeScript 安装</h2><p>安装 TypeScript 前，需先安装 node，然后使用 npm 进行 TypeScript 的安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g typescript</span><br></pre></td></tr></table></figure>
+
+<p>安装完成之后使用 tsc 命令查看版本号以及检查是否安装成功：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsc -v</span><br></pre></td></tr></table></figure>
+
+<p>然后编写第一个 TypeScript 程序 hello.ts，以 .ts 结尾：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str:<span class="built_in">string</span> = <span class="string">&quot;hello TypeScript&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str);</span><br></pre></td></tr></table></figure>
+
+<p>然后将 hello.ts 文件编译成 js 文件，再运行该 js 文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tsc hello.ts</span><br><span class="line">node hello.js</span><br></pre></td></tr></table></figure>
+
+<h2 id="TypeScript-变量类型"><a href="#TypeScript-变量类型" class="headerlink" title="TypeScript 变量类型"></a>TypeScript 变量类型</h2><p>TypeScript 包含如下数据类型：</p>
+<ul>
+<li>any：任意类型</li>
+<li>number：数字类型</li>
+<li>string：字符串类型</li>
+<li>boolean：布尔类型</li>
+<li>数组类型</li>
+<li>元组</li>
+<li>enum：枚举</li>
+<li>void：用于标识方法的返回值，void 标识该方法没有返回值</li>
+<li>null：表示一个空对象引用</li>
+<li>undefined：初始化变量为一个未定义的值</li>
+<li>never：never是其他类型（包括 null 和 undefined ）的子类型，代表从不会出现的值</li>
+</ul>
+<h3 id="any-类型"><a href="#any-类型" class="headerlink" title="any 类型"></a>any 类型</h3><p>任意值是 TypeScript 针对编程时类型不明确的变量使用的一种数据类型，它常用于以下三种情况。</p>
+<ol>
+<li>变量的值会动态改变时，比如来自用户的输入，任意值类型可以让这些变量跳过编译阶段的类型检查</li>
+</ol>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> x:<span class="built_in">any</span> = <span class="number">1</span>;      <span class="comment">// 数字类型</span></span><br><span class="line">x = <span class="string">&quot;hello&quot;</span>;        <span class="comment">// 字符串</span></span><br><span class="line">x = <span class="literal">false</span>;          <span class="comment">// 布尔类型</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>定义存储各种类型数据的数组时</li>
+</ol>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arrayList:<span class="built_in">any</span>[] = [<span class="number">1</span>,<span class="string">&quot;hello&quot;</span>,<span class="literal">false</span>];</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>改写现有代码时，任意值允许在编译时可选择地包含或移除类型检查</li>
+</ol>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> x: <span class="built_in">any</span> = <span class="number">4</span>;</span><br><span class="line">x.ifItExists();    <span class="comment">// 正确，ifItExists方法在运行时可能存在，但这里并不会检查</span></span><br><span class="line">x.toFixed();      <span class="comment">// 正确</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="number-类型"><a href="#number-类型" class="headerlink" title="number 类型"></a>number 类型</h3><p>双精度 64 位浮点值。它可以用来表示整数和分数。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> num1:<span class="built_in">number</span> = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">let</span> num2:<span class="built_in">number</span> = <span class="number">1.2</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="string-类型"><a href="#string-类型" class="headerlink" title="string 类型"></a>string 类型</h3><p>一个字符系列，使用单引号（’）或双引号（”）来表示字符串类型。反引号（`）来定义多行文本和内嵌表达式。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str1 = <span class="string">&quot;hello&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> str2 = <span class="string">`str1 is <span class="subst">$&#123;str1&#125;</span>`</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="数组类型"><a href="#数组类型" class="headerlink" title="数组类型"></a>数组类型</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 声明存储number类型的数组</span></span><br><span class="line"><span class="keyword">let</span> arr1:<span class="built_in">number</span>[] = [<span class="number">1</span>,<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者使用泛型数组</span></span><br><span class="line"><span class="keyword">let</span> arr2:<span class="built_in">Array</span>&lt;<span class="built_in">number</span>&gt; = [<span class="number">1</span>,<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h3><p>元组类型用来表示已知元素数量和类型的数组，各元素的类型不必相同，对应位置的类型需要相同。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> x:[<span class="built_in">string</span>, <span class="built_in">number</span>];</span><br><span class="line"></span><br><span class="line">x = [<span class="string">&quot;hello&quot;</span>, <span class="number">1</span>];      <span class="comment">// right</span></span><br><span class="line"></span><br><span class="line">x1 = [<span class="number">1</span>, <span class="string">&quot;hello&quot;</span>];    <span class="comment">// wrong</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(x[<span class="number">0</span>]);</span><br></pre></td></tr></table></figure>
+
+<h3 id="enum"><a href="#enum" class="headerlink" title="enum"></a>enum</h3><p>枚举类型用于定义数值集合。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">enum</span> Color = &#123;Red, Blue, Pink&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> c:Color = Color.Red;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(c);   <span class="comment">// 0</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="void"><a href="#void" class="headerlink" title="void"></a>void</h3><p>用于标识方法返回值的类型，表示该方法没有返回值。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">say</span>(<span class="params"></span>):<span class="title">void</span> </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;hello ts&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="null-和-undefined"><a href="#null-和-undefined" class="headerlink" title="null 和 undefined"></a>null 和 undefined</h3><p>null 表示一个空对象的引用，typeof null 返回 “object”。</p>
+<p>undefined 是一个为初始化值的变量，typeof undefined 返回 “undefined”。</p>
+<p>null 和 undefined 是其他任何类型（包括 void）的子类型，可以赋值给其它类型，如数字类型，此时，赋值后的类型会变成 null 或 undefined。</p>
+<p><strong>* 而在TypeScript中启用严格的空校验（–strictNullChecks）特性，就可以使得 null 和 undefined 只能被赋值给 void 或本身对应的类型。 *</strong></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> x:<span class="built_in">number</span>;</span><br><span class="line"></span><br><span class="line">x = <span class="number">2</span>;            <span class="comment">// right</span></span><br><span class="line"></span><br><span class="line">x = <span class="literal">null</span>;         <span class="comment">// wrong</span></span><br><span class="line"></span><br><span class="line">x = <span class="literal">undefined</span>;    <span class="comment">// wrong</span></span><br></pre></td></tr></table></figure>
+
+<p>上面的例子中变量 x 只能是数字类型。如果一个类型可能出行 null 或 undefined， 可以用 | 来支持多种类型</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> x:<span class="built_in">number</span> | <span class="literal">null</span> | <span class="literal">undefined</span>;</span><br><span class="line"></span><br><span class="line">x = <span class="number">2</span>;            <span class="comment">// right</span></span><br><span class="line"></span><br><span class="line">x = <span class="literal">null</span>;         <span class="comment">// right</span></span><br><span class="line"></span><br><span class="line">x = <span class="literal">undefined</span>;    <span class="comment">// right</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="never-类型"><a href="#never-类型" class="headerlink" title="never 类型"></a>never 类型</h3><p>never 是其它类型（包括 null 和 undefined）的子类型，代表从不会出现的值。这意味着声明为 never 类型的变量只能被 never 类型所赋值，在函数中它通常表现为抛出异常或无法执行到终止点（例如无限循环）。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> x: <span class="built_in">never</span>;</span><br><span class="line"><span class="keyword">let</span> y: <span class="built_in">number</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 运行错误，数字类型不能转为 never 类型</span></span><br><span class="line">x = <span class="number">123</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 运行正确，never 类型可以赋值给 never类型</span></span><br><span class="line">x = (<span class="function">()=&gt;</span>&#123; <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&#x27;exception&#x27;</span>)&#125;)();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 运行正确，never 类型可以赋值给 数字类型</span></span><br><span class="line">y = (<span class="function">()=&gt;</span>&#123; <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&#x27;exception&#x27;</span>)&#125;)();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 返回值为 never 的函数可以是抛出异常的情况</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">error</span>(<span class="params">message: <span class="built_in">string</span></span>): <span class="title">never</span> </span>&#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(message);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 返回值为 never 的函数可以是无法被执行到的终止点的情况</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loop</span>(<span class="params"></span>): <span class="title">never</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://sillywa.com/2019/07/17/Linux%E4%B8%8B%E4%BD%BF%E7%94%A8crontab%E5%AE%9A%E6%97%B6%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/logo.png">
+      <meta itemprop="name" content="Sillywa">
+      <meta itemprop="description" content="个人学习记录博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sillywa's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/07/17/Linux%E4%B8%8B%E4%BD%BF%E7%94%A8crontab%E5%AE%9A%E6%97%B6%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1/" class="post-title-link" itemprop="url">Linux下使用crontab定时执行任务</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-07-17 19:40:39" itemprop="dateCreated datePublished" datetime="2019-07-17T19:40:39+08:00">2019-07-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-23 11:51:06" itemprop="dateModified" datetime="2020-09-23T11:51:06+08:00">2020-09-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>最近在做一个小项目，要求能定时利用 <a target="_blank" rel="noopener" href="http://doc.pm2.io/en/plus/overview/">pm2</a> 重启某个进程，即定时执行 <code>pm2 restart xxx</code>。</p>
+<p>今天刚好发现 Linux 下可以使用 crontab 来定时执行一些脚本或命令，于是我就开始研究如何利用 crontab 搭配 pm2 定时重启某个进程。</p>
+<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p>在研究的过程中，我自己在网上看了很多教程，都是良莠不齐，花了好大功夫我才解决这个问题，接下来具体看一下我的解决过程。</p>
+<p>首先看一下 Linux 下如何使用 crontab：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">crontab -l      &#x2F;&#x2F; 列出Linux下当前用户所有的定时任务</span><br><span class="line">crontab -e     &#x2F;&#x2F; 编辑定时任务</span><br></pre></td></tr></table></figure>
+
+<p>当首次使用 <code>crontab -l</code> 时，会提示当前用户下没有定时任务。</p>
+<p>这时我们可以使用 <code>crontab -e</code> 创建一个定时任务，创建时会要求我们选择编辑器，这里我们选择 vim.tiny。如果第一次编辑器选错了，可以运行 <code>sudo select-editor</code>命令重新选择。</p>
+
+
+<p>然后我们可以写定时任务了，这里我们输入如下代码，然后保存退出。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* * * * * echo 123 &gt;&gt; &#x2F;test.log</span><br></pre></td></tr></table></figure>
+<p>这个命令的意思是每过一分钟将 123 追加到 /test.log 文件的末尾。</p>
+<p>从第一个 <code>*</code> 到 最后一个 <code>*</code> 分别是 <strong>分、时、日、月、周</strong>。</p>
+<h3 id="执行-shell-脚本"><a href="#执行-shell-脚本" class="headerlink" title="执行 shell 脚本"></a>执行 shell 脚本</h3><p>同时我们也可以编写一个 shell 脚本，让其定时执行。</p>
+<p>在 /root 目录下编写 a.sh</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo 123 &gt;&gt; &#x2F;root&#x2F;a.txt</span><br></pre></td></tr></table></figure>
+
+<p>然后利用 <code>crontab -e</code> 命令，编辑定时任务：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* * * * * sh &#x2F;root&#x2F;a.sh &gt;&gt; &#x2F;root&#x2F;test.a.log 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
+
+<p>上述代码是每分钟执行 a.sh 脚本，并将执行日志写入 /test.a.log 文件。</p>
+<h3 id="配合-pm2-使用"><a href="#配合-pm2-使用" class="headerlink" title="配合 pm2 使用"></a>配合 pm2 使用</h3><p>知道基本用法之后我们配合 pm2 使用，想要每分钟重启id号为0的进程（该进程必须为正在运行中的进程），自然而然就会这样写：</p>
+<p>首先编写一个 shell 脚本 /root/b.sh 用于重启id号为0的进程：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 restart 0</span><br></pre></td></tr></table></figure>
+
+<p>然后利用 crontab 去定时执行这个脚本，并记录其日志，<code>crontab -e</code> 输入如下代码（<strong>注意不需要添加 PATH 或者 HOME=/ 等其他东西</strong>，我当时就是看网上添加了 PATH 和 HOME=/ ，之后一直报错）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* * * * * * sh &#x2F;root&#x2F;b.sh &gt;&gt; &#x2F;root&#x2F;b.log 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
+
+<p>然而这样写并不管用，我们打开 /root/b.log 看一下它的报错。</p>
+<p>提示 pm2 not found，然后我们使用 <code>which pm2</code> 查看 pm2 的路径，将 pm2 换成其路径，重新编辑 <code>/root/b.shell</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;usr&#x2F;local&#x2F;bin&#x2F;pm2 restart 0</span><br></pre></td></tr></table></figure>
+
+<p>这样我们就实现了利用 crontab 每分钟重启 pm2 的某个进程。当然需要根据自己的需求去设定重启时间。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://sillywa.com/2019/03/15/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0-5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/logo.png">
+      <meta itemprop="name" content="Sillywa">
+      <meta itemprop="description" content="个人学习记录博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sillywa's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/03/15/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0-5/" class="post-title-link" itemprop="url">Java基础知识学习-5</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-15 12:39:53" itemprop="dateCreated datePublished" datetime="2019-03-15T12:39:53+08:00">2019-03-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-23 11:51:06" itemprop="dateModified" datetime="2020-09-23T11:51:06+08:00">2020-09-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>在 Java 中，类的继承只能是单一继承，也就是说，一个子类只能拥有一个父类。</p>
+<p>Java 中用 extends 关键字来实现继承。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 父类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Father</span> </span>&#123;</span><br><span class="line">  String name;</span><br><span class="line">  <span class="keyword">int</span> age;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sayName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 子类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Father</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>继承的特点：</p>
+<ol>
+<li>子类拥有父类非 private 的属性和方法</li>
+<li>子类可以拥有自己的属性和方法</li>
+<li>子类可以用自己的方式实现父类的方法</li>
+<li>Java 的继承是单继承，但是可以多重继承，单继承就是一个子类只能继承一个父类，多重继承就是，例如A类继承B类，B类继承C类，所以按照关系就是C类是B类的父类，B类是A类的父类</li>
+</ol>
+<p>Java 中用 extends 关键字来实现继承，用 super 关键字来实现对父类成员的访问，用来引用当前对象的父类，用 this 关键字指向自己的引用。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 父类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Father</span> </span>&#123;</span><br><span class="line">  String name = <span class="string">&quot;father&quot;</span>;</span><br><span class="line">  <span class="keyword">int</span> age = <span class="number">50</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sayName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 子类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Father</span> </span>&#123;</span><br><span class="line">  String name = <span class="string">&quot;son&quot;</span>;</span><br><span class="line">  <span class="keyword">int</span> age = <span class="number">23</span>;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sayName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(name);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">say</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.sayName();   <span class="comment">// father</span></span><br><span class="line">    <span class="keyword">this</span>.sayName();   <span class="comment">// son</span></span><br><span class="line">    sayName();        <span class="comment">// son</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>* 子类是不能继承父类的构造方法的，它只是隐式调用。如果父类的构造方法带有参数，则必须在子类的构造器中显式通过 super 关键字调用父类的构造方法并配有适当的参数。且必须在子类构造方法的第一行 *</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 父类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Father</span> </span>&#123;</span><br><span class="line">  String name;</span><br><span class="line">  <span class="keyword">int</span> age;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 父类带参数构造方法</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Father</span><span class="params">(String name,<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sayName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 子类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Father</span> </span>&#123;</span><br><span class="line">  String name = <span class="string">&quot;son&quot;</span>;</span><br><span class="line">  <span class="keyword">int</span> age = <span class="number">23</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 子类构造方法</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Son</span><span class="params">(String name,<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 显示调用 super</span></span><br><span class="line">    <span class="keyword">super</span>(name,age);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sayName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(name);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">say</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.sayName();   <span class="comment">// father</span></span><br><span class="line">    <span class="keyword">this</span>.sayName();   <span class="comment">// son</span></span><br><span class="line">    sayName();        <span class="comment">// son</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果父类构造方法没有参数，则在子类的构造方法中不需要使用 super 关键字调用父类构造方法，系统会自动调用父类的无参构造方法。</p>
+<p>Java 中所有的类都继承 Object 类，如果一个类没有使用 extends 关键字明确标识继承另一个类，那么这个类默认继承 Object 类。</p>
+<p>Object 类的 toString() 方法返回对象的哈希 code 码（对象地址字符串）。</p>
+<p>Object 类的 equals() 方法比较对象的引用是否指向同一块地址。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://sillywa.com/2019/03/14/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0-4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/logo.png">
+      <meta itemprop="name" content="Sillywa">
+      <meta itemprop="description" content="个人学习记录博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sillywa's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/03/14/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0-4/" class="post-title-link" itemprop="url">Java基础知识学习-4</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-14 19:37:22" itemprop="dateCreated datePublished" datetime="2019-03-14T19:37:22+08:00">2019-03-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-23 11:51:06" itemprop="dateModified" datetime="2020-09-23T11:51:06+08:00">2020-09-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><p>在面向对象程式设计方法中，封装是指一种将抽象性函式接口的实现细节部份包装、隐藏起来的方法。</p>
+<p>封装可以被认为是一个保护屏障，防止该类的代码和数据被外部类定义的代码随机访问。</p>
+<p>封装的优点：</p>
+<ul>
+<li>良好的封装能够减少耦合</li>
+<li>类内部的结构可以自由修改</li>
+<li>可以对成员变量进行更精确的控制</li>
+<li>隐藏信息，实现细节</li>
+</ul>
+<h2 id="实现封装"><a href="#实现封装" class="headerlink" title="实现封装"></a>实现封装</h2><p>修改属性的可见性来限制对属性的访问（一般限制为private），例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">  <span class="keyword">private</span> String name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>将 name 和 age 属性设置为私有的，只能本类才能访问，其他类都访问不了，如此就对信息进行了隐藏。同时提供对外的公共方法访问，也就是创建一对赋取值方法，用于对私有属性的访问。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">  <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> age;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> name;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Java中的成员内部类"><a href="#Java中的成员内部类" class="headerlink" title="Java中的成员内部类"></a>Java中的成员内部类</h2><p>当一个类包含另一个类时，内部类如何访问外部类中的成员属性？如何在外部调用内部类中的方法？</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Person.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 外部类的私有属性</span></span><br><span class="line">  <span class="keyword">private</span> String name = <span class="string">&quot;Sillywa&quot;</span>;</span><br><span class="line">  <span class="comment">// 外部类的成员属性</span></span><br><span class="line">  <span class="keyword">int</span> age = <span class="number">20</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 成员内部类</span></span><br><span class="line">  <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Inner</span> </span>&#123;</span><br><span class="line">    String name = <span class="string">&quot;wenwen&quot;</span>;	</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 内部类中的方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;外部类中的name：&quot;</span> + Person.<span class="keyword">this</span>.name);</span><br><span class="line">      System.out.println(<span class="string">&quot;外部类中的age：&quot;</span> + Person.<span class="keyword">this</span>.age);</span><br><span class="line">      System.out.println(<span class="string">&quot;内部类中的name：&quot;</span> + name);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Main.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 创建外部类的对象</span></span><br><span class="line">    Person person = <span class="keyword">new</span> Person();</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 创建内部类的对象</span></span><br><span class="line">    Inner inn = person.<span class="function">new <span class="title">Inner</span><span class="params">()</span></span>;</span><br><span class="line">    inn.show();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看出：</p>
+<p><strong>* 内部类通过 外部类名.this.成员属性 访问外部类中的成员属性。 *</strong></p>
+<p><strong>* 当需要调用内部类中的方法时，需要先实例化外部类，再实例化内部类。 *</strong></p>
+<h2 id="Java中的静态内部类"><a href="#Java中的静态内部类" class="headerlink" title="Java中的静态内部类"></a>Java中的静态内部类</h2><p>静态内部类如何访问外部类的变量？</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Person.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 外部类的私有静态属性</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> String name = <span class="string">&quot;Sillywa&quot;</span>;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> String city = <span class="string">&quot;wuhan&quot;</span>;</span><br><span class="line">  <span class="comment">// 外部类的成员属性</span></span><br><span class="line">  <span class="keyword">int</span> age = <span class="number">20</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 静态内部类</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Inner</span> </span>&#123;</span><br><span class="line">    String name = <span class="string">&quot;wenwen&quot;</span>;</span><br><span class="line">    <span class="comment">// 内部类中的方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="comment">// 静态内部类访问外部的非静态成员： `new 外部类().成员`</span></span><br><span class="line">      System.out.println(<span class="string">&quot;外部类中的age：&quot;</span> + <span class="keyword">new</span> Person().age);</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 内部类没有与该成员同名的变量： 直接通过 `变量名访问`</span></span><br><span class="line">      System.out.println(<span class="string">&quot;外部类中的age：&quot;</span> + city);</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 内部类存在与该成员同名的变量： 通过 `类名.静态成员访问`</span></span><br><span class="line">      System.out.println(<span class="string">&quot;外部类中的name：&quot;</span> + Person.name);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>* 调用时需要实现引入静态内部类 *</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Main.java</span></span><br><span class="line"><span class="keyword">import</span> packageName.Person.Inner;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;   </span><br><span class="line">    <span class="comment">// 创建内部类的对象</span></span><br><span class="line">    Inner inn = <span class="keyword">new</span> Inner();</span><br><span class="line">    inn.show();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>两种情况：</p>
+<ol>
+<li>静态内部类访问外部的非静态成员： <code>new 外部类().成员</code></li>
+<li>静态内部类访问外部的静态成员:<ul>
+<li>内部类没有与该成员同名的变量： 直接通过 <code>变量名访问</code></li>
+<li>内部类存在与该成员同名的变量： 通过 <code>类名.静态成员访问</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="Java中的方法内部类"><a href="#Java中的方法内部类" class="headerlink" title="Java中的方法内部类"></a>Java中的方法内部类</h2><p><strong>* 方法内部类就是内部类定义在外部类的方法中，方法内部类只在该方法的内部可见，即只在该方法内可以使用。 *</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Person.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 外部类中的方法</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 方法内部类</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">MInner</span> </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> score = <span class="number">83</span>;</span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getScore</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> score + <span class="number">10</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 创建方法内部类的实例</span></span><br><span class="line">    MInner minner = <span class="keyword">new</span> MInner();</span><br><span class="line">    minner.getScore();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>一定注意哦：*** 由于方法内部类不能在外部类的方法以外的地方使用(相当于“局部类”)，因此方法内部类不能使用访问控制符和static修饰符。 ***</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://sillywa.com/2019/03/11/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/logo.png">
+      <meta itemprop="name" content="Sillywa">
+      <meta itemprop="description" content="个人学习记录博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sillywa's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/03/11/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0-3/" class="post-title-link" itemprop="url">Java基础知识学习-3</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-11 19:19:39" itemprop="dateCreated datePublished" datetime="2019-03-11T19:19:39+08:00">2019-03-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-23 11:51:06" itemprop="dateModified" datetime="2020-09-23T11:51:06+08:00">2020-09-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="类与对象"><a href="#类与对象" class="headerlink" title="类与对象"></a>类与对象</h2><p>类是一个模板，它描述一类对象的行为和状态。对象是类的一个实例。</p>
+<h2 id="类的定义"><a href="#类的定义" class="headerlink" title="类的定义"></a>类的定义</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> age;</span><br><span class="line">  String name;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">sayAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;age:&quot;</span> + age);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>一个类包含以下类型的变量：</p>
+<p>1.<strong>* 局部变量 *</strong>：在方法、构造方法或者语句块中定义的变量被称为局部变量。变量声明和初始化都是在方法中，方法结束后，变量就会自动销毁。<br>2.<strong>* 成员变量 *</strong>：成员变量是定义在类中，方法体之外的变量。这种变量在创建对象的时候实例化。成员变量可以被类中方法、构造方法和特定类的语句块访问。<br>3.<strong>* 类变量 *</strong>：类变量也声明在类中，方法体之外，但必须声明为static类型。</p>
+<h2 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h2><p>每个类都有构造方法。如果没有显式地为类定义构造方法，Java编译器将会为该类提供一个默认构造方法。</p>
+<p>在创建一个对象的时候，至少要调用一个构造方法。*** 构造方法的名称必须与类同名，一个类可以有多个构造方法 ***。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> age;</span><br><span class="line">  String name;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 构造方法与类同名</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(<span class="keyword">int</span> myAge, String myName)</span> </span>&#123;</span><br><span class="line">    age = myAge;</span><br><span class="line">    name = myName;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">sayAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;age:&quot;</span> + age);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> age;</span><br><span class="line">  String name;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 构造方法与类同名</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(<span class="keyword">int</span> myAge, String myName)</span> </span>&#123;</span><br><span class="line">    age = myAge;</span><br><span class="line">    name = myName;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">sayAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;age:&quot;</span> + age);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 主函数</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 实例化对象</span></span><br><span class="line">    Person person = <span class="keyword">new</span> Person(<span class="number">12</span>,<span class="string">&quot;Sillywa&quot;</span>);</span><br><span class="line"></span><br><span class="line">    person.sayAge()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="static-用于创建静态变量和静态方法"><a href="#static-用于创建静态变量和静态方法" class="headerlink" title="static 用于创建静态变量和静态方法"></a>static 用于创建静态变量和静态方法</h2><p>文件结构，一个 package 下面有以下三个类，一个 package 下的所有类都是相互可见的:</p>
+<ul>
+<li><code>Main.java</code>     程序入口</li>
+<li><code>Person.java</code>   Person类</li>
+<li><code>Dog.java</code>      Dog类</li>
+</ul>
+<p><strong>* 对各种变量而言，成员变量只在本类中可以访问，而用 static 声明的静态变量或方法在同一个 package 下的所有类都可以访问，相当于该 package 下的全局变量或方法。 *</strong></p>
+<p><strong>* 因此，对于静态变量或静态方法，应使用类名访问。 *</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Main.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    System.out.println(Person.allAge);</span><br><span class="line">    System.out.println(Dog.allAge);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Person.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> age;</span><br><span class="line">  String name;</span><br><span class="line">  <span class="comment">// 声明静态变量</span></span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">int</span> allAge = <span class="number">70</span>;</span><br><span class="line">  <span class="comment">// 构造方法与类同名</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(<span class="keyword">int</span> myAge, String myName)</span> </span>&#123;</span><br><span class="line">    age = myAge;</span><br><span class="line">    name = myName;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">sayAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;person age:&quot;</span> + age);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Dog.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> age;</span><br><span class="line">  String name;</span><br><span class="line">  <span class="comment">// 声明静态变量</span></span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">int</span> allAge = <span class="number">10</span>;</span><br><span class="line">  <span class="comment">// 构造方法与类同名</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Dog</span><span class="params">(<span class="keyword">int</span> myAge, String myName)</span> </span>&#123;</span><br><span class="line">    age = myAge;</span><br><span class="line">    name = myName;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">sayAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;dog age:&quot;</span> + age);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>* 静态方法可以直接调用同类中的静态成员，但不能直接调用非静态成员。 *</strong></p>
+<p><strong>* 普通方法中可以直接使用静态或非静态变量或方法。 *</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Person.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> age;</span><br><span class="line">  String name;</span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">int</span> allAge = <span class="number">70</span>;</span><br><span class="line">  <span class="comment">// 构造方法与类同名</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(<span class="keyword">int</span> myAge, String myName)</span> </span>&#123;</span><br><span class="line">    age = myAge;</span><br><span class="line">    name = myName;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">sayName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 普通方法中可以直接使用静态或非静态变量或方法</span></span><br><span class="line">    System.out.println(<span class="string">&quot;person name:&quot;</span> + name);</span><br><span class="line">    System.out.println(<span class="string">&quot;person allAge:&quot;</span> + allAge);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sayAllAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;person allAge:&quot;</span> + allAge);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 静态方法可以直接调用同类中的静态成员，但不能直接调用非静态成员。</span></span><br><span class="line">  <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sayAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;person age:&quot;</span> + age);    <span class="comment">// 调用非静态变量，报错</span></span><br><span class="line">    sayName();                                  <span class="comment">// 调用非静态方法，报错</span></span><br><span class="line">    sayAllAge();                                <span class="comment">// 调用静态方法，成功</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>* 如果在静态方法中想要调用非静态成员，需先实例化对象。 *</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Person.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> age;</span><br><span class="line">  String name;</span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">int</span> allAge = <span class="number">70</span>;</span><br><span class="line">  <span class="comment">// 构造方法与类同名</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(<span class="keyword">int</span> myAge, String myName)</span> </span>&#123;</span><br><span class="line">    age = myAge;</span><br><span class="line">    name = myName;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">sayName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;person name:&quot;</span> + name);</span><br><span class="line">    System.out.println(<span class="string">&quot;person allAge:&quot;</span> + allAge);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sayAllAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;person allAge:&quot;</span> + allAge);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sayAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 在静态方法中想要调用非静态成员，需先实例化对象。</span></span><br><span class="line">    Person person = <span class="keyword">new</span> Person(<span class="number">12</span>,<span class="string">&quot;Sillywa&quot;</span>);           <span class="comment">// 实例化对象</span></span><br><span class="line">    System.out.println(<span class="string">&quot;person age:&quot;</span> + person.age);    <span class="comment">// 调用非静态变量，成功</span></span><br><span class="line">    person.sayName();                                  <span class="comment">// 调用非静态方法，成功</span></span><br><span class="line">    sayAllAge();                                <span class="comment">// 调用静态方法，成功</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用-static-静态初始化块"><a href="#使用-static-静态初始化块" class="headerlink" title="使用 static 静态初始化块"></a>使用 static 静态初始化块</h2><p><strong>* 需要特别注意：静态初始化块只在类加载时执行，且只会执行一次，同时静态初始化块只能给静态变量赋值，不能初始化普通的成员变量。 *</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Person.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> age;</span><br><span class="line">  <span class="keyword">static</span> String name;</span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">int</span> allAge;</span><br><span class="line">  &#123;</span><br><span class="line">    age = <span class="number">10</span>;</span><br><span class="line">    System.out.println(<span class="string">&quot;为普通变量赋值&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">static</span> &#123;</span><br><span class="line">    allAge = <span class="number">90</span>;</span><br><span class="line">    name = <span class="string">&quot;Sillywa&quot;</span>;</span><br><span class="line">    System.out.println(<span class="string">&quot;为静态变量赋值&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Main.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Person person1 = <span class="keyword">new</span> Person();</span><br><span class="line">    Person person2 = <span class="keyword">new</span> Person();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">为静态变量赋值</span><br><span class="line">为普通变量赋值</span><br><span class="line">为普通变量赋值</span><br></pre></td></tr></table></figure>
+
+<p><strong>* 可以看出，静态赋值最先执行，当实例化两个对象时，静态初始化只被执行一次。 *</strong></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Sillywa"
+      src="/images/logo.png">
+  <p class="site-author-name" itemprop="name">Sillywa</p>
+  <div class="site-description" itemprop="description">个人学习记录博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Sillywa" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Sillywa" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sillywa</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+<div>
+<span id="timeDate"></span><span id="times"></span>
+</div>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("12/03/2018 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "Running for "+dnum+" Days ";
+        document.getElementById("times").innerHTML = hnum + " Hours " + mnum + " m " + snum + " s";
+    }
+    setInterval("createtime()",250);
+</script>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

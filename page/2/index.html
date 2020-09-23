@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"sillywa.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="个人学习记录博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sillywa&#39;s Blog">
+<meta property="og:url" content="https://sillywa.com/page/2/index.html">
+<meta property="og:site_name" content="Sillywa&#39;s Blog">
+<meta property="og:description" content="个人学习记录博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Sillywa">
+<meta property="article:tag" content="博客">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://sillywa.com/page/2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Sillywa's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Sillywa's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://sillywa.com/2019/03/10/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/logo.png">
+      <meta itemprop="name" content="Sillywa">
+      <meta itemprop="description" content="个人学习记录博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sillywa's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/03/10/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0-2/" class="post-title-link" itemprop="url">Java基础知识学习-2</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-10 16:36:49" itemprop="dateCreated datePublished" datetime="2019-03-10T16:36:49+08:00">2019-03-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-23 11:51:06" itemprop="dateModified" datetime="2020-09-23T11:51:06+08:00">2020-09-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h3 id="声明数组"><a href="#声明数组" class="headerlink" title="声明数组"></a>声明数组</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] arr1;     <span class="comment">// 建议使用</span></span><br><span class="line">String arr2[];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 指定数组长度</span></span><br><span class="line">arr1 = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">5</span>];</span><br><span class="line">arr2 = <span class="keyword">new</span> String[<span class="number">5</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 声明的同时指定数组长度</span></span><br><span class="line"><span class="keyword">int</span>[] arr3 = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">5</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 声明并赋值时不能指定长度</span></span><br><span class="line"><span class="keyword">int</span>[] arr4 = <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="For-Each-循环"><a href="#For-Each-循环" class="headerlink" title="For-Each 循环"></a>For-Each 循环</h3><p>JDK 1.5 引进了一种新的循环类型，被称为 For-Each 循环或者加强型循环，它能在不使用下标的情况下遍历数组。</p>
+<p>语法格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for(type element : array) &#123;</span><br><span class="line">  System.out.println(element);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] arrs = &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>&#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> item : arrs) &#123;</span><br><span class="line">  System.out.println(item);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Arrays-类提供的方法"><a href="#Arrays-类提供的方法" class="headerlink" title="Arrays 类提供的方法"></a>Arrays 类提供的方法</h3><p>首先引入 Arrays 类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br></pre></td></tr></table></figure>
+
+<p>1.<code>public static void sort(Object[] a)</code></p>
+<p>对指定对象数组根据其元素的自然顺序进行升序排列。同样的方法适用于所有的其他基本数据类型（Byte，short，Int等）。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] arrs = &#123;<span class="number">1</span>,<span class="number">4</span>,<span class="number">63</span>,<span class="number">2</span>,<span class="number">35</span>,<span class="number">7</span>&#125;;</span><br><span class="line">Arrays.sort(arrs);</span><br></pre></td></tr></table></figure>
+
+<p>2.<code>public static void fill(int[] a, int val)</code></p>
+<p>将指定的 int 值分配给指定 int 型数组指定范围中的每个元素。同样的方法适用于所有的其他基本数据类型（Byte，short，Int等）。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] arrs = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">5</span>];</span><br><span class="line"><span class="keyword">int</span> a = <span class="number">8</span>;</span><br><span class="line">Arrays.fill(arrs,a);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> item : arrs) &#123;</span><br><span class="line">  System.out.println(item);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 8</span></span><br><span class="line"><span class="comment">// 8</span></span><br><span class="line"><span class="comment">// 8</span></span><br><span class="line"><span class="comment">// 8</span></span><br><span class="line"><span class="comment">// 8</span></span><br></pre></td></tr></table></figure>
+
+<p>3.<code>public static boolean equals(long[] a, long[] a2)</code></p>
+<p>如果两个指定的 long 型数组彼此相等，则返回 true。如果两个数组包含相同数量的元素，并且两个数组中的所有相应元素对都是相等的，则认为这两个数组是相等的。换句话说，如果两个数组以相同顺序包含相同的元素，则两个数组是相等的。同样的方法适用于所有的其他基本数据类型（Byte，short，Int等）。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] arrs1 = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line"><span class="keyword">int</span>[] arrs2 = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line"><span class="keyword">int</span>[] arrs3 = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;;</span><br><span class="line"><span class="keyword">boolean</span> a = Arrays.equals(arrs1, arrs2);</span><br><span class="line"><span class="keyword">boolean</span> b = Arrays.equals(arrs1, arrs3);</span><br><span class="line">System.out.println(a);    <span class="comment">// true</span></span><br><span class="line">System.out.println(b);    <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<p>4.<code>public static int binarySearch(Object[] a, Object key)</code></p>
+<p>用二分查找算法在给定数组中搜索给定值的对象(Byte,Int,double等)。数组在调用前必须排序好的。如果查找值包含在数组中，则返回搜索键的索引；否则返回 (-(数组长度) - 1)。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] arrs = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> a = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">int</span> b = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> index1 = Arrays.binarySearch(arrs, a);</span><br><span class="line"><span class="keyword">int</span> index2 = Arrays.binarySearch(arrs, b);</span><br><span class="line">System.out.println(index1);</span><br><span class="line">System.out.println(index2);</span><br></pre></td></tr></table></figure>
+
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><h3 id="方法声明"><a href="#方法声明" class="headerlink" title="方法声明"></a>方法声明</h3><p>一般情况下，定义一个方法包含以下语法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">修饰符 返回值类型 方法名(参数类型 参数名) &#123;</span><br><span class="line">  ···</span><br><span class="line">  方法体</span><br><span class="line">  ···</span><br><span class="line">  return 返回值;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h3><p>如果一个类中有两个或两个以上方法名相同、方法参数的个数、顺序或者类型不同的方法，则称为方法的重载。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 无参数方法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  System.out.println(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 重载show方法，一个参数方法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">  System.out.println(<span class="string">&quot;hello&quot;</span> + name);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 重载show方法，两个参数</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">(String name,<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">  System.out.println(<span class="string">&quot;hello&quot;</span> + name);</span><br><span class="line">  System.out.println(age);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 重载show方法，两个参数顺序不同</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">(<span class="keyword">int</span> age,S tring name)</span> </span>&#123;</span><br><span class="line">  System.out.println(<span class="string">&quot;hello&quot;</span> + name);</span><br><span class="line">  System.out.println(age);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>* 当重载方法被调用时，Java 会根据参数的个数和类型来判断应该调用哪个重载方法，参数完全匹配的方法将会被执行。*</strong></p>
+<p><strong>* 判断方法重载的依据 *</strong></p>
+<ol>
+<li>必须在同一个类中</li>
+<li>方法名相同</li>
+<li>方法参数个数、顺序或类型不同</li>
+<li>与方法的修饰符或返回值没有关系</li>
+</ol>
+<h3 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h3><p>JDK 1.5 开始，Java支持传递同类型的可变参数给一个方法。</p>
+<p>如果一个方法的参数不确定，则可使用可变参数，一个方法中只能指定一个可变参数，它必须是方法的最后一个参数。任何普通的参数必须在它之前声明。</p>
+<p>方法的可变参数的声明如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">typeName... parameterName</span><br></pre></td></tr></table></figure>
+
+<p>在方法声明中，在指定参数类型后加一个省略号(…) 。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span>[] arr = &#123;<span class="number">1</span>,<span class="number">9</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">20</span>,<span class="number">6</span>&#125;;</span><br><span class="line">  printMax(<span class="number">1</span>,<span class="number">9</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">20</span>,<span class="number">6</span>);</span><br><span class="line">  printMax(arr);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printMax</span><span class="params">(<span class="keyword">int</span>... numbers)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (numbers.length == <span class="number">0</span>) &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;No data&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">int</span> max = numbers[<span class="number">0</span>];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> item : numbers) &#123;</span><br><span class="line">    max = item &gt; max ? item : max;</span><br><span class="line">  &#125;</span><br><span class="line">  System.out.println(max);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://sillywa.com/2019/03/04/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/logo.png">
+      <meta itemprop="name" content="Sillywa">
+      <meta itemprop="description" content="个人学习记录博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sillywa's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/03/04/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0-1/" class="post-title-link" itemprop="url">Java基础知识学习-1</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-04 16:21:11" itemprop="dateCreated datePublished" datetime="2019-03-04T16:21:11+08:00">2019-03-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-23 11:51:06" itemprop="dateModified" datetime="2020-09-23T11:51:06+08:00">2020-09-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Java-语言的特点"><a href="#Java-语言的特点" class="headerlink" title="Java 语言的特点"></a>Java 语言的特点</h2><ol>
+<li>开源</li>
+<li>一次编写，到处运行——跨平台性</li>
+<li>与C/C++相似的语法结构</li>
+<li>强类型</li>
+<li>面向对象</li>
+<li>丰富的库</li>
+<li>使用垃圾回收机制进行内存管理</li>
+<li>异常处理</li>
+<li>并发处理</li>
+<li>使用包对类进行分类</li>
+</ol>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><ol>
+<li><p>JDK<br>Java development kit： Java 开发工具包</p>
+</li>
+<li><p>JRE<br>Java runtime environment：  Java 运行环境</p>
+</li>
+<li><p>JVM<br>Java virtual machine：  Java 虚拟机</p>
+</li>
+</ol>
+<p>三者的关系：</p>
+
+
+<h2 id="编写-Java-程序"><a href="#编写-Java-程序" class="headerlink" title="编写 Java 程序"></a>编写 Java 程序</h2><h3 id="使用记事本编写-Java-程序"><a href="#使用记事本编写-Java-程序" class="headerlink" title="使用记事本编写 Java 程序"></a>使用记事本编写 Java 程序</h3><ol>
+<li>编写源程序 MyProgram.java</li>
+<li>使用 javac 命令编译源程序，生成 MyProgram.calss 字节码文件<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javac MyProgram.java</span><br></pre></td></tr></table></figure></li>
+<li>使用 java 命令运行程序<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java MyProgram</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<h3 id="使用-Eclipse-编写-Java-程序"><a href="#使用-Eclipse-编写-Java-程序" class="headerlink" title="使用 Eclipse 编写 Java 程序"></a>使用 Eclipse 编写 Java 程序</h3><p>集成开发环境(IDE)是一类软件，将程序开发环境和调试环境集合在一起，提高开发效率。</p>
+<ol>
+<li>创建 Java 项目</li>
+<li>创建程序包</li>
+<li>编写 Java 源程序</li>
+<li>运行 Java 程序</li>
+</ol>
+
+
+<h2 id="输入与输出"><a href="#输入与输出" class="headerlink" title="输入与输出"></a>输入与输出</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Hello</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Scanner stdIn = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 读取整数</span></span><br><span class="line">    <span class="keyword">int</span> a = stdIn.nextInt();</span><br><span class="line">    <span class="comment">// 读取小数</span></span><br><span class="line">    <span class="keyword">double</span> b = stdIn.nextDouble();</span><br><span class="line">    <span class="comment">// 读取字符串</span></span><br><span class="line">    <span class="comment">// 使用此方法读取字符串时，空白符和制表符被视为字符串的分隔符，因此如果输入中包含空格或者制表符，需要使用nextLine()</span></span><br><span class="line">    String s = stdIn.next();</span><br><span class="line">    <span class="comment">// 读取一整行</span></span><br><span class="line">    String sl = stdIn.nextLine();</span><br><span class="line">    </span><br><span class="line">    System.out.println(a);</span><br><span class="line">    System.out.println(b);</span><br><span class="line">    System.out.println(s);</span><br><span class="line">    System.out.println(sl);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>程序输出的方法有很多，比如：</p>
+<ul>
+<li><code>System.out.print()</code>    直接输出</li>
+<li><code>System.out.println()</code>  输出一行</li>
+<li><code>System.out.printf()</code>   与C语言的printf()函数类似</li>
+</ul>
+<p>读取输入可以使用 Java 的 Scanner 类，使用方法如上。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://sillywa.com/2019/02/27/Linux%E4%B8%8B%E9%98%BF%E9%87%8C%E4%BA%91%E9%95%9C%E5%83%8F%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8ANginx%E5%AE%89%E8%A3%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/logo.png">
+      <meta itemprop="name" content="Sillywa">
+      <meta itemprop="description" content="个人学习记录博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sillywa's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/02/27/Linux%E4%B8%8B%E9%98%BF%E9%87%8C%E4%BA%91%E9%95%9C%E5%83%8F%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8ANginx%E5%AE%89%E8%A3%85/" class="post-title-link" itemprop="url">Linux下阿里云镜像安装以及Nginx安装</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-02-27 19:20:15" itemprop="dateCreated datePublished" datetime="2019-02-27T19:20:15+08:00">2019-02-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-23 11:51:06" itemprop="dateModified" datetime="2020-09-23T11:51:06+08:00">2020-09-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>本篇文章主要记录了<code>CentOS 7</code>系统以及<code>RedHat 7</code>系统如何安装阿里云镜像以及<code>Nginx</code>，并对<code>Nginx</code>实现基本配置。</p>
+<p>目前<code>RHEL/CentOS</code>软件包主要有三种类型：</p>
+<ul>
+<li><p><code>RPM</code>包<br><code>rpm</code>是一个完整的数据库平台，包含软件包的版本、安装路径、配置文件等全方面的服务，提供的查询、安装、卸载、升级四大功能，尤其是查询功能，常用的命令有：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-q    查询指定软件包是否安装</span><br><span class="line">-qa   查询所有已安装软件列表</span><br><span class="line">-qi   查询指定软件包信息</span><br><span class="line">-ql   查询指定软件包文件列表</span><br><span class="line">-qc   查询指定软件包配置文件</span><br><span class="line">-qf   根据文件路径反向查找软件包</span><br></pre></td></tr></table></figure>
+<p>由于<code>rpm</code>各个包的依赖性太强，因此一般通过<code>yum</code>进行<code>rpm</code>包的批量安装，类似于前端的npm包文管理工具</p>
+</li>
+<li><p>源码包<br>源码包更新及时，可定制化，但是需要自己手动编译，其依赖于编译环境，不推荐新手使用</p>
+</li>
+<li><p>绿色包</p>
+</li>
+</ul>
+<p>其中我们比较常用的就是通过<code>yum</code>进行<code>rpm</code>包的安装。</p>
+<p><code>yum</code>仓库早期使用系统安装光盘，或者系统自带，更新不及时，安装速度也比较慢。</p>
+<p>随着技术的发展，目前国内有些比较好的镜像源：如<a target="_blank" rel="noopener" href="https://opsx.alibaba.com/mirror">阿里云</a>、<a target="_blank" rel="noopener" href="https://mirrors.163.com/">163</a>，都可以提供比较便捷的<code>yum</code>仓库服务。因此我们需要使用国内镜像来通过<code>yum</code>来进行<code>RPM</code>包的安装。</p>
+<p>对于<code>CentOS</code>系统而言，官方自带<code>yum</code>库，而<code>RHEL</code>不提供<code>yum</code>库，因此在安装镜像之前<code>RHEL</code>需要卸载原来的红帽<code>yum</code>源，装上<code>CentOS</code>的<code>yum</code>组件。</p>
+<p>接下来就是具体的安装步骤。</p>
+<h2 id="CentOS"><a href="#CentOS" class="headerlink" title="CentOS"></a>CentOS</h2><p>由于<code>CentOS 7</code>自带官方<code>yum</code>库，因此可以直接安装阿里云镜像：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">1、备份</span><br><span class="line"></span><br><span class="line">mv &#x2F;etc&#x2F;yum.repos.d&#x2F;CentOS-Base.repo &#x2F;etc&#x2F;yum.repos.d&#x2F;CentOS-Base.repo.backup</span><br><span class="line"></span><br><span class="line">2、下载新的CentOS-Base.repo 到&#x2F;etc&#x2F;yum.repos.d&#x2F;</span><br><span class="line"></span><br><span class="line">CentOS 5</span><br><span class="line"></span><br><span class="line">wget -O &#x2F;etc&#x2F;yum.repos.d&#x2F;CentOS-Base.repo http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;repo&#x2F;Centos-5.repo</span><br><span class="line">或者</span><br><span class="line"></span><br><span class="line">curl -o &#x2F;etc&#x2F;yum.repos.d&#x2F;CentOS-Base.repo http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;repo&#x2F;Centos-5.repo</span><br><span class="line">CentOS 6</span><br><span class="line"></span><br><span class="line">wget -O &#x2F;etc&#x2F;yum.repos.d&#x2F;CentOS-Base.repo http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;repo&#x2F;Centos-6.repo</span><br><span class="line">或者</span><br><span class="line"></span><br><span class="line">curl -o &#x2F;etc&#x2F;yum.repos.d&#x2F;CentOS-Base.repo http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;repo&#x2F;Centos-6.repo</span><br><span class="line">CentOS 7</span><br><span class="line"></span><br><span class="line">wget -O &#x2F;etc&#x2F;yum.repos.d&#x2F;CentOS-Base.repo http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;repo&#x2F;Centos-7.repo</span><br><span class="line">或者</span><br><span class="line"></span><br><span class="line">curl -o &#x2F;etc&#x2F;yum.repos.d&#x2F;CentOS-Base.repo http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;repo&#x2F;Centos-7.repo</span><br><span class="line"></span><br><span class="line">3、之后运行yum makecache生成缓存</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>也可以参看<a target="_blank" rel="noopener" href="https://opsx.alibaba.com/mirror">阿里云镜像站</a>。</p>
+<h2 id="REHEL-7"><a href="#REHEL-7" class="headerlink" title="REHEL 7"></a>REHEL 7</h2><p><code>redhat</code>相对<code>CentOS</code>系统麻烦一些，具体步骤：</p>
+<ol>
+<li><p>卸载红帽<code>yum</code>源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -e $(rpm -qa|grep yum) --nodeps</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除所有<code>repo</code>文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rm -rf &#x2F;etc&#x2F;yum.conf</span><br><span class="line">rm -rf &#x2F;etc&#x2F;yum.repos.d&#x2F;</span><br><span class="line">rm -rf &#x2F;var&#x2F;cache&#x2F;yum</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>下载<code>CentOS</code>相关的<code>yum</code>组件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">wget https:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;centos&#x2F;7&#x2F;os&#x2F;x86_64&#x2F;Packages&#x2F;yum-3.4.3-161.el7.centos.noarch.rpm</span><br><span class="line">wget https:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;centos&#x2F;7&#x2F;os&#x2F;x86_64&#x2F;Packages&#x2F;yum-metadata-parser-1.1.4-10.el7.x86_64.rpm</span><br><span class="line">wget https:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;centos&#x2F;7&#x2F;os&#x2F;x86_64&#x2F;Packages&#x2F;yum-plugin-fastestmirror-1.1.31-50.el7.noarch.rpm</span><br><span class="line">wget https:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;centos&#x2F;7&#x2F;os&#x2F;x86_64&#x2F;Packages&#x2F;yum-updateonboot-1.1.31-50.el7.noarch.rpm</span><br><span class="line">wget https:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;centos&#x2F;7&#x2F;os&#x2F;x86_64&#x2F;Packages&#x2F;yum-utils-1.1.31-50.el7.noarch.rpm</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;如果没有wget命令则使用curl命令</span><br><span class="line">curl -o yum-utils-1.1.31-50.el7.noarch.rpm https:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;centos&#x2F;7&#x2F;os&#x2F;x86_64&#x2F;Packages&#x2F;yum-utils-1.1.31-50.el7.noarch.rpm</span><br><span class="line">curl -o yum-3.4.3-161.el7.centos.noarch.rpm https:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;centos&#x2F;7&#x2F;os&#x2F;x86_64&#x2F;Packages&#x2F;yum-3.4.3-161.el7.centos.noarch.rpm</span><br><span class="line">curl -o yum-metadata-parser-1.1.4-10.el7.x86_64.rpm https:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;centos&#x2F;7&#x2F;os&#x2F;x86_64&#x2F;Packages&#x2F;yum-metadata-parser-1.1.4-10.el7.x86_64.rpm</span><br><span class="line">curl -o yum-plugin-fastestmirror-1.1.31-50.el7.noarch.rpm https:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;centos&#x2F;7&#x2F;os&#x2F;x86_64&#x2F;Packages&#x2F;yum-plugin-fastestmirror-1.1.31-50.el7.noarch.rpm</span><br><span class="line">curl -o yum-updateonboot-1.1.31-50.el7.noarch.rpm https:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;centos&#x2F;7&#x2F;os&#x2F;x86_64&#x2F;Packages&#x2F;yum-updateonboot-1.1.31-50.el7.noarch.rpm</span><br></pre></td></tr></table></figure>
+<p>安装时需要注意各个组件是否为最新版本，可前往目标网址查看。</p>
+</li>
+<li><p>安装所有相关组件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh yum-* --nodeps</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>下载阿里云<code>base</code>仓库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -o &#x2F;etc&#x2F;yum.repos.d&#x2F;CentOS-Base.repo http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;repo&#x2F;Centos-7.repo</span><br><span class="line">sed -i &#39;s#\$releasever#7#g&#39; &#x2F;etc&#x2F;yum.repos.d&#x2F;CentOS-Base.repo</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="Nginx安装"><a href="#Nginx安装" class="headerlink" title="Nginx安装"></a>Nginx安装</h2><p>经过以上步骤，我们已经安装了<code>yum</code>的阿里云镜像，里面只包含一些基本的库，因此我们还需要安装阿里云<code>epel</code>库。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O &#x2F;etc&#x2F;yum.repos.d&#x2F;epel.repo http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;repo&#x2F;epel-7.repo</span><br></pre></td></tr></table></figure>
+
+<p>接着可以下载<code>Nginx</code>官方镜像源。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vim &#x2F;etc&#x2F;yum.repos.d&#x2F;nginx.repo</span><br><span class="line">[nginx-stable]</span><br><span class="line">name&#x3D;nginx stable repo</span><br><span class="line">baseurl&#x3D;http:&#x2F;&#x2F;nginx.org&#x2F;packages&#x2F;centos&#x2F;$releasever&#x2F;$basearch&#x2F;</span><br><span class="line">gpgcheck&#x3D;1</span><br><span class="line">enabled&#x3D;1</span><br><span class="line">gpgkey&#x3D;https:&#x2F;&#x2F;nginx.org&#x2F;keys&#x2F;nginx_signing.key</span><br></pre></td></tr></table></figure>
+
+<p><strong>需要特别注意的是：<code>$releasever</code>为你系统的版本号</strong>。</p>
+
+
+<p>然后就可以执行安装<code>Nginx</code>了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y nginx</span><br></pre></td></tr></table></figure>
+<p>启动<code>Nginx</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl start nginx   临时开启</span><br><span class="line">systemctl enable nginx  永久开启</span><br></pre></td></tr></table></figure>
+
+<p>浏览器输入ip地址即可访问，如访问不了，请关闭防火墙。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop firewalld      临时关闭</span><br><span class="line">systemctl disable firewalld   永久关闭</span><br></pre></td></tr></table></figure>
+
+<h2 id="Nginx文件说明"><a href="#Nginx文件说明" class="headerlink" title="Nginx文件说明"></a>Nginx文件说明</h2><p>全局配置文件：<code>/etc/nginx/nginx.conf</code></p>
+<p>局部配置文件：<code>/etc/nginx/conf.d/*.conf</code></p>
+<p>日志文件：<code>/var/log/nginx/&#123;access.log error.log&#125;</code><br>    访问日志：<code>access.log</code><br>    错误日志：<code>error.log</code></p>
+<p>文档根目录：<code>/usr/share/nginx/html</code>    </p>
+<p>如果要通过域名访问虚拟机，需要修改本地主机名解析记录：</p>
+<ol>
+<li><code>vim /etc/hosts</code></li>
+<li>在文件中加入 <code>虚拟机ip 域名</code> 即可</li>
+<li>访问本机 <code>c:\Windows\System32\drivers\etc\hosts</code></li>
+<li>修改<code>hosts</code>文件，同第二步一样</li>
+</ol>
+<p>有关<code>Nginx</code>的更多可以参考<a href="/2018/12/22/nginx-1/" title="Ubuntu 系统 Nginx 服务下 ssl 证书配置">Ubuntu 系统 Nginx 服务下 ssl 证书配置</a> 以及 <a href="/2018/12/23/nginx-2/" title="Nginx 网站配置以及 NodeJS API 配置">Nginx 网站配置以及 NodeJS API 配置</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://sillywa.com/2018/12/23/nginx-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/logo.png">
+      <meta itemprop="name" content="Sillywa">
+      <meta itemprop="description" content="个人学习记录博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sillywa's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/23/nginx-2/" class="post-title-link" itemprop="url">Nginx 网站配置以及 NodeJS API 配置</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-23 21:26:36" itemprop="dateCreated datePublished" datetime="2018-12-23T21:26:36+08:00">2018-12-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-23 11:51:06" itemprop="dateModified" datetime="2020-09-23T11:51:06+08:00">2020-09-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="网站配置简单说明"><a href="#网站配置简单说明" class="headerlink" title="网站配置简单说明"></a>网站配置简单说明</h3><p><code>Nginx</code> 主配置文件为  <code>/etc/nginx/nginx.conf</code></p>
+
+
+<p><code>Nginx</code> 的 <code>server</code>模块配置文件放在 <code>/etc/nginx/sites-available</code>目录，该目录下默认有一个 <code>default</code> 文件，该文件为 <code>server</code> 模块文件。</p>
+
+
+<p>我们可以看到 <code>root</code> 后面的路径就是我们网站存放的位置，因此你可以根据实际情况自己修改，我的网站是放在 <code>/var/www/sillywa.blog</code> 目录下，<code>Nginx</code> 会自动寻找该目录下的 <code>index.html</code> 文件。</p>
+<p>其中 <code>server_name</code> 后面可以放我们的域名，多个域名用空格隔开</p>
+<p>我们可以自己在 <code>default</code> 文件中新建其他 <code>server</code> 模块，<code>nginx.conf</code> 的 <code>http</code> 模块默认包含该目录下所有的文件</p>
+
+
+<p>不过通过上图我们发现<code>nginx.conf</code> 默认包含的是 <code>/etc/nginx/sites-enabled/*</code> 下的所有文件，但是我们发现该目录下有一个 <code>default</code> 软链接，该软链接指向<code>/etc/nginx/sites-available/default</code> 文件，因此，对<code>/etc/nginx/sites-available/default</code> 文件的修改会同步到 <code>/etc/nginx/sites-enabled/default</code> </p>
+
+
+<p>当然，除了直接修改  <code>/etc/nginx/sites-available/default</code> 文件外，我们也可以在 <code>/etc/nginx/conf.d</code> 文件夹下自己添加 <code>server</code> 配置文件，文件以<code>.conf</code>结尾。</p>
+<h3 id="Nginx-与-NodeJS-简单结合"><a href="#Nginx-与-NodeJS-简单结合" class="headerlink" title="Nginx 与 NodeJS 简单结合"></a>Nginx 与 NodeJS 简单结合</h3><p>在 <code>Nginx</code> 中设置一个代理，让所有请求跳转到 <code>NodeJS</code> 服务的接口。</p>
+<p>这是我们写好的 <code>NodeJS</code> 代码：</p>
+
+
+<p>在 <code>NodeJS</code> 中我们设置了允许跨域，同时提供一个 <code>post</code> 方法的接口， <code>NodeJS</code> 监听 8888 端口。于是，我们在 <code>Nginx</code> 中加入如下配置：</p>
+<p>可以在 <code>/etc/nginx/conf.d</code>文件夹下新建一个 <code>api.conf</code> 文件，然后写入如下配置：</p>
+
+
+<p>其中的 <code>server_name</code> 是前端请求的 <code>api</code> 地址， <code>ssl</code> 是我们配置的 <code>ssl</code> 证书，可以参考<a href="/2018/12/22/nginx-1/" title="上一篇文章">上一篇文章</a>，<code>location</code> 做一个跳转，当有请求发到 <code>https://api.sillywa.com</code> 的时候， <code>Nginx</code> 会将请求转发到 <code>http://localhost:8888</code>，这样 <code>NodeJS</code> 就能接收到请求。</p>
+<p>由于我们在 <code>NodeJS</code> 中允许了跨域，因此可以不必在 <code>Nginx</code> 中进行其他设置。</p>
+<p>如果我们没有在 <code>NodeJS</code> 中做跨域， <code>Nginx</code> 中可以增加如下配置：</p>
+
+
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://sillywa.com/2018/12/22/nginx-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/logo.png">
+      <meta itemprop="name" content="Sillywa">
+      <meta itemprop="description" content="个人学习记录博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sillywa's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/22/nginx-1/" class="post-title-link" itemprop="url">Nginx 服务下 ssl 证书配置</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-22 16:34:05" itemprop="dateCreated datePublished" datetime="2018-12-22T16:34:05+08:00">2018-12-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-23 11:51:06" itemprop="dateModified" datetime="2020-09-23T11:51:06+08:00">2020-09-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>最近在折腾 <code>Ubuntu</code> 系统以及如何让网站可以 <code>https</code> 访问，于是就了解到 <code>ssl</code> 证书以及 <code>Nginx</code> 服务。通过配置 <code>Nginx</code> 服务就可以让我们的网站可以通过 <code>https</code> 访问了。当然除了 <code>Nginx</code> 服务器可以选择之外，我们也可以利用 <code>Apache、Tomcat、IIS</code>等其他服务器，本文主要介绍 <code>Nginx。</code></p>
+<h3 id="安装-Nginx"><a href="#安装-Nginx" class="headerlink" title="安装 Nginx"></a>安装 Nginx</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install nginx</span><br><span class="line">&#x2F;&#x2F; 查看nginx版本</span><br><span class="line">nginx -v</span><br></pre></td></tr></table></figure>
+<p><code>Ubuntu</code> 安装 <code>Nginx</code> 之后的文件结构大致为：</p>
+<ul>
+<li>所有配置文件都在 <code>/etc/nginx</code> 下面，并且每个虚拟主机已经安排在了 <code>/etc/nginx/sites-available</code> 下，该文件夹下有一个 <code>default</code> 配置文件</li>
+<li>程序放在了 <code>/usr/sbin/nginx</code> </li>
+<li>日志放在了 <code>/var/log/nginx</code> 中</li>
+<li>启动脚本放在 <code>/etc/init.d/</code> 下</li>
+<li>默认的虚拟主机的目录设置在了 <code>/var/www/nginx-default</code> (或者是 <code>/var/www</code>)，也就是说你的网站可以放在这个目录下</li>
+</ul>
+<h3 id="启动-Nginx"><a href="#启动-Nginx" class="headerlink" title="启动 Nginx"></a>启动 Nginx</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo &#x2F;etc&#x2F;init.d&#x2F;nginx start</span><br></pre></td></tr></table></figure>
+
+<p>之后可以访问 <code>http://你的公网 ip</code> ，默认监听 80 端口，启动时候若显示端口 80 被占用：<code> Starting nginx: [emerg]: bind() to 0.0.0.0:80 failed (98: Address already in use)</code> 修改文件：<code>/etc/nginx/sites-available/default</code>,去掉 <code>listen</code> 前面的 # 号 , # 号在该文件里是注释的意思 , 并且把 <code>listen</code> 后面的 80 端口号改为自己的端口，访问时需要添加端口号。</p>
+<h3 id="配置-ssl-证书"><a href="#配置-ssl-证书" class="headerlink" title="配置 ssl 证书"></a>配置 ssl 证书</h3><p>阿里云购买的域名可以申请免费的 <code>ssl</code> 证书。下载之后就会有两个文件，一个 <code>.key</code> 文件，一个 <code>.pem </code>文件，<code>.key</code> 文件是证书私钥文件，<code>.pem</code> 文件是证书文件，一般包含两段内容。一般 <code>Nginx</code> 的一些文档会用该扩展名文件，在阿里云证书中与<code>.crt</code>文件一样。</p>
+<p>最终我们获得了两个文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">example_com.key</span><br><span class="line">example_com.pem</span><br></pre></td></tr></table></figure>
+
+<p>为了统一位置，我们可以把这两个文件放在 <code>/etc/ssl/private/</code> 目录，然后进入 <code>/etc/nginx/sites-available/</code> 目录修改 <code>default</code> 文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">server &#123;  </span><br><span class="line">    listen 80 default_server;</span><br><span class="line">    listen [::]:80 default_server; </span><br><span class="line">    listen 443 ssl default_server;</span><br><span class="line">    listen [::]:443 ssl default_server;</span><br><span class="line">    server_name example.com;</span><br><span class="line"></span><br><span class="line">    ssl on;</span><br><span class="line">    ssl_certificate &#x2F;etc&#x2F;ssl&#x2F;private&#x2F;example_com.pem;</span><br><span class="line">    ssl_certificate_key &#x2F;etc&#x2F;ssl&#x2F;private&#x2F;example_com.key;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>配置完成之后重启 <code>Nginx</code> 服务：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo &#x2F;etc&#x2F;init.d&#x2F;nginx reload</span><br></pre></td></tr></table></figure>
+
+<p>之后就可以用 <code>https://www.example.com</code> 访问你的网站了。如果是第一次配置，访问到的就应该是 <code>Nginx</code> 的欢迎页面，该页面一般存放在我们前面说的  <code>/var/www/nginx-default</code> 文件夹下，这里的  <code>nginx-default</code> 一般为 <code>html</code> 文件夹，该文件夹下有一个 <code>.html</code> 文件。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://sillywa.com/2018/12/18/web%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%AB%E7%8E%B0%E7%8A%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/logo.png">
+      <meta itemprop="name" content="Sillywa">
+      <meta itemprop="description" content="个人学习记录博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sillywa's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/18/web%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%AB%E7%8E%B0%E7%8A%B6/" class="post-title-link" itemprop="url">web语音识别现状</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-18 20:40:35" itemprop="dateCreated datePublished" datetime="2018-12-18T20:40:35+08:00">2018-12-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-23 11:51:06" itemprop="dateModified" datetime="2020-09-23T11:51:06+08:00">2020-09-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>前几天试着做了一下<code>web</code>的语音识别服务，发现里面还是有不少坑的，因此想写一下<code>web</code>语音识别现状，并对几个语音识别框架作简要分析。</p>
+<h2 id="annyang"><a href="#annyang" class="headerlink" title="annyang"></a>annyang</h2><p>如果在 <code>GitHub</code> 上搜索 <code>Speech recognition</code> ，最受欢迎的前端语音识别库就是 <code>annyang</code>，这个仓库有5.1k <code>star</code>，看着这么多<code>star</code>想着这个语音识别库一定非常好用，于是我就开始了 <code>annyang </code>的爬坑之旅。</p>
+<p>首先我在前面先说一下 <code>annyang</code> 这个语音识别库的问题，主要有两点：</p>
+<ul>
+<li>对于三大浏览器，只兼容 <code>Chrome</code> 浏览器，不兼容 <code>IE</code> 和火狐</li>
+<li>需要翻墙才能使用</li>
+</ul>
+<p>总的来说 <code>annyang</code> 的文档写的还算详细，照着文档一步一步做也能做出理想的效果，但是由于其以上两个问题，因此放弃了对这个框架的进一步探索。</p>
+<p>接下来我就探索了一下，为什么这个库会有这样的问题：</p>
+<p>首先第一点，<code>annyang</code> 是基于 <code>H5</code> 的 <code>Speech Recognition API</code>，下面这张图说明了这个<code>API</code>的兼容性：</p>
+
+
+<p>可以看到，大部分浏览器都不支持 <code>Speech Recognition</code>。</p>
+<p>接着我们来看一下 <code>MDN</code> 官方文档上怎么说</p>
+
+
+<p>大概意思是说 <code>Speech Recognition</code> 基于一个识别引擎，这个识别引擎我们推测是<code>Chrome</code>的，因此这就说明了<code>Speech Recognition</code> 只有翻墙才能使用。</p>
+<p>因此基于 <code>Speech Recognition</code> 的语音识别我们是无法采用的。</p>
+<p>接下来看一下国内的语音识别服务。</p>
+<h2 id="腾讯语音识别"><a href="#腾讯语音识别" class="headerlink" title="腾讯语音识别"></a>腾讯语音识别</h2><p>国内的语音识别服务都不是直接的语音识别，怎么说呢，就是需要你上传音频文件到它的指定接口，然后将音频文件的内容识别出来。因此我们就需要改变一下语音识别策略，首先在前端我们需要将用户说的话给录下来，然后生成音频文件传给腾讯服务的接口，但是呢，由于浏览器存在同源策略，我们不能直接将音频文件传给腾讯的接口，所以我们需要一个中间层来帮助我们转发请求，所以现在<strong>语音识别的基础流程</strong>是：</p>
+<ol>
+<li>前端生成音频文件传给后台</li>
+<li>后台接受音频文件转发给腾讯语音识别<code>api</code></li>
+<li>腾讯语音识别<code>api</code>返回结果给后台</li>
+<li>后台返回结果给前端</li>
+</ol>
+<p>这里的后台我用的是<code>NodeJS</code>，但是在用腾讯语音识别时，首先需要接口鉴权，我们看一下接口鉴权的具体内容：</p>
+
+
+<p>看到这些我内心是崩溃的，感觉超级麻烦。但是最后还是照着做了，做了之后就各种鉴权有问题，然后纠结了半天，换成了科大讯飞的语音识别。</p>
+<h2 id="科大讯飞语音识别"><a href="#科大讯飞语音识别" class="headerlink" title="科大讯飞语音识别"></a>科大讯飞语音识别</h2><p>我选的是科大讯飞的语音听写<code>api</code>，然后也是要接口认证，当然，认证过程没有腾讯那么麻烦，但是也是不少坑，我最终也是掉进去了走不出来。</p>
+
+
+<p>最后我终于想到了百度语音识别，然后开始了最后的尝试。</p>
+<h2 id="百度语音识别"><a href="#百度语音识别" class="headerlink" title="百度语音识别"></a>百度语音识别</h2><p>首先说明一下，百度语音识别是及其友好的，没有上面的那些授权认证什么的，如果是用<code>NodeJS</code>写后台的话，只需要通过 <code>npm</code> 安装 <code>baidu-aip-sdk</code> 即可调用相应的语音服务。这里在官方文档上有一个<a target="_blank" rel="noopener" href="https://github.com/Baidu-AIP/sdk-demo">demo</a>。同时大家也可以参考一下我做的一个完整的前后台语音识别<a target="_blank" rel="noopener" href="https://github.com/Sillywa/speech-recognition">demo</a>。</p>
+<p>因此最终我选择了百度语音识别，因为其他两个弄了半天也没弄好。</p>
+<p>所以我建议大家如果用<code>NodeJS</code>来做后台的话，可以优先选择百度语音识别。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://sillywa.com/2018/12/07/%E5%8F%98%E9%87%8F%E5%AF%B9%E8%B1%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/logo.png">
+      <meta itemprop="name" content="Sillywa">
+      <meta itemprop="description" content="个人学习记录博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sillywa's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/07/%E5%8F%98%E9%87%8F%E5%AF%B9%E8%B1%A1/" class="post-title-link" itemprop="url">变量对象</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-07 15:22:09" itemprop="dateCreated datePublished" datetime="2018-12-07T15:22:09+08:00">2018-12-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-23 11:51:06" itemprop="dateModified" datetime="2020-09-23T11:51:06+08:00">2020-09-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-Javascript-%E7%B3%BB%E5%88%97/" itemprop="url" rel="index"><span itemprop="name">深入理解 Javascript 系列</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>前一篇文章<a href="/2018/12/07/%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/" title="变量提升">变量提升</a>简单的介绍了一下变量提升原则，这篇文章将会从更专业的角度介绍变量提升。</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>当 JavaScript 代码执行一段可执行代码(executable code)时，会创建对应的执行上下文(execution context)。</p>
+<p>对于每个执行上下文，都有三个重要属性：</p>
+<ul>
+<li>变量对象(Variable object，VO)</li>
+<li>作用域链(Scope chain)</li>
+<li>this</li>
+</ul>
+<p>今天重点讲讲创建变量对象的过程。</p>
+<h2 id="变量对象"><a href="#变量对象" class="headerlink" title="变量对象"></a>变量对象</h2><p>变量对象是与执行上下文相关的数据作用域，存储了在上下文中定义的变量和函数声明。</p>
+<p>因为不同执行上下文下的变量对象稍有不同，所以我们来聊聊全局上下文下的变量对象和函数上下文下的变量对象。</p>
+<h2 id="全局上下文"><a href="#全局上下文" class="headerlink" title="全局上下文"></a>全局上下文</h2><p>我们先了解一个概念，叫全局对象。在 <a target="_blank" rel="noopener" href="http://www.w3school.com.cn/jsref/jsref_obj_global.asp">W3School</a> 中也有介绍：</p>
+<blockquote>
+<p>全局对象是预定义的对象，作为 JavaScript 的全局函数和全局属性的占位符。通过使用全局对象，可以访问所有其他所有预定义的对象、函数和属性。</p>
+</blockquote>
+<blockquote>
+<p>在顶层 JavaScript 代码中，可以用关键字 this 引用全局对象。因为全局对象是作用域链的头，这意味着所有非限定性的变量和函数名都会作为该对象的属性来查询。</p>
+</blockquote>
+<blockquote>
+<p>例如，当JavaScript 代码引用 parseInt() 函数时，它引用的是全局对象的 parseInt 属性。全局对象是作用域链的头，还意味着在顶层 JavaScript 代码中声明的所有变量都将成为全局对象的属性。</p>
+</blockquote>
+<p>如果看的不是很懂的话，容我再来介绍下全局对象:</p>
+<p>1.可以通过 this 引用，在客户端 JavaScript 中，全局对象就是 Window 对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">this</span>);</span><br></pre></td></tr></table></figure>
+
+<p>2.全局对象是由 Object 构造函数实例化的一个对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">this</span> <span class="keyword">instanceof</span> <span class="built_in">Object</span>);</span><br></pre></td></tr></table></figure>
+
+<p>3.预定义了一堆，嗯，一大堆函数和属性。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 都能生效</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Math</span>.random());</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">this</span>.Math.random());</span><br></pre></td></tr></table></figure>
+
+<p>4.作为全局变量的宿主。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">this</span>.a);</span><br></pre></td></tr></table></figure>
+
+<p>5.客户端 JavaScript 中，全局对象有 window 属性指向自身。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.a);</span><br><span class="line"></span><br><span class="line"><span class="built_in">this</span>.window.b = <span class="number">2</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">this</span>.b);</span><br></pre></td></tr></table></figure>
+
+<p>花了一个大篇幅介绍全局对象，其实就想说：</p>
+<p>全局上下文中的变量对象就是全局对象呐！</p>
+<h2 id="函数上下文"><a href="#函数上下文" class="headerlink" title="函数上下文"></a>函数上下文</h2><p>在函数上下文中，我们用活动对象(activation object, AO)来表示变量对象。</p>
+<p>活动对象和变量对象其实是一个东西，只是变量对象是规范上的或者说是引擎实现上的，不可在 JavaScript 环境中访问，只有到当进入一个执行上下文中，这个执行上下文的变量对象才会被激活，所以才叫 activation object 呐，而只有被激活的变量对象，也就是活动对象上的各种属性才能被访问。</p>
+<p>活动对象是在进入函数上下文时刻被创建的，它通过函数的 arguments 属性初始化。arguments 属性值是 Arguments 对象。</p>
+<h2 id="执行过程"><a href="#执行过程" class="headerlink" title="执行过程"></a>执行过程</h2><p>执行上下文的代码会分成两个阶段进行处理：分析和执行，我们也可以叫做：</p>
+<ol>
+<li>进入执行上下文</li>
+<li>代码执行</li>
+</ol>
+<h3 id="进入执行上下文"><a href="#进入执行上下文" class="headerlink" title="进入执行上下文"></a>进入执行上下文</h3><p>当进入执行上下文时，这时候还没有执行代码，</p>
+<p>变量对象会包括：</p>
+<ol>
+<li><p>函数的所有形参 (如果是函数上下文)</p>
+<ul>
+<li>由名称和对应值组成的一个变量对象的属性被创建</li>
+<li>没有实参，属性值设为 undefined</li>
+</ul>
+</li>
+<li><p>函数声明</p>
+<ul>
+<li>由名称和对应值（函数对象(function-object)）组成一个变量对象的属性被创建</li>
+<li>如果变量对象已经存在相同名称的属性，则完全替换这个属性</li>
+</ul>
+</li>
+<li><p>变量声明</p>
+<ul>
+<li>由名称和对应值（undefined）组成一个变量对象的属性被创建；</li>
+<li>如果变量名称跟已经声明的形式参数或函数相同，则变量声明不会干扰已经存在的这类属性</li>
+</ul>
+</li>
+</ol>
+<p>举个例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> b = <span class="number">2</span>;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">c</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">  <span class="keyword">var</span> d = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line">  b = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<p>在进入执行上下文后，这时候的 AO 是：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">AO = &#123;</span><br><span class="line">    <span class="built_in">arguments</span>: &#123;</span><br><span class="line">        <span class="number">0</span>: <span class="number">1</span>,</span><br><span class="line">        length: <span class="number">1</span></span><br><span class="line">    &#125;,</span><br><span class="line">    a: <span class="number">1</span>,</span><br><span class="line">    b: <span class="literal">undefined</span>,</span><br><span class="line">    c: reference to <span class="function"><span class="keyword">function</span> <span class="title">c</span>(<span class="params"></span>)</span>&#123;&#125;,</span><br><span class="line">    d: <span class="literal">undefined</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="代码执行"><a href="#代码执行" class="headerlink" title="代码执行"></a>代码执行</h3><p>在代码执行阶段，会顺序执行代码，根据代码，修改变量对象的值</p>
+<p>还是上面的例子，当代码执行完后，这时候的 AO 是：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">AO = &#123;</span><br><span class="line">    <span class="built_in">arguments</span>: &#123;</span><br><span class="line">        <span class="number">0</span>: <span class="number">1</span>,</span><br><span class="line">        length: <span class="number">1</span></span><br><span class="line">    &#125;,</span><br><span class="line">    a: <span class="number">1</span>,</span><br><span class="line">    b: <span class="number">3</span>,</span><br><span class="line">    c: reference to <span class="function"><span class="keyword">function</span> <span class="title">c</span>(<span class="params"></span>)</span>&#123;&#125;,</span><br><span class="line">    d: reference to FunctionExpression <span class="string">&quot;d&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>到这里变量对象的创建过程就介绍完了，让我们简洁的总结我们上述所说：</p>
+<ol>
+<li><p>全局上下文的变量对象初始化是全局对象</p>
+</li>
+<li><p>函数上下文的变量对象初始化只包括 Arguments 对象</p>
+</li>
+<li><p>在进入执行上下文时会给变量对象添加形参、函数声明、变量声明等初始的属性值</p>
+</li>
+<li><p>在代码执行阶段，会再次修改变量对象的属性值</p>
+</li>
+</ol>
+<h2 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h2><p>最后让我们看几个例子：</p>
+<p>1.第一题</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">    a = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo(); <span class="comment">// ???</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    a = <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">&#125;</span><br><span class="line">bar(); <span class="comment">// ???</span></span><br></pre></td></tr></table></figure>
+
+<p>第一段会报错：<code>Uncaught ReferenceError: a is not defined</code>。</p>
+<p>第二段会打印：<code>1</code>。</p>
+<p>这是因为函数中的 “a” 并没有通过 var 关键字声明，所有不会被存放在 AO 中。</p>
+<p>第一段执行 console 的时候， AO 的值是：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">AO = &#123;</span><br><span class="line">    <span class="built_in">arguments</span>: &#123;</span><br><span class="line">        length: <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>没有 a 的值，然后就会到全局去找，全局也没有，所以会报错。</p>
+<p>当第二段执行 console 的时候，全局对象已经被赋予了 a 属性，这时候就可以从全局找到 a 的值，所以会打印 1。</p>
+<p>2.第二题</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(foo);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;foo&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> foo = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<p>会打印函数，而不是 undefined 。</p>
+<p>这是因为在进入执行上下文时，首先会处理函数声明，其次会处理变量声明，如果如果变量名称跟已经声明的形式参数或函数相同，则变量声明不会干扰已经存在的这类属性。</p>
+<p>转载至<a target="_blank" rel="noopener" href="https://github.com/mqyqingfeng/Blog/blob/master/articles/%E6%B7%B1%E5%85%A5%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A0/JavaScript%E6%B7%B1%E5%85%A5%E4%B9%8B%E5%8F%98%E9%87%8F%E5%AF%B9%E8%B1%A1.md">深入系列文章/JavaScript深入之变量对象</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://sillywa.com/2018/12/07/%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/logo.png">
+      <meta itemprop="name" content="Sillywa">
+      <meta itemprop="description" content="个人学习记录博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sillywa's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/07/%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/" class="post-title-link" itemprop="url">变量提升</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-07 14:27:45" itemprop="dateCreated datePublished" datetime="2018-12-07T14:27:45+08:00">2018-12-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-23 11:51:06" itemprop="dateModified" datetime="2020-09-23T11:51:06+08:00">2020-09-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-Javascript-%E7%B3%BB%E5%88%97/" itemprop="url" rel="index"><span itemprop="name">深入理解 Javascript 系列</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>提到<code>Javascript</code>是怎么执行代码的，大多数人的印象都是一行一行执行啊，接下来我们看个例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
+<p>如果是一行一行执行的话，第一行输出<code>a</code>的时候，<code>a</code>还未定义，所以代码会报错。</p>
+<p>但是运行时发现代码能正确执行，而且第一行输出的是<code>undefined</code>，第三行输出 2；这是为什么呢？</p>
+<p>原来我们发现<code>Javascrip</code>t并不是一行一行分析执行代码，而是一段一段分析，然后再执行。这里的一段一段可以看作是一个作用域。那么<code>Javascript</code>是怎么在分析代码的呢？</p>
+<h2 id="变量提升"><a href="#变量提升" class="headerlink" title="变量提升"></a>变量提升</h2><p><code>Javascript</code>在进入到一个作用域时，首先会进行“预解析”，查找变量声明和函数声明，也就是找 <code>var</code> 关键字和 <code>function</code> 关键字，然后将变量声明和函数声明提升到作用域顶端，然后再开始执行代码。分析我们前面的例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
+<p>首先进行“预解析”，查找变量声明和函数声明，找到 <code>var a</code>，放到作用域顶端，继续查找变量声明和函数声明，发现没有了，然后开始执行代码。相当于以下代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"></span><br><span class="line">a = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
+<h2 id="函数提升"><a href="#函数提升" class="headerlink" title="函数提升"></a>函数提升</h2><p>然后再看以下代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>首先进行“预解析”，查找变量声明和函数声明，找到 <code>function a() &#123;&#125;</code>，放到作用域顶端，继续查找变量声明和函数声明，发现没有了，然后开始执行代码。相当于以下代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
+<h2 id="变量与函数同名"><a href="#变量与函数同名" class="headerlink" title="变量与函数同名"></a>变量与函数同名</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span> (<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a)</span><br></pre></td></tr></table></figure>
+<p>首先进行“预解析”，查找变量声明和函数声明，找到 <code>var a</code>，然后找到 <code>function a() &#123;&#125;</code>，此时由于函数名与变量名相同，<strong>函数声明会覆盖变量声明</strong>，因此此时代码相当于：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a)</span><br><span class="line"></span><br><span class="line">a = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a)</span><br></pre></td></tr></table></figure>
+<h2 id="函数表达式"><a href="#函数表达式" class="headerlink" title="函数表达式"></a>函数表达式</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="string">&quot;函数表达式&quot;</span>) &#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span> (<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="string">&quot;函数声明&quot;</span>) &#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a)</span><br></pre></td></tr></table></figure>
+<p>需要注意的是函数表达式并不会提升，因此以上代码相当于：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="string">&quot;函数声明&quot;</span>) &#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a)</span><br><span class="line"></span><br><span class="line">a = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="string">&quot;函数表达式&quot;</span>) &#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a)</span><br></pre></td></tr></table></figure>
+<p>这里只讨论了较为简单的变量提升问题，当函数作用域镶套时，问题就会变复杂，但是基本分析原理还是一样的。每当进入一个作用域时按照上面的方法进行分析即可。</p>
+<a href="/2018/12/07/%E5%8F%98%E9%87%8F%E5%AF%B9%E8%B1%A1/" title="下一篇文章">下一篇文章</a>将从更专业的角度说明了变量提升。
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://sillywa.com/2018/12/07/%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/logo.png">
+      <meta itemprop="name" content="Sillywa">
+      <meta itemprop="description" content="个人学习记录博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sillywa's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/07/%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F/" class="post-title-link" itemprop="url">词法作用域和动态作用域</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-07 13:34:48" itemprop="dateCreated datePublished" datetime="2018-12-07T13:34:48+08:00">2018-12-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-23 11:51:06" itemprop="dateModified" datetime="2020-09-23T11:51:06+08:00">2020-09-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-Javascript-%E7%B3%BB%E5%88%97/" itemprop="url" rel="index"><span itemprop="name">深入理解 Javascript 系列</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>作用域是一套规则，用于确定在何处以及如何查找变量。<br>作用域有两种主要的工作模型。第一种是最为普遍的，被大多数编程语言所接受的<em>词法作用域</em>，也就是静态作用域，<code>Javascript</code> 正式基于这种作用域的。另一种叫做动态作用域，我们这里不作讨论。我们主要来看一下两者的区别。</p>
+<h2 id="词法作用域和动态作用域"><a href="#词法作用域和动态作用域" class="headerlink" title="词法作用域和动态作用域"></a>词法作用域和动态作用域</h2><ul>
+<li>词法作用域： 无论函数在哪里被调用，也无论它如何被调用，它的词法作用域都只由函数被声明时所处的位置决定，换句话说，函数的作用域是函数在书写时决定的。</li>
+<li>动态作用域： 动态作用域并不关心函数是如何声明以及在何处声明，只关心它们从何处调用，换句话说，函数的作用域是在函数被调用时决定的。</li>
+</ul>
+<p>看以下代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">    foo();</span><br><span class="line">&#125;</span><br><span class="line">bar();</span><br><span class="line"><span class="comment">// 结果是 ???</span></span><br></pre></td></tr></table></figure>
+<p>假设 <code>Javascript</code> 采用词法作用域，我们看一下执行过程：</p>
+<p>执行函数 <code>foo</code> ，在函数 <code>foo</code> 内部查找是否有局部变量 <code>a</code> ，如果没有，<strong>根据函数书写的位置</strong>，查找上面一层的代码，发现<code>a=1</code>，所以结果为1；</p>
+<p>假设<code>Javascript</code>采用动态作用域，我们看一下执行过程：</p>
+<p>执行函数<code>foo</code>，在函数<code>foo</code>内部查找是否有局部变量<code>a</code>，如果没有，<strong>就从调用函数的作用域</strong>，也就是<code>bar</code>内部查找变量<code>a</code>，发现<code>a=2</code>，所以结果为2；</p>
+<p>根据我们前面的说明，<code>Javascript</code>是基于词法作用域的，所以结果为1。</p>
+<h2 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h2><p>《JavaScript权威指南》在讲到词法作用域时，举了如下例子</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> scope = <span class="string">&quot;global scope&quot;</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkscope</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> scope = <span class="string">&quot;local scope&quot;</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> scope;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> f();</span><br><span class="line">&#125;</span><br><span class="line">checkscope();</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> scope = <span class="string">&quot;global scope&quot;</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkscope</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> scope = <span class="string">&quot;local scope&quot;</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> scope;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> f;</span><br><span class="line">&#125;</span><br><span class="line">checkscope()();</span><br></pre></td></tr></table></figure>
+<p>根据词法作用域的规则，不论何时何地执行函数<code>f()</code>，返回的<code>scope</code>值都是<code>checkscope</code>内部局部变量<code>scope</code>的值，也就是<code>local scope</code>。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://sillywa.com/2018/12/06/%E5%AE%BD%E6%9D%BE%E7%9B%B8%E7%AD%89%E5%92%8C%E4%B8%A5%E6%A0%BC%E7%9B%B8%E7%AD%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/logo.png">
+      <meta itemprop="name" content="Sillywa">
+      <meta itemprop="description" content="个人学习记录博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sillywa's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/06/%E5%AE%BD%E6%9D%BE%E7%9B%B8%E7%AD%89%E5%92%8C%E4%B8%A5%E6%A0%BC%E7%9B%B8%E7%AD%89/" class="post-title-link" itemprop="url">宽松相等和严格相等</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-06 13:13:24" itemprop="dateCreated datePublished" datetime="2018-12-06T13:13:24+08:00">2018-12-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-23 11:51:06" itemprop="dateModified" datetime="2020-09-23T11:51:06+08:00">2020-09-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>阅读本篇内容时建议先阅读<a href="/2018/12/06/%E9%9A%90%E5%BC%8F%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" title="隐式类型转换">隐式类型转换</a></p>
+<p>我们通常认为“<code>==</code>检查值是否相等，<code>===</code>检查值和类型是否相等”。这样听起来蛮有道理，然而并不准确。正确的理解应该是：“<code>==</code>允许在相等比较中进行强制类型转换，而<code>===</code>不允许”。</p>
+<h2 id="1-字符串和数字之间的相等比较"><a href="#1-字符串和数字之间的相等比较" class="headerlink" title="1. 字符串和数字之间的相等比较"></a>1. 字符串和数字之间的相等比较</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">42</span></span><br><span class="line"><span class="keyword">var</span> b =<span class="string">&#x27;42&#x27;</span></span><br><span class="line"></span><br><span class="line">a == b  <span class="comment">// true</span></span><br><span class="line">a === b <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<p>以上代码很容易理解，因为没有进行强制类型转换，所以<code>a===b</code>为<code>false</code>。</p>
+<p>而<code>a==b</code>为宽松相等，如果两个值类型不同，其中一个或者两个会进行强制类型转换。</p>
+<p>但具体是怎么转换的？是字符串转换为数字还是数字转换为字符串？<br>ES5规范中这样规定：</p>
+<blockquote>
+<p>(1)如果Type(x)是数字，Type(y)是字符串，则返回 x == ToNumber(y)的结果<br>(2)如果Type(x)是字符串，Type(y)是数字，则返回ToNumber(x) == y的结果</p>
+</blockquote>
+<p>简单来说就是将字符串转换为数字进行相等比较。</p>
+<h2 id="2-其它类型与布尔值之间的相等比较"><a href="#2-其它类型与布尔值之间的相等比较" class="headerlink" title="2. 其它类型与布尔值之间的相等比较"></a>2. 其它类型与布尔值之间的相等比较</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="string">&#x27;42&#x27;</span></span><br><span class="line"><span class="keyword">var</span> b = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">a == b  <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<p>我们知道<code>&#39;42&#39;</code>是一个真值，为什么<code>==</code>的结果不是<code>true</code>呢？根据ES5规范：</p>
+<blockquote>
+<p>(1)如果Type(x)是布尔类型，则返回ToNumber(x) == y的结果<br>(2)如果Type(y)是布尔类型，则返回x == ToNumber(y)的结果</p>
+</blockquote>
+<p>简单来说就是将布尔值转换为数字进行相等比较。</p>
+<p>具体到这个例子，<code>b</code>通过<code>ToNumber(b)</code>转换为数字为<code>1</code>，变为 <code>&#39;42&#39; == 1</code>，按照前面的规则<code>&#39;42&#39;</code>转换为<code>42</code>，最后变为 <code>42 == 1</code>，结果为<code>false</code>。</p>
+<h2 id="3-null和undefined之间宽松相等"><a href="#3-null和undefined之间宽松相等" class="headerlink" title="3. null和undefined之间宽松相等"></a>3. <code>null</code>和<code>undefined</code>之间宽松相等</h2><p>在<code>==</code>中null和<code>undefined</code>相等（它们也与其自身相等），除此之外的其它值都不存在这种情况。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="literal">null</span></span><br><span class="line"><span class="keyword">var</span> b</span><br><span class="line"></span><br><span class="line">a == b      <span class="comment">// true</span></span><br><span class="line">a == <span class="literal">null</span>   <span class="comment">// true</span></span><br><span class="line">b == <span class="literal">null</span>   <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line">a == <span class="literal">false</span>  <span class="comment">// false</span></span><br><span class="line">b == <span class="literal">false</span>  <span class="comment">// false</span></span><br><span class="line">a == <span class="string">&quot;&quot;</span>     <span class="comment">// false</span></span><br><span class="line">b == <span class="string">&quot;&quot;</span>     <span class="comment">// false</span></span><br><span class="line">a == <span class="number">0</span>      <span class="comment">// false</span></span><br><span class="line">b == <span class="number">0</span>      <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<h2 id="4-对象和非对象之间的相等比较"><a href="#4-对象和非对象之间的相等比较" class="headerlink" title="4. 对象和非对象之间的相等比较"></a>4. 对象和非对象之间的相等比较</h2><p>关于对象（对象/函数/数组）和标量基本类型（字符串/数字/布尔值）之间相等的比较，ES5规范中如下规定：</p>
+<blockquote>
+<p>(1)如果Type(x)是数字或字符串，Type(y)是对象，则返回 x == ToPrimitive(y)的结果；<br>(2)如果Type(x)是对象，Type(y)是数字和字符串，则返回 ToPrimitive(x) == y的结果。<br>这里只提到了数字和字符串，没有布尔值，是因为我们之前介绍过布尔值会被强制转换为数字。<br>例如：</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">42</span></span><br><span class="line"><span class="keyword">var</span> b = [<span class="number">42</span>]</span><br><span class="line">a == b  <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p><code>[42]</code>首先会调用<code>ToPrimitive</code>抽象操作转换为<code>&#39;42&#39;</code>，变成<code>42 == &#39;42&#39;</code>，然后变成 <code>42 == 42</code>，返回<code>true</code>。</p>
+<h2 id="5-比较少见的情况"><a href="#5-比较少见的情况" class="headerlink" title="5. 比较少见的情况"></a>5. 比较少见的情况</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;0&#x27;</span> == <span class="literal">null</span></span><br><span class="line"><span class="string">&#x27;0&#x27;</span> == <span class="literal">undefined</span></span><br><span class="line"><span class="string">&#x27;0&#x27;</span> == <span class="literal">false</span></span><br><span class="line"><span class="string">&#x27;0&#x27;</span> == <span class="literal">NaN</span></span><br><span class="line"><span class="string">&#x27;0&#x27;</span> == <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="string">&#x27;0&#x27;</span> == <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="literal">false</span> == <span class="literal">null</span></span><br><span class="line"><span class="literal">false</span> == <span class="literal">undefined</span></span><br><span class="line"><span class="literal">false</span> == <span class="literal">NaN</span></span><br><span class="line"><span class="literal">false</span> == <span class="number">0</span></span><br><span class="line"><span class="literal">false</span> == <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="literal">false</span> == []</span><br><span class="line"><span class="literal">false</span> == &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;</span> == <span class="literal">null</span></span><br><span class="line"><span class="string">&#x27;&#x27;</span> == <span class="literal">undefined</span></span><br><span class="line"><span class="string">&#x27;&#x27;</span> == <span class="literal">NaN</span></span><br><span class="line"><span class="string">&#x27;&#x27;</span> == <span class="number">0</span></span><br><span class="line"><span class="string">&#x27;&#x27;</span> == []</span><br><span class="line"><span class="string">&#x27;&#x27;</span> == &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="number">0</span> == <span class="literal">null</span></span><br><span class="line"><span class="number">0</span> == <span class="literal">undefined</span></span><br><span class="line"><span class="number">0</span> == <span class="literal">NaN</span></span><br><span class="line"><span class="number">0</span> == []</span><br><span class="line"><span class="number">0</span> == &#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>以上相等判断均可通过我们前面的讲解分析出来，答案我就不写了。</p>
+<p>下面来看一种极端情况：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[] == ![]</span><br></pre></td></tr></table></figure>
+<p>以上代码的结果是<code>true</code>还是<code>false</code>，我们先来分析一下：首先<code>![]</code>会被转换为<code>false</code>，变为<code>[] == false</code>，然后<code>[]</code>通过<code>ToPrimitive</code>操作转换为<code>&#39;&#39;</code>，即 <code>&#39;&#39; == false</code>，然后<code>false</code>通过<code>ToNumber</code>转换为<code>0</code>，变为<code>&#39;&#39; == 0</code>，最后<code>&#39;&#39;</code>通过<code>ToNumber</code>转换为<code>0</code>，变为 <code>0 == 0</code>，结果为<code>true</code>。</p>
+<h2 id="安全运用隐式强制类型转换"><a href="#安全运用隐式强制类型转换" class="headerlink" title="安全运用隐式强制类型转换"></a>安全运用隐式强制类型转换</h2><p>我们要对<code>==</code>两边的值进行认真推敲，一下两个原则可以让我们有效的避免出错。</p>
+<ol>
+<li>如果两边的值中有<code>true</code>或<code>false</code>，千万不要使用<code>==</code></li>
+<li>如果两边的值中有<code>[]、&#39;&#39;或者0</code>，尽量不要使用<code>==</code></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Sillywa"
+      src="/images/logo.png">
+  <p class="site-author-name" itemprop="name">Sillywa</p>
+  <div class="site-description" itemprop="description">个人学习记录博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Sillywa" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Sillywa" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sillywa</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+<div>
+<span id="timeDate"></span><span id="times"></span>
+</div>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("12/03/2018 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "Running for "+dnum+" Days ";
+        document.getElementById("times").innerHTML = hnum + " Hours " + mnum + " m " + snum + " s";
+    }
+    setInterval("createtime()",250);
+</script>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

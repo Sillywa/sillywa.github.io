@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"sillywa.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="二叉搜索树查找问题可分为静态查找和动态查找，静态查找可以用二分查找算法，针对动态查找，数据应该如何组织呢？   二叉搜索树的定义二叉搜索树（Binary Search Tree）也叫二叉排序树或二叉查找树，它是一种对排序和查找都很有用的特殊二叉树。一个二叉搜索树是一颗二叉树，它可以为空，如果不为空，它将满足以下性质：  非空左子树的所有值小于其根节点的值  非空右子树的所有值大于其根节点的值  左">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构——树（中）">
+<meta property="og:url" content="https://sillywa.com/2019/12/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%912/index.html">
+<meta property="og:site_name" content="Sillywa&#39;s Blog">
+<meta property="og:description" content="二叉搜索树查找问题可分为静态查找和动态查找，静态查找可以用二分查找算法，针对动态查找，数据应该如何组织呢？   二叉搜索树的定义二叉搜索树（Binary Search Tree）也叫二叉排序树或二叉查找树，它是一种对排序和查找都很有用的特殊二叉树。一个二叉搜索树是一颗二叉树，它可以为空，如果不为空，它将满足以下性质：  非空左子树的所有值小于其根节点的值  非空右子树的所有值大于其根节点的值  左">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-12-14T12:48:52.000Z">
+<meta property="article:modified_time" content="2020-09-23T08:50:18.757Z">
+<meta property="article:author" content="Sillywa">
+<meta property="article:tag" content="C语言">
+<meta property="article:tag" content="二叉搜索树">
+<meta property="article:tag" content="平衡二叉树">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://sillywa.com/2019/12/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%912/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>数据结构——树（中） | Sillywa's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Sillywa's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://sillywa.com/2019/12/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%912/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/logo.png">
+      <meta itemprop="name" content="Sillywa">
+      <meta itemprop="description" content="个人学习记录博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sillywa's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数据结构——树（中）
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-12-14 20:48:52" itemprop="dateCreated datePublished" datetime="2019-12-14T20:48:52+08:00">2019-12-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-23 16:50:18" itemprop="dateModified" datetime="2020-09-23T16:50:18+08:00">2020-09-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="二叉搜索树"><a href="#二叉搜索树" class="headerlink" title="二叉搜索树"></a>二叉搜索树</h2><p>查找问题可分为静态查找和动态查找，静态查找可以用二分查找算法，针对动态查找，数据应该如何组织呢？</p>
+<!--- more --->
+
+<h3 id="二叉搜索树的定义"><a href="#二叉搜索树的定义" class="headerlink" title="二叉搜索树的定义"></a>二叉搜索树的定义</h3><p>二叉搜索树（Binary Search Tree）也叫二叉排序树或二叉查找树，它是一种对排序和查找都很有用的特殊二叉树。一个二叉搜索树是一颗二叉树，它可以为空，如果不为空，它将满足以下性质：</p>
+<ul>
+<li><p>非空左子树的所有值小于其根节点的值</p>
+</li>
+<li><p>非空右子树的所有值大于其根节点的值</p>
+</li>
+<li><p>左、右子树都是二叉搜索树</p>
+</li>
+</ul>
+<p>由于二叉搜索树具有左小右大的特点，因此对它进行中序遍历，将得到一个从小到大的输出序列。</p>
+<h3 id="二叉搜索树的动态查找"><a href="#二叉搜索树的动态查找" class="headerlink" title="二叉搜索树的动态查找"></a>二叉搜索树的动态查找</h3><p>二叉搜索树的抽象数据结构定义与普通二叉树基本相同，只是多个以下几个特别的函数：</p>
+<p>1.<code>Position Find(BinTree BST, ElementType X)</code>：从二叉搜索树 BST 中查找元素 X，并返回其地址；</p>
+<p>2.<code>Position FindMin(BinTree BST)</code>：查找并返回最小值的地址；</p>
+<p>3.<code>Position FindMax(BinTree BST)</code>：查找并返回最大值的地址。</p>
+<h4 id="二叉搜索树的查找操作-Find"><a href="#二叉搜索树的查找操作-Find" class="headerlink" title="二叉搜索树的查找操作 Find"></a>二叉搜索树的查找操作 Find</h4><p>1.查找从根节点开始，如果树为空返回 NULL，表示未找到</p>
+<p>2.如果不为空，则将根节点与 X 进行比较，根据比较结果进行不同的处理：</p>
+<ul>
+<li>若 X 大于根节点的值，则在右子树中查找</li>
+<li>若 X 小于根节点的值，则在左子树中查找</li>
+<li>相等表示找到了，返回此结点</li>
+</ul>
+<p>以下是找到的递归算法：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Position <span class="title">Find</span><span class="params">(BinTree BST, ElementType X)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!BST) <span class="keyword">return</span> <span class="literal">NULL</span>; <span class="comment">/* 查找失败 */</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(X &gt; BST-&gt;Data)</span><br><span class="line">        <span class="keyword">return</span> Find(BST-&gt;Right,X);  <span class="comment">/* 右子树中递归查找 */</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(X &lt; BST-&gt;Data)</span><br><span class="line">        <span class="keyword">return</span> Find(BST-&gt;Left,X);   <span class="comment">/* 左子树中递归查找 */</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> BST;                 <span class="comment">/* 查找成功 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以下是查找的非递归算法：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Position <span class="title">Find</span><span class="params">(BinTree BST, ElementType X)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    BinTree T = BST;</span><br><span class="line">    <span class="keyword">while</span>(T) &#123;</span><br><span class="line">        <span class="keyword">if</span>(X &gt; T-&gt;Data)</span><br><span class="line">            T = T-&gt;Right;       <span class="comment">/* 在右子树中查找 */</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(X &lt; T-&gt;Data)</span><br><span class="line">            T = T-&gt;Left;        <span class="comment">/* 在左子树中查找 */</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> T;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="查找最大值和最小值"><a href="#查找最大值和最小值" class="headerlink" title="查找最大值和最小值"></a>查找最大值和最小值</h4><p>根据二叉搜索树的性质，最小值一定在二叉搜索树的最左分支的端点上，而最大值一定在最右分支的端点上。</p>
+<p>以下是分别使用递归算法和非递归算法实现的查找最大值和最小值。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Position <span class="title">FindMax</span><span class="params">(BinTree BST)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!BST) <span class="keyword">return</span> <span class="literal">NULL</span>;               <span class="comment">/* 空二叉树返回NULL */</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(!BST-&gt;Right) <span class="keyword">return</span> BST;    <span class="comment">/* 找到最右端点并返回 */</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> FindMax(BST-&gt;Right);    <span class="comment">/* 右子树递归查找 */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function">Position <span class="title">FindMin</span><span class="params">(BinTree BST)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!BST) <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">while</span>(BST-&gt;Left)</span><br><span class="line">        BST = BST-&gt;Left;    <span class="comment">/* 沿左分支一直向下，直到最左端点 */</span></span><br><span class="line">    <span class="keyword">return</span> BST;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="二叉搜索树的插入"><a href="#二叉搜索树的插入" class="headerlink" title="二叉搜索树的插入"></a>二叉搜索树的插入</h3><p>将元素 X 插入二叉搜索树 BST 中关键是找到元素插入的位置。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BinTree <span class="title">Insert</span><span class="params">(BinTree BST,ElementType X)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!BST) &#123;</span><br><span class="line">        BST = (BinTree)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct TNode));</span><br><span class="line">        BST-&gt;Data = X;</span><br><span class="line">        BST-&gt;Left = BST-&gt;Right = <span class="literal">NULL</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(X &gt; BST-&gt;Data)</span><br><span class="line">            BST-&gt;Right = Insert(BST-&gt;Right,X);  <span class="comment">/* 递归插入右子树 */</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(X &lt; BST-&gt;Data)</span><br><span class="line">            BST-&gt;Left = Insert(BST-&gt;Left,X);    <span class="comment">/* 递归插入左子树 */</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> BST;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="二叉搜索树的删除"><a href="#二叉搜索树的删除" class="headerlink" title="二叉搜索树的删除"></a>二叉搜索树的删除</h3><p>考虑三种情况：</p>
+<ul>
+<li><p>要删除的是叶结点：直接删除，并修改其父节点指针——置为 NULL</p>
+
+</li>
+<li><p>要删除的结点只有一个孩子节点：将其父节点的指针指向要删除结点的孩子节点</p>
+
+</li>
+<li><p>要删除结点有左、右两颗子树：用另一结点替换被删除结点：右子树中最小元素 或 左子树中最大元素</p>
+
+
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BinTree <span class="title">Delete</span><span class="params">(BinTree BST, ElementType X)</span> </span>&#123;</span><br><span class="line">    Position tmp;</span><br><span class="line">    <span class="keyword">if</span>(!BST) <span class="built_in">printf</span>(<span class="string">&quot;要删除的元素未找到&quot;</span>);</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(X &gt; BST-&gt;Data)</span><br><span class="line">            BST-&gt;Right = Delete(BST-&gt;Right,X);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(X &lt; BST-&gt;Data)</span><br><span class="line">            BST-&gt;Left = Delete(BST-&gt;Left,X);</span><br><span class="line">        <span class="keyword">else</span> &#123;  <span class="comment">/* 找到了要删除的结点 */</span></span><br><span class="line">            <span class="keyword">if</span>(BST-&gt;Left &amp;&amp; BST-&gt;Right) &#123;   <span class="comment">/* 被删除结点有左右两个儿子 */</span></span><br><span class="line">                <span class="comment">/* 两种方法1.左子树中找最大的替换该结点 2.右子树中找最小的替换该结点 */</span></span><br><span class="line">                tmp = FindMin(BST-&gt;Right)</span><br><span class="line">                BST-&gt;Data = tmp-&gt;Data;</span><br><span class="line">                BST-&gt;Right = Delete(BST-&gt;Right,BST-&gt;Data);  <span class="comment">/* 在删除结点的右子树中删除该最小元素 */</span></span><br><span class="line"></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;    <span class="comment">/* 被删除结点有一个或无子节点 */</span></span><br><span class="line">                tmp = BST;</span><br><span class="line">                <span class="keyword">if</span>(!BST-&gt;Left)          <span class="comment">/* 有右孩子或者无子节点 */</span></span><br><span class="line">                    BST = BST-&gt;Right;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(!BST-&gt;Right)    <span class="comment">/* 有左孩子或者无子节点 */</span>  </span><br><span class="line">                    BST = BST-&gt;Left;</span><br><span class="line">                <span class="built_in">free</span>(tmp);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> BST;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="平衡二叉树"><a href="#平衡二叉树" class="headerlink" title="平衡二叉树"></a>平衡二叉树</h2><p>对于二叉搜索树进行查找的时间复杂度是由是由查找过程中的比较次数来衡量的，比较是从根结点到叶结点的路径进行的，它取决于树的深度。树深在最好情况下是 logN，所以二叉搜索树在最好情况的查找复杂度是 O(logN)。但这一结论是由完全二叉树导出的，事实上 N 个结点的二叉树深度取决于其树枝的分布情况。当二叉树退化为一颗单枝树的极端情况下，查找时间复杂度将是线性的 O(N)。</p>
+<p>假定二叉树中每个结点的查找概率都是相同的，我们称查找所有结点的比较次数的平均值为树的“平均查找长度”(Average Search Length,ASL)。如下图所示，可以得到各二叉树的平均查找长度：</p>
+
+
+<p>上述示例表明，一棵树的 ASL 值越小，它的结构越好，与完全二叉树越接近，对它的查找时间复杂度也越接近 O(logN)。因此为了保证二叉树查找的对数级查找时间效率。设计出了平衡二叉树这一数据结构。</p>
+<h3 id="平衡二叉树的定义"><a href="#平衡二叉树的定义" class="headerlink" title="平衡二叉树的定义"></a>平衡二叉树的定义</h3><p>平衡二叉树又称 AVL 树，它也是一颗二叉搜索树。</p>
+<blockquote>
+<p>定义：AVL树是一颗空树或者是具有以下性质的非空二叉搜索树：<br>1.任一结点的左右子树均为 AVL 树；<br>2.根结点左右子树的高度差的绝对值不超过 1。</p>
+</blockquote>
+
+
+<blockquote>
+<p>定义：对于二叉树中的任一结点 T，其平衡因子（Balance Factor，BF）定义为 BF(T) = hL - hR，其中 hL 和 hR 分别为左右子树的高度。</p>
+</blockquote>
+<p>因此根结点左右子树的高度差的绝对值不超过 1 可以量化为 |BF(T)| &lt;= 1。</p>
+<p>设高度（边的长度）为 h 的平衡二叉树的最少结点数为 nh，则有：</p>
+<p>h = 0,   n0 = 1<br>h = 1,   n1 = 2<br>h = 2,   n2 = 4<br>h = 3,   n3 = 7<br>…</p>
+<p>依次类推可以得到：nh = n(h-1) + n(h-2) + 1；</p>
+<p>求高度（边的长度）为 h 的平衡二叉树的最少结点数要么左边少一层要么右边少一层，因此高度（边的长度）为 h 的平衡二叉树的最少结点数 nh 等于高度（边的长度）为 h-1 的平衡二叉树的最少结点数 + 高度（边的长度）为 h-2 的平衡二叉树的最少结点数。</p>
+
+
+<h3 id="平衡二叉树的调整"><a href="#平衡二叉树的调整" class="headerlink" title="平衡二叉树的调整"></a>平衡二叉树的调整</h3><p>1.右单旋</p>
+
+
+<p>2.左单旋</p>
+
+
+<p>3.左-右双旋</p>
+
+
+<p>4.右-左双旋</p>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag"># C语言</a>
+              <a href="/tags/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" rel="tag"># 二叉搜索树</a>
+              <a href="/tags/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag"># 平衡二叉树</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/12/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%91/" rel="prev" title="数据结构——树（上）">
+      <i class="fa fa-chevron-left"></i> 数据结构——树（上）
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/12/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%913/" rel="next" title="数据结构——树（下）">
+      数据结构——树（下） <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91"><span class="nav-number">1.</span> <span class="nav-text">二叉搜索树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">二叉搜索树的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E5%8A%A8%E6%80%81%E6%9F%A5%E6%89%BE"><span class="nav-number">1.2.</span> <span class="nav-text">二叉搜索树的动态查找</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E6%9F%A5%E6%89%BE%E6%93%8D%E4%BD%9C-Find"><span class="nav-number">1.2.1.</span> <span class="nav-text">二叉搜索树的查找操作 Find</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E6%9C%80%E5%A4%A7%E5%80%BC%E5%92%8C%E6%9C%80%E5%B0%8F%E5%80%BC"><span class="nav-number">1.2.2.</span> <span class="nav-text">查找最大值和最小值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E6%8F%92%E5%85%A5"><span class="nav-number">1.3.</span> <span class="nav-text">二叉搜索树的插入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E5%88%A0%E9%99%A4"><span class="nav-number">1.4.</span> <span class="nav-text">二叉搜索树的删除</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="nav-number">2.</span> <span class="nav-text">平衡二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">2.1.</span> <span class="nav-text">平衡二叉树的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E8%B0%83%E6%95%B4"><span class="nav-number">2.2.</span> <span class="nav-text">平衡二叉树的调整</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Sillywa"
+      src="/images/logo.png">
+  <p class="site-author-name" itemprop="name">Sillywa</p>
+  <div class="site-description" itemprop="description">个人学习记录博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Sillywa" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Sillywa" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sillywa</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+<div>
+<span id="timeDate"></span><span id="times"></span>
+</div>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("12/03/2018 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "Running for "+dnum+" Days ";
+        document.getElementById("times").innerHTML = hnum + " Hours " + mnum + " m " + snum + " s";
+    }
+    setInterval("createtime()",250);
+</script>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

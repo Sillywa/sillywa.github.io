@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"sillywa.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="本文主要介绍了 K-means 算法的原理以及如何利用 python 去实现简单的 K-means 算法，然后对于 K-means 算法存在的一些问题进行了适当的改进。   聚类聚类的定义聚类就是对大量未标记的数据集，按照数据的内在相似性将数据集划分为多个类别，使同一类别内的数据相似性大而不同类别间的数据相似性小。聚类是典型的无监督学习。 聚类的一般方法给定 N 个对象的数据集，将数据集划分为 k">
+<meta property="og:type" content="article">
+<meta property="og:title" content="K-means算法的实现与改进">
+<meta property="og:url" content="https://sillywa.com/2019/11/21/K-means%E7%AE%97%E6%B3%95%E7%9A%84%E5%AE%9E%E7%8E%B0%E4%B8%8E%E6%94%B9%E8%BF%9B/index.html">
+<meta property="og:site_name" content="Sillywa&#39;s Blog">
+<meta property="og:description" content="本文主要介绍了 K-means 算法的原理以及如何利用 python 去实现简单的 K-means 算法，然后对于 K-means 算法存在的一些问题进行了适当的改进。   聚类聚类的定义聚类就是对大量未标记的数据集，按照数据的内在相似性将数据集划分为多个类别，使同一类别内的数据相似性大而不同类别间的数据相似性小。聚类是典型的无监督学习。 聚类的一般方法给定 N 个对象的数据集，将数据集划分为 k">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-11-21T06:49:25.000Z">
+<meta property="article:modified_time" content="2020-09-23T08:54:35.351Z">
+<meta property="article:author" content="Sillywa">
+<meta property="article:tag" content="k-means">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://sillywa.com/2019/11/21/K-means%E7%AE%97%E6%B3%95%E7%9A%84%E5%AE%9E%E7%8E%B0%E4%B8%8E%E6%94%B9%E8%BF%9B/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>K-means算法的实现与改进 | Sillywa's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Sillywa's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://sillywa.com/2019/11/21/K-means%E7%AE%97%E6%B3%95%E7%9A%84%E5%AE%9E%E7%8E%B0%E4%B8%8E%E6%94%B9%E8%BF%9B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/logo.png">
+      <meta itemprop="name" content="Sillywa">
+      <meta itemprop="description" content="个人学习记录博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sillywa's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          K-means算法的实现与改进
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-11-21 14:49:25" itemprop="dateCreated datePublished" datetime="2019-11-21T14:49:25+08:00">2019-11-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-23 16:54:35" itemprop="dateModified" datetime="2020-09-23T16:54:35+08:00">2020-09-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>本文主要介绍了 K-means 算法的原理以及如何利用 python 去实现简单的 K-means 算法，然后对于 K-means 算法存在的一些问题进行了适当的改进。</p>
+<!--- more --->
+
+<h2 id="聚类"><a href="#聚类" class="headerlink" title="聚类"></a>聚类</h2><h3 id="聚类的定义"><a href="#聚类的定义" class="headerlink" title="聚类的定义"></a>聚类的定义</h3><p>聚类就是对大量未标记的数据集，按照数据的内在相似性将数据集划分为多个类别，使同一类别内的数据相似性大而不同类别间的数据相似性小。聚类是典型的无监督学习。</p>
+<h3 id="聚类的一般方法"><a href="#聚类的一般方法" class="headerlink" title="聚类的一般方法"></a>聚类的一般方法</h3><p>给定 N 个对象的数据集，将数据集划分为 k 个簇，k≤N，且满足：</p>
+<ol>
+<li><p>每个簇至少有一个对象</p>
+</li>
+<li><p>每个对象只能属于一个簇</p>
+</li>
+</ol>
+<p>聚类既能作为一个单独过程，用于找寻数据的内在分布结构，也可以作为分类等其他任务的前驱过程。</p>
+<h3 id="不同类型的聚类"><a href="#不同类型的聚类" class="headerlink" title="不同类型的聚类"></a>不同类型的聚类</h3><ol>
+<li><p>原型聚类</p>
+<p> 原型聚类也叫基于原型的聚类，此类算法假设聚类结构能够通过一组原型刻画，在现实聚类中极为常用。通常情况下，算法先对原型进行初始化，然后对原型进行迭代更新求解。采用不同的原型表示、不同的求解方式将产生不同的算法。其中比较典型的就是k均值算法，也叫 K-menas 算法。</p>
+</li>
+<li><p>密度聚类</p>
+<p> 密度聚类也叫基于密度的聚类，此类算法假设聚类结构能够通过样本的紧密程度确定。通常情况下，密度聚类算法从样本密度的角度来考察样本之间的可连接性，并基于可连接样本不断扩展聚类簇以获得最终的聚类结果。其中比较著名就是 DBSCAN 算法。</p>
+</li>
+<li><p>层次聚类</p>
+<p> 层次聚类试图在不同层次对数据集进行划分，从而形成树型的聚类结构。数据集的划分可以采用“自底向上”的聚合策略，也可以采用“自顶向下”的分拆策略。</p>
+</li>
+<li><p>谱聚类</p>
+<p> 谱聚类是一种基于图论的聚类方法，通过对样本数据的拉普拉斯矩阵的特征向量进行聚类，从而达到对样本数据聚类的目的。</p>
+</li>
+</ol>
+<h2 id="K-means-算法原理"><a href="#K-means-算法原理" class="headerlink" title="K-means 算法原理"></a>K-means 算法原理</h2><p>首先随机选取 k 个对象，每个对象初始地代表了一个簇的平均值或中心，称为初始均值向量。对剩余的每个对象根据其与各个簇中心的距离，将它赋给最近的簇。然后重新计算每个簇的平均值得到新的均值向量。这个过程不断重复直到当前均值向量均保持不变。</p>
+<p>算法描述：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">从 D 中随机选择 k 个样本作为初始均值向量</span><br><span class="line">repeat</span><br><span class="line">    for j&#x3D;1,2,…,m do</span><br><span class="line">        计算样本与各均值向量的距离</span><br><span class="line">        根据距离最近的均值向量确定样本的簇标记</span><br><span class="line">        将样本划入相应的簇</span><br><span class="line">    end for </span><br><span class="line">    for i&#x3D;1,2,…,k do</span><br><span class="line">        计算新的均值向量</span><br><span class="line">        if 两个均值向量不相同  then</span><br><span class="line">            更新均值向量</span><br><span class="line">        else</span><br><span class="line">            保持当前均值向量不变</span><br><span class="line">        end if</span><br><span class="line">    end for</span><br><span class="line">until 当前均值向量均未更新</span><br></pre></td></tr></table></figure>
+
+<h2 id="K-means-算法实现"><a href="#K-means-算法实现" class="headerlink" title="K-means 算法实现"></a>K-means 算法实现</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> copy</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Kmeans</span>:</span></span><br><span class="line">    __dataList = []</span><br><span class="line">    __k = <span class="number">1</span></span><br><span class="line">    __kSample = []</span><br><span class="line">    __count = <span class="number">0</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self,fileName,k</span>):</span></span><br><span class="line">        self.__dataList = self.__readData(fileName)</span><br><span class="line">        self.__kSample = self.__getKSample(self.__dataList,k)</span><br><span class="line">        self.__k = k</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 开始聚类</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">start</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">while</span>(<span class="literal">True</span>):</span><br><span class="line">            <span class="comment">#计算每一个点与均值向量之间的距离,确定每一个点的类别</span></span><br><span class="line">            <span class="keyword">for</span> index,item <span class="keyword">in</span> enumerate(self.__dataList):</span><br><span class="line">                self.__caculateType(self.__dataList[index],self.__kSample)</span><br><span class="line">            <span class="comment"># 保存均值向量的副本</span></span><br><span class="line">            copiedKSample = copy.deepcopy(self.__kSample)</span><br><span class="line">            <span class="comment"># 重新计算均值向量</span></span><br><span class="line">            self.__caculateKSampleByAverge(self.__kSample)</span><br><span class="line">            <span class="comment"># 如果两个均值向量相等，则循环停止</span></span><br><span class="line">            <span class="keyword">if</span> copiedKSample == self.__kSample:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            self.__count += <span class="number">1</span></span><br><span class="line">    <span class="comment"># 绘制散点图</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">drawPic</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="comment"># 由于是二维坐标，因此只需x，y即可</span></span><br><span class="line">        x = []</span><br><span class="line">        y = []</span><br><span class="line">        c = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(self.__dataList)):</span><br><span class="line">            x.append(self.__dataList[i][<span class="number">0</span>])</span><br><span class="line">            y.append(self.__dataList[i][<span class="number">1</span>])</span><br><span class="line">            c.append(self.__dataList[i][<span class="number">2</span>])</span><br><span class="line">        plt.title(<span class="string">&quot;dataset k=&quot;</span> + str(self.__k))</span><br><span class="line">        plt.scatter(x, y,c=c)</span><br><span class="line">        plt.show()</span><br><span class="line">    <span class="comment"># 获取迭代次数</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getCount</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self.__count</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 从文件中读取数据</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__readData</span>(<span class="params">self,fileName</span>):</span></span><br><span class="line">        <span class="comment"># 用存放数据的列表</span></span><br><span class="line">        dataList = []</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            fp = open(fileName,<span class="string">&quot;r&quot;</span>)</span><br><span class="line">            fpList = fp.read().splitlines()</span><br><span class="line">            <span class="comment"># 将数据分割成二维列表</span></span><br><span class="line">            <span class="keyword">for</span> item <span class="keyword">in</span> fpList:</span><br><span class="line">                dataList.append(item.split(<span class="string">&quot;\t&quot;</span>))</span><br><span class="line">            <span class="comment"># 将字符数据转化成浮点数</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(len(dataList)):</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> range(len(dataList[i])):</span><br><span class="line">                    dataList[i][j] = float(dataList[i][j])</span><br><span class="line">            <span class="comment"># 如果数据不包含类别信息</span></span><br><span class="line">            <span class="comment"># for i in range(len(dataList)):</span></span><br><span class="line">            <span class="comment">#     dataList[i].append(0)</span></span><br><span class="line">        <span class="keyword">except</span> IOError:</span><br><span class="line">            print(<span class="string">&quot;error&quot;</span>)</span><br><span class="line">        <span class="comment">#返回数据</span></span><br><span class="line">        <span class="keyword">return</span> dataList</span><br><span class="line">    <span class="comment"># 获取初始k个点，也就是初始均值向量</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getKSample</span>(<span class="params">self,dataList, k</span>):</span></span><br><span class="line">        kSample = []    </span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(k):</span><br><span class="line">            <span class="comment">#从所有数据集中随机选取k个数据</span></span><br><span class="line">            num = random.randint(<span class="number">0</span>,len(dataList)<span class="number">-1</span>)</span><br><span class="line">            kSample.append(copy.deepcopy(dataList[num]))</span><br><span class="line">        <span class="keyword">return</span> kSample</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 计算两个点之间的距离</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getDistance</span>(<span class="params">self,dataPoint1,dataPoint2</span>):</span></span><br><span class="line">            </span><br><span class="line">        distance = <span class="number">0</span></span><br><span class="line">        <span class="comment"># 因为每一项数据的最后一位为类别，所以不参与计算距离</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(dataPoint1)<span class="number">-1</span>):</span><br><span class="line">            distance = distance + pow(dataPoint1[i]-dataPoint2[i],<span class="number">2</span>)		</span><br><span class="line">        distance = math.sqrt(distance)</span><br><span class="line">        <span class="keyword">return</span> distance</span><br><span class="line">    <span class="comment"># 根据每个样本距离均值向量的长短，计算每个样本所属的类别</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__caculateType</span>(<span class="params">self,dataPoint,kSample</span>):</span></span><br><span class="line">        <span class="comment"># 首先假设该样本距离第一个均值向量最近,即该样本属于第一类</span></span><br><span class="line">        minDistance = self.__getDistance(dataPoint,kSample[<span class="number">0</span>])</span><br><span class="line">        <span class="comment"># 记录该样本所属的类别</span></span><br><span class="line">        type = <span class="number">0</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 计算该样本与每一个均值向量之间的距离</span></span><br><span class="line">        <span class="keyword">for</span> index,item <span class="keyword">in</span> enumerate(kSample):</span><br><span class="line">            distance = self.__getDistance(dataPoint,item)</span><br><span class="line">            <span class="comment"># 如果该数据点距离该类别较小</span></span><br><span class="line">            <span class="keyword">if</span> distance &lt; minDistance:</span><br><span class="line">                minDistance = distance  <span class="comment"># 更新最短距离</span></span><br><span class="line">                type = index    <span class="comment"># 更新样本点所属类别</span></span><br><span class="line">        <span class="comment"># 修改数据点的类别</span></span><br><span class="line">        dataPoint[len(dataPoint)<span class="number">-1</span>] = type</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 重新计算均值向量</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__caculateKSampleByAverge</span>(<span class="params">self,kSample</span>):</span></span><br><span class="line">         <span class="comment"># 对于每个均值向量，其下标为类别</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(kSample)):</span><br><span class="line">            typeI = []</span><br><span class="line">            <span class="comment"># 遍历所有数据找到与其类别一致的数据点</span></span><br><span class="line">            <span class="keyword">for</span> item <span class="keyword">in</span> self.__dataList:</span><br><span class="line">                <span class="keyword">if</span> item[(len(item)<span class="number">-1</span>)] == i:</span><br><span class="line">                    typeI.append(copy.deepcopy(item))</span><br><span class="line">            <span class="comment">#求和</span></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>,len(typeI)):</span><br><span class="line">                <span class="keyword">for</span> k <span class="keyword">in</span> range(len(typeI[j])):</span><br><span class="line">                    typeI[j][k] += typeI[j<span class="number">-1</span>][k]</span><br><span class="line">            <span class="comment"># 求均值并更改每一类的聚类中心</span></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(len(kSample[i])):</span><br><span class="line">                kSample[i][j] = typeI[len(typeI)<span class="number">-1</span>][j]/len(typeI)</span><br><span class="line"></span><br><span class="line">a = Kmeans(<span class="string">&quot;f://machine_learning/shape_sets/D31.txt&quot;</span>,<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">a.start()</span><br><span class="line">print(a.getCount())</span><br><span class="line"><span class="comment">#二维坐标才可以画散点图</span></span><br><span class="line">a.drawPic()</span><br></pre></td></tr></table></figure>
+
+<h2 id="K-means-算法的改进"><a href="#K-means-算法的改进" class="headerlink" title="K-means 算法的改进"></a>K-means 算法的改进</h2><p>K-means 是随机选取的初始点，因此不同的初始点对聚类结果有较大的影响。为解决这一问题我们可采用概率的方式来选择初始点，即 K-means++。</p>
+<p>基本思想：</p>
+<ol>
+<li><p>从输入的集合中随机选取一个点作为聚类的中心</p>
+</li>
+<li><p>对于数据集中的每一个点，计算它与最近的聚类中心（指已选择的聚类中心）的距离 D(x)</p>
+</li>
+<li><p>选择一个新的数据点作为新的聚类中心，选择的原则是：D(x) 较大的点，被选取作为聚类中心的概率较大</p>
+</li>
+<li><p>重复2、3步骤直到 k 个初始聚类中心被选出</p>
+</li>
+<li><p>利用选出的 k 个初始的聚类中心来运行标准的 K-means 算法</p>
+</li>
+</ol>
+<p>从上面可以看出，此算法的关键是如何将 D(x) 反映到点被选择的概率上，其方法如下：</p>
+<ol>
+<li><p>对于每个点都会计算与它最近的聚类中心的距离 D(x)，将每个点的 D(x)^2 保存在一个列表 List 中，然后把这些距离加起来，即对 List 中所有元素求和得到 SumList。</p>
+</li>
+<li><p>对于 List 中的每个点计算 List[i]/SumList ，即每个点概率 P(x)</p>
+</li>
+<li><p>将 P(x) 累加得到概率区间</p>
+</li>
+<li><p>产生一个 0-1 的随机数，该数落在哪个区间内就选择哪个点作为新的聚类中心</p>
+</li>
+</ol>
+<p>具体示例如下：</p>
+<p>8个点：(1,2),(1,2),(2,1),(2,2),(5,5),(5,6),(6,5),(6,6)</p>
+<ol>
+<li><p>随机选取一个点作为聚类中心，如3号点 (2,1)</p>
+</li>
+<li><p>计算 D(x)^2,P(x)</p>
+</li>
+</ol>
+
+
+<ol start="3">
+<li>产生 0-1 之间的随机数，如果该随机数落在 [0-0.007] 则选取1号点，[0.007-0.021] 则选取2号点，[0.021-0.028] 则选取3号点以此类推，很明显5，6，7，8号点被选取的概率较大，其距离3号点的距离较远。</li>
+</ol>
+<p>基于以上方法，我们改写选择初始点的函数：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getKSample</span>(<span class="params">dataList, k</span>):</span></span><br><span class="line">    kSample = []   </span><br><span class="line">    <span class="comment"># 首先随机选取一个数字为种子点 </span></span><br><span class="line">    num = random.randint(<span class="number">0</span>,len(dataList)<span class="number">-1</span>)</span><br><span class="line">    kSample.append(copy.deepcopy(dataList[num]))</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(k<span class="number">-1</span>):</span><br><span class="line">        <span class="comment"># 用于保存距离的列表</span></span><br><span class="line">        D = []</span><br><span class="line">        <span class="comment"># 用于存储概率的数组</span></span><br><span class="line">        P = []</span><br><span class="line">        <span class="comment"># 对于每个点，我们都计算其和最近的一个“种子点”的距离D(x)^2并保存在一个数组里</span></span><br><span class="line">        <span class="keyword">for</span> item1 <span class="keyword">in</span> dataList:</span><br><span class="line">            minDistance = getDistance(item1,kSample[<span class="number">0</span>])</span><br><span class="line">            <span class="keyword">for</span> item2 <span class="keyword">in</span> kSample:</span><br><span class="line">                distance = getDistance(item1,item2)</span><br><span class="line">                <span class="keyword">if</span> distance &lt; minDistance:</span><br><span class="line">                    minDistance = distance</span><br><span class="line"></span><br><span class="line">            D.append(pow(minDistance,<span class="number">2</span>))</span><br><span class="line">        <span class="comment"># 循环结束之后得到储存距离的数组</span></span><br><span class="line">        sumD = <span class="number">0</span></span><br><span class="line">        <span class="comment"># 然后把距离加起来</span></span><br><span class="line">        <span class="keyword">for</span> item <span class="keyword">in</span> D:</span><br><span class="line">            sumD = sumD + item</span><br><span class="line">        <span class="comment"># 计算每个样本被选为下一个聚类中心的概率</span></span><br><span class="line">        sumP = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> item <span class="keyword">in</span> D:</span><br><span class="line">            itemP = item/sumD</span><br><span class="line">            sumP = sumP + itemP</span><br><span class="line">            P.append(sumP)</span><br><span class="line">        <span class="comment">#随机产生0-1之间的数</span></span><br><span class="line">        rand = random.random()</span><br><span class="line">        <span class="comment"># 计算该数落在哪个区间</span></span><br><span class="line">        <span class="keyword">for</span> index,item <span class="keyword">in</span> enumerate(P):</span><br><span class="line">            <span class="keyword">if</span> rand &lt; item:</span><br><span class="line">                kSample.append(copy.deepcopy(dataList[index]))</span><br><span class="line">                <span class="keyword">break</span>       </span><br><span class="line">    <span class="keyword">return</span> kSample</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/k-means/" rel="tag"># k-means</a>
+              <a href="/tags/python/" rel="tag"># python</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/11/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%A2%98%E7%9B%AE%E4%B9%8B%E5%88%97%E5%87%BA%E8%BF%9E%E9%80%9A%E9%9B%86/" rel="prev" title="数据结构题目之列出连通集">
+      <i class="fa fa-chevron-left"></i> 数据结构题目之列出连通集
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/11/23/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0-6/" rel="next" title="Java 多态">
+      Java 多态 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%81%9A%E7%B1%BB"><span class="nav-number">1.</span> <span class="nav-text">聚类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%81%9A%E7%B1%BB%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">聚类的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%81%9A%E7%B1%BB%E7%9A%84%E4%B8%80%E8%88%AC%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">聚类的一般方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E5%90%8C%E7%B1%BB%E5%9E%8B%E7%9A%84%E8%81%9A%E7%B1%BB"><span class="nav-number">1.3.</span> <span class="nav-text">不同类型的聚类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#K-means-%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">K-means 算法原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#K-means-%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.</span> <span class="nav-text">K-means 算法实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#K-means-%E7%AE%97%E6%B3%95%E7%9A%84%E6%94%B9%E8%BF%9B"><span class="nav-number">4.</span> <span class="nav-text">K-means 算法的改进</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Sillywa"
+      src="/images/logo.png">
+  <p class="site-author-name" itemprop="name">Sillywa</p>
+  <div class="site-description" itemprop="description">个人学习记录博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Sillywa" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Sillywa" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sillywa</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+<div>
+<span id="timeDate"></span><span id="times"></span>
+</div>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("12/03/2018 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "Running for "+dnum+" Days ";
+        document.getElementById("times").innerHTML = hnum + " Hours " + mnum + " m " + snum + " s";
+    }
+    setInterval("createtime()",250);
+</script>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

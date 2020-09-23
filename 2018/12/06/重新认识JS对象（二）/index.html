@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"sillywa.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="前面介绍了如何创建对象，对象的存储器属性以及对象的特性（属性描述符），今天我们接着前面的来介绍对象及其属性。 一、删除属性delete 运算符可以用来删除对象的属性，它的操作数应当是个属性访问表达式（如果是个非法的操作数，早严格模式下会报错）。但它只能删除对象的自有属性，不能删除在原型对象上的属性，如果需要删除原型对象上的属性，需要在原型里面进行操作。 当delete 删除属性成功或者没有任何副作">
+  <meta name="description" content="前面介绍了如何创建对象，对象的存储器属性以及对象的特性（属性描述符），今天我们接着前面的来介绍对象及其属性。   一、删除属性delete 运算符可以用来删除对象的属性，它的操作数应当是个属性访问表达式（如果是个非法的操作数，早严格模式下会报错）。但它只能删除对象的自有属性，不能删除在原型对象上的属性，如果需要删除原型对象上的属性，需要在原型里面进行操作。 当delete 删除属性成功或者没有任何">
 <meta property="og:type" content="article">
 <meta property="og:title" content="重新认识JS对象（二）-- 对象及其属性">
 <meta property="og:url" content="https://sillywa.com/2018/12/06/%E9%87%8D%E6%96%B0%E8%AE%A4%E8%AF%86JS%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%BA%8C%EF%BC%89/index.html">
 <meta property="og:site_name" content="Sillywa&#39;s Blog">
-<meta property="og:description" content="前面介绍了如何创建对象，对象的存储器属性以及对象的特性（属性描述符），今天我们接着前面的来介绍对象及其属性。 一、删除属性delete 运算符可以用来删除对象的属性，它的操作数应当是个属性访问表达式（如果是个非法的操作数，早严格模式下会报错）。但它只能删除对象的自有属性，不能删除在原型对象上的属性，如果需要删除原型对象上的属性，需要在原型里面进行操作。 当delete 删除属性成功或者没有任何副作">
+<meta property="og:description" content="前面介绍了如何创建对象，对象的存储器属性以及对象的特性（属性描述符），今天我们接着前面的来介绍对象及其属性。   一、删除属性delete 运算符可以用来删除对象的属性，它的操作数应当是个属性访问表达式（如果是个非法的操作数，早严格模式下会报错）。但它只能删除对象的自有属性，不能删除在原型对象上的属性，如果需要删除原型对象上的属性，需要在原型里面进行操作。 当delete 删除属性成功或者没有任何">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-12-06T05:05:21.000Z">
-<meta property="article:modified_time" content="2020-09-23T03:51:06.838Z">
+<meta property="article:modified_time" content="2020-09-23T08:52:54.009Z">
 <meta property="article:author" content="Sillywa">
 <meta property="article:tag" content="JS">
 <meta name="twitter:card" content="summary">
@@ -224,7 +224,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-23 11:51:06" itemprop="dateModified" datetime="2020-09-23T11:51:06+08:00">2020-09-23</time>
+                <time title="修改时间：2020-09-23 16:52:54" itemprop="dateModified" datetime="2020-09-23T16:52:54+08:00">2020-09-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -232,7 +232,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                  <a href="/categories/JavaScript-%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">JavaScript 基础</span></a>
                 </span>
             </span>
 
@@ -255,6 +255,8 @@
 
       
         <p>前面介绍了如何创建对象，对象的存储器属性以及对象的特性（属性描述符），今天我们接着前面的来介绍对象及其属性。</p>
+<!--- more --->
+
 <h2 id="一、删除属性"><a href="#一、删除属性" class="headerlink" title="一、删除属性"></a>一、删除属性</h2><p><code>delete</code> 运算符可以用来删除对象的属性，它的操作数应当是个属性访问表达式（如果是个非法的操作数，早严格模式下会报错）。但它只能删除对象的自有属性，不能删除在原型对象上的属性，如果需要删除原型对象上的属性，需要在原型里面进行操作。</p>
 <p>当<code>delete</code> 删除属性成功或者没有任何副作用时，返回<code>true</code>。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = <span class="string">&#x27;sillywa&#x27;</span></span><br><span class="line">    <span class="built_in">this</span>.age = <span class="number">12</span></span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.sex = <span class="string">&#x27;boy&#x27;</span></span><br><span class="line"><span class="keyword">var</span> person1 = <span class="keyword">new</span> Person()</span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> person1.name  <span class="comment">// 删除name属性，返回true</span></span><br><span class="line">person1.name  <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 试图删除原型上的属性</span></span><br><span class="line"><span class="keyword">delete</span> person1.sex  <span class="comment">// 无法删除，没有任何副作用，返回true</span></span><br><span class="line">person1.sex  <span class="comment">// &#x27;boy&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除sex属性</span></span><br><span class="line"><span class="keyword">delete</span> Person.prototype.sex</span><br><span class="line">person1.sex  <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line">Person.prototype.sex = <span class="string">&#x27;boy&#x27;</span></span><br><span class="line"><span class="comment">// 或者可以这样，和上面的效果一样</span></span><br><span class="line"><span class="keyword">delete</span> person1.__proto__.sex</span><br></pre></td></tr></table></figure>
@@ -378,20 +380,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">43</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">28</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

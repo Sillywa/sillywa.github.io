@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"sillywa.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="问题：如何快速搜索到需要的关键词？ 我们知道查找的本质是已知一个对象，找到该对象的位置。因此如果我们在安排位置时，通过一个”散列函数“来计算出对象的位置进行存放，当要查找这个对象时，再通过相同的”散列函数“即可直接计算出对象的位置。 因此其时间复杂度几乎是：O(1)，即查找时间与问题规模无关！   那么问题就来了，我们如何构造出一个比较好的散列函数，如果多个关键词通过某个散列函数计算出了相同的位置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="散列查找">
+<meta property="og:url" content="https://sillywa.com/2019/12/16/%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE/index.html">
+<meta property="og:site_name" content="Sillywa&#39;s Blog">
+<meta property="og:description" content="问题：如何快速搜索到需要的关键词？ 我们知道查找的本质是已知一个对象，找到该对象的位置。因此如果我们在安排位置时，通过一个”散列函数“来计算出对象的位置进行存放，当要查找这个对象时，再通过相同的”散列函数“即可直接计算出对象的位置。 因此其时间复杂度几乎是：O(1)，即查找时间与问题规模无关！   那么问题就来了，我们如何构造出一个比较好的散列函数，如果多个关键词通过某个散列函数计算出了相同的位置">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-12-16T11:58:21.000Z">
+<meta property="article:modified_time" content="2020-09-23T08:49:49.899Z">
+<meta property="article:author" content="Sillywa">
+<meta property="article:tag" content="散列查找">
+<meta property="article:tag" content="散列表">
+<meta property="article:tag" content="哈希表">
+<meta property="article:tag" content="C语言">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://sillywa.com/2019/12/16/%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>散列查找 | Sillywa's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Sillywa's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://sillywa.com/2019/12/16/%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/logo.png">
+      <meta itemprop="name" content="Sillywa">
+      <meta itemprop="description" content="个人学习记录博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sillywa's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          散列查找
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-12-16 19:58:21" itemprop="dateCreated datePublished" datetime="2019-12-16T19:58:21+08:00">2019-12-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-23 16:49:49" itemprop="dateModified" datetime="2020-09-23T16:49:49+08:00">2020-09-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>问题：如何快速搜索到需要的关键词？</p>
+<p>我们知道查找的本质是已知一个对象，找到该对象的位置。因此如果我们在安排位置时，通过一个”散列函数“来计算出对象的位置进行存放，当要查找这个对象时，再通过相同的”散列函数“即可直接计算出对象的位置。</p>
+<p>因此其时间复杂度几乎是：O(1)，即查找时间与问题规模无关！</p>
+<!--- more --->
+
+<p>那么问题就来了，我们如何构造出一个比较好的散列函数，如果多个关键词通过某个散列函数计算出了相同的位置，我们如何解决这种冲突。</p>
+<p>所以散列查找法的两项基本工作就是：</p>
+<ul>
+<li><p>计算位置：构造散列函数确定关键词的存储位置</p>
+</li>
+<li><p>解决冲突：应用某种策略解决多个关键字位置相同的问题</p>
+</li>
+</ul>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p><strong>散列表（哈希表）</strong>：</p>
+<p><strong>类型名称</strong>：符号表(SymbolTable)</p>
+<p><strong>数据对象集</strong>：符号表是“名字(Name)—属性(Attribute)”对的集合</p>
+<p><strong>操作集</strong>：对于一个具体的符号表Table∈SymbolTable，一个给定的名字Name∈NameType，属性Attr∈AttributeType，以及正整数TableSize，符号表的基本操作有：</p>
+<p><code>SymbolTable CreateTable(int TableSize)</code>：创建空的符号表，其最大长度为TableSize；</p>
+<p><code>bool IsIn(SymbolTable Table,NameType Name)</code>：查找指定 Name 是否在符号表 Table 中；</p>
+<p><code>AttributeType Find(SymbolTable Table,NameType Name)</code>：获取符号表 Table 中指定名字 Name 对应的属性；</p>
+<p><code>bool Modify(SymbolTable Table,NameType Name,AttributeType Attr)</code>：将Table 中指定名字 Name 的属性修改为 Attr；</p>
+<p><code>bool Insert(SymbolTable Table,NameType Name,AttributeType Attr)</code>：向 Table 中插入一个新名字 Name 及其属性 Attr；</p>
+<p><code>bool Delete(SymbolTable Table,NameType Name)</code>：从 Table 中删除一个名字 Name 及其属性。</p>
+<p><strong>散列(Hashing)的基本思想是：</strong></p>
+<p>1.以关键字key为自变量，通过一个确定的函数h（散列函数），计算出对应的函数值h(key)，作为数据对象的存储地址。</p>
+<p>2.可能不同的关键字会映射到同一个散列地址上，即h(key_i )=h(key_j ),key_i≠key_j，称为冲突——因此需要某种冲突解决策略。</p>
+<p>例：有 n=11 个对象的集合 {18,23,11,20,2,7,27,30,42,15,34}。符号表的大小 TableSize = 17（通常为素数），选取散列函数如下：</p>
+<p>h(key) = key mod TableSize (求余)</p>
+<p>用这个散列函数对 11 个对象建立查找表，如下所示：</p>
+
+
+<ul>
+<li><p>存放：<br>如果新插入35，h(35)=1，该位置已有对象，冲突</p>
+</li>
+<li><p>查找：<br>key = 22,h(22) = 5，该地址为空，不在表中<br>key = 30,h(30) = 13，该地址存放的是30，找到</p>
+</li>
+</ul>
+<blockquote>
+<p>定于 装填因子：设散列表空间大小为 m，填入表中的元素个数是 n，则称 a=n/m 为散列表的装填因子。</p>
+</blockquote>
+<h2 id="散列函数的构造方法"><a href="#散列函数的构造方法" class="headerlink" title="散列函数的构造方法"></a>散列函数的构造方法</h2><p>一个好的散列函数应该考虑以下两个因素：</p>
+<p>1.计算简单，以便提高转换速度；</p>
+<p>2.关键词对应的地址空间分布均匀，以尽量减少冲突。</p>
+<h3 id="数字关键词的散列函数构造"><a href="#数字关键词的散列函数构造" class="headerlink" title="数字关键词的散列函数构造"></a>数字关键词的散列函数构造</h3><p>1.直接定址法</p>
+<p>如果我们要统计人口的年龄分布情况（0——120），那么对于年龄这个关键词可以直接作为地址，即 h(key) = key。</p>
+<p>如果要统计的是 1990 年以后出任的人口分布情况，那么对于出生年份这个关键词可以减去 1990 作为地址，即 h(key) = key-1990。</p>
+
+
+<p>总之，取关键词的某个线性函数值为散列地址，即</p>
+<p>h(key) = a X key + b   (a,b为常数)</p>
+<p>2.除留余数法</p>
+<p>现实生活中比较常用的方法是除留余数法。假设散列表长为 TableSize，选择一个正整数 p ≤ TableSize，散列函数构造为：</p>
+<p>h(key) = key mod p</p>
+<p>这里 p 一般取为小于等于散列表长 TableSize 的某个最大的素数比较好。</p>
+<p>3.数字分析法</p>
+<p>分析数字关键字在各位上的变化情况，取比较随机的位作为散列地址</p>
+<p>比如：取手机号 key 的后 4 位作为地址：</p>
+<p>散列函数位：h(key) = atoi(key+7)</p>
+<h3 id="字符串关键词的散列函数构造"><a href="#字符串关键词的散列函数构造" class="headerlink" title="字符串关键词的散列函数构造"></a>字符串关键词的散列函数构造</h3><p>1.一个简单的散列函数——ASCII码加和法</p>
+
+
+<p>2.简单的改进——前3个字符移位法</p>
+
+
+<p>3.好的散列函数——移位法</p>
+
+
+<h2 id="处理冲突的方法"><a href="#处理冲突的方法" class="headerlink" title="处理冲突的方法"></a>处理冲突的方法</h2><p>在前面的散列函数构造过程中，我们努力使散列地址均匀分布在整个地址空间，但实际应用中，冲突只能尽量减少，而不能完全避免。接下来我们讨论在冲突发生时，如何有效地解决它。常用的处理冲突的方法有开放地址法（Open Addressing）和链地址法（Linear Probing）。</p>
+<h3 id="开放地址法"><a href="#开放地址法" class="headerlink" title="开放地址法"></a>开放地址法</h3><p>一旦产生了冲突（该地址已有其它元素），就按照某种规则去寻找另一空地址。</p>
+<p>若发生了第 i 次冲突，试探的下一个地址将增加 di，基本公式是：</p>
+<p>hi(key) = (h(key) + di) mod TableSize (1 &lt;= i &lt; TableSize)</p>
+<p>di决定了不同的解决冲突方案：线性探测、平方探测、双散列。</p>
+<p>1.线性探测</p>
+<p><strong>以增量序列1,2,3…TableSize-1循环试探下一个存储地址。</strong></p>
+<p>设关键词序列为 {47,7,29,11,9,84,54,20,30}</p>
+<p>散列表长 TableSize=13（装填因子 9/13=0.69）；</p>
+<p>散列函数为：h(key) = key mod 11。</p>
+<p>用线性探测法处理冲突，列出一次插入后的散列表，并估算查找性能。</p>
+
+
+<p>注意”聚集“现象。</p>
+<p>散列表查找性能分析</p>
+<ul>
+<li><p>成功平均查找长度(ASLs)</p>
+</li>
+<li><p>不成功平均查找长度(ASLu)</p>
+</li>
+</ul>
+<p>散列表如下：</p>
+
+
+<p>分析：</p>
+<p>ASLs：查找表中关键词的平均查找比较次数（其冲突次数加 1）</p>
+<p>ASLs = (1+7+1+1+2+1+4+2+4)/9 = 2.56</p>
+<p>ASLu：不在散列表中的关键词的平均查找次数（不成功）</p>
+<p>一般方法：将不在散列表中的关键词分为若干类。如根据 h(key) 分类</p>
+<p>ASLu = (3+2+1+2+1+1+1+9+8+7+6)/11 = 3.73</p>
+<p>2.平方探测法——二次探测</p>
+<p><strong>以增量序列 1，-1，4，-4，9，-9，…，q^2，-q^2，且 q &lt;= [TableSize/2] 循环试探下一个存储地址。</strong></p>
+<p>设关键词序列为 {47,7,29,11,9,84,54,20,30}，散列表长度 TableSize = 11，散列函数为：h(key) = key mod 11。用平方探测法处理冲突，列出依次插入后的散列表，并估算ASLs。</p>
+
+
+<p>ASLs = (1+1+2+1+1+3+1+4+4)/9 = 2</p>
+<p><strong>是否有空间，平方探测（二次探测）就能找到？</strong></p>
+
+
+<p><strong>有证明表明，如果散列表的长度 TableSize 是某个 4k+3（k是正整数）形式的素数时，平方探测法就可以检测到整个散列表空间。</strong>这一点很重要，使我们能够放心使用平方探测法的理论保证。</p>
+<p>在开放地址的散列表中，不能进行标准的删除操作，因为相应的单元可能引起过冲突，数据对象绕过它存在了别处。为此开放地址散列表需要“惰性删除”，即需要增加一个“删除标记”，而并不是真正的删除它。这样可以不影响查找，但额外的存储负担增加了代码的复杂性。</p>
+<p>以下是开放地址法的类型声明：</p>
+
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXTABLESIZE 100000     <span class="comment">/* 允许开辟的最大散列表长度 */</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> ElementType;        <span class="comment">/* 关键词类型 */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> Index;              <span class="comment">/* 散列地址类型 */</span></span><br><span class="line"><span class="keyword">typedef</span> Index Position;         <span class="comment">/* 数据所在位置与散列地址是同一类型 */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 散列单元的状态，分别对应：有合法元素、空单元、有已删除元素 */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">enum</span> &#123; Legitimate, Empty, Deleted &#125; EntryType;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">HashEntry</span> <span class="title">Cell</span>;</span>  <span class="comment">/* 散列表单元类型 */</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">HashEntry</span> &#123;</span></span><br><span class="line">    ElementType Data;   <span class="comment">/* 存放的元素 */</span></span><br><span class="line">    EntryType Info;     <span class="comment">/* 单元状态 */</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">TblNode</span>* <span class="title">HashTable</span>;</span>  <span class="comment">/* 散列表类型 */</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">TblNode</span> &#123;</span>        <span class="comment">/* 散列表节点定义 */</span></span><br><span class="line">    <span class="keyword">int</span> TableSize;      <span class="comment">/* 散列表的最大长度 */</span></span><br><span class="line">    Cell *Cells;        <span class="comment">/* 存放散列单元的数组 */</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>如下代码给出了散列表的初始化函数。首先申请散列表需要的空间，再将每个单元的 info 设置为 Empty，表示为空。注意需要确定一个不下于 TableSize 的素数，用作真正的散列表的地址空间大小，这个功能由 NextPrime 实现。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">NextPrime</span><span class="params">(<span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">    <span class="comment">/* 返回大于N且不超过MAXTABLESIZE的最小素数 */</span></span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">int</span> p = (N%<span class="number">2</span>) ? N+<span class="number">2</span> : N+<span class="number">1</span>;  <span class="comment">/* 从大于N的第一个奇数开始 */</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(p &lt;= MAXTABLESIZE) &#123;</span><br><span class="line">        <span class="keyword">for</span>(i = (<span class="keyword">int</span>)<span class="built_in">sqrt</span>(p); i&gt;<span class="number">2</span>; i--)</span><br><span class="line">            <span class="keyword">if</span>(!(p%i)) <span class="keyword">break</span>;   <span class="comment">/* p不是素数 */</span></span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">2</span>) <span class="keyword">break</span>; <span class="comment">/* for循环正常结束，说明p是素数 */</span></span><br><span class="line">        <span class="keyword">else</span> p+=<span class="number">2</span>;  <span class="comment">/* 否则试探下一个奇数 */</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">HashTable <span class="title">CreateTable</span><span class="params">(<span class="keyword">int</span> TableSize)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    HashTable H = (HashTable)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct TblNode));</span><br><span class="line">    <span class="comment">/* 保证散列表的最大长度是素数 */</span></span><br><span class="line">    H-&gt;TableSize = NextPrime(TableSize);</span><br><span class="line">    <span class="comment">/* 声明单元数组 */</span></span><br><span class="line">    H-&gt;Cells = (Cell*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Cell)*H-&gt;TableSize);</span><br><span class="line">    <span class="comment">/* 初始化单元数组为空单元 */</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; H-&gt;TableSize;i++) &#123;</span><br><span class="line">        H-&gt;Cells[i].Info = Empty;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> H;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以下代码是平方探测法的查找函数。首先调用 Hash 函数计算地址，以确定关键词所在的散列表地址。用 while 循环控制直至明确查找成功或者找到空位置表示查找失败，遇到冲突则继续查找。</p>
+<p>注意关键词 key 的类型 ElementType 不一定为整形，也可能被定义为字符串，若是字符串，则 while 的判断条件要用 C 语言的 strcmp 函数来替换。若找到关键词，函数直接返回结点的地址，若找不到则返回一个空的单元。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Position <span class="title">Find</span><span class="params">(HashTable H, ElementType Key)</span> </span>&#123;</span><br><span class="line">    Position CurrentPos,OldPos;</span><br><span class="line">    <span class="keyword">int</span> CNum = <span class="number">0</span>; <span class="comment">/* 记录冲突次数 */</span></span><br><span class="line">    CurrentPos = OldPos = Hash(Key, H-&gt;TableSize); <span class="comment">/* 计算出其位置 */</span></span><br><span class="line">    <span class="comment">/* 当该单元为非空并且不是要找的元素时，发生冲突 */</span></span><br><span class="line">    <span class="keyword">while</span>(H-&gt;Cells[CurrentPos].Info != Empty &amp;&amp; H-&gt;Cells[CurrentPos].Data != Key) &#123;</span><br><span class="line">        <span class="comment">/* 字符串类型需调用 strcmp 函数 */</span></span><br><span class="line">        <span class="comment">/* 统计冲突次数 */</span></span><br><span class="line">        <span class="keyword">if</span>((++CNum % <span class="number">2</span>)) &#123;  <span class="comment">/* 奇数次冲突 */</span></span><br><span class="line">            <span class="comment">/* 增量为 [(CNum+1)/2]^2 */</span></span><br><span class="line">            CurrentPos = OldPos + (CNum+<span class="number">1</span>) * (CNum+<span class="number">1</span>) /<span class="number">4</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(CurrentPos &gt;= H-&gt;TableSize)</span><br><span class="line">                CurrentPos = CurrentPos%H-&gt;TableSize;   <span class="comment">/* 调整为合法地址 */</span></span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;    <span class="comment">/* 偶数次冲突 */</span></span><br><span class="line">            <span class="comment">/* 增量为 -(CNum/2)^2 */</span></span><br><span class="line">            CurrentPos = OldPos - CNum * CNum /<span class="number">4</span>;</span><br><span class="line">            <span class="keyword">while</span>(CurrentPos &lt; <span class="number">0</span>)   <span class="comment">/* 调整为合法地址 */</span></span><br><span class="line">                CurrentPos += H-&gt;TableSize;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> CurrentPos;</span><br><span class="line">    <span class="comment">/* 此时 CurrentPos 或者是 Key 的位置，或者是一个空单元的地址（表示找不到） */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以下是插入函数，先检查 Key 是否已经存在，该单元的状态只要不是合法的，就可以在此插入。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Insert</span><span class="params">(HashTable H, ElementType Key)</span> </span>&#123;</span><br><span class="line">    Position p = Find(H,Key);   <span class="comment">/* 首先检查Key值是否存在 */</span></span><br><span class="line">    <span class="keyword">if</span>(H-&gt;Cells[p].Info != Legitimate) &#123;    <span class="comment">/* 如果这个单元没有被占用，说明Key可以插入在此 */</span></span><br><span class="line">        H-&gt;Cells[p].Info = Legitimate;</span><br><span class="line">        H-&gt;Cells[p].Data = Key;</span><br><span class="line">        <span class="comment">/* 字符串类型需调用strcpy函数 */</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;键值已存在&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>开放地址法的删除操作只需要该改变单元的状态 Info 即可。</p>
+<p>3.双散列探测法</p>
+
+
+<p>4.再散列（Rehashing）</p>
+<p>当散列表元素太多时（即装填因子太大时），查找效率就会下降；实用的装填因子一般取<strong>0.5——0.85</strong>。</p>
+<p>当装填因子过大时，解决的方法就是加倍扩大散列表，这个过程叫做**”再散列”**。</p>
+<h3 id="分离链接法"><a href="#分离链接法" class="headerlink" title="分离链接法"></a>分离链接法</h3><p>分离链接法就是将相应位置上冲突的所有关键词存储在同一个单链表里面。</p>
+<p>设关键字序列为{47,7,29,11,16,92,22,8,3,50,37,89,94,21}，散列函数取：h(key) = key mod 11；用分离链接法处理冲突，结果如下：</p>
+
+
+<p>表中有 9 个结点只需查找 1 次，5 个结点需要查找 2 次，查找成功的平均查找次数：</p>
+<p>ASLs = (9+5*2)/14 = 1.36</p>
+<p>以下是分离链接法的代码实现：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> KEYLENGTH 15    <span class="comment">/* 关键字符串的最大长度 */</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">char</span> ElementType[KEYLENGTH+<span class="number">1</span>];  <span class="comment">/* 关键词类型用字符串 */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> Index;  <span class="comment">/* 散列地址类型 */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">LNode</span>* <span class="title">PtrToNode</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">LNode</span> &#123;</span></span><br><span class="line">    ElementType Data;</span><br><span class="line">    PtrToNode Next;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span> PtrToNode List;</span><br><span class="line"><span class="keyword">typedef</span> PtrToNode Position;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">TblNode</span>* <span class="title">HashTable</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">TblNode</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> TableSize;</span><br><span class="line">    List Heads; <span class="comment">/* 指向链表头结点的数组 */</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>散列表结构包括一个 TableSize 记录表的最大长度以及一个节点数组对应的单链表，它们在初始化时动态分配空间，并设置相应的初值。</p>
+<p>以下是散列表的初始化函数 CreateTable。首先申请散列表的头结点空间；然后确定一个不小于 TableSize 的素数，用作真正的散列表的地址空间大小；最后动态分配散列表的地址列表数组并初始化空的头结点。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">HashTable <span class="title">CreateTable</span><span class="params">(<span class="keyword">int</span> TableSize)</span> </span>&#123;</span><br><span class="line">    HashTable H = (HashTable)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct TblNode));</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 保证散列的最大长度是素数 */</span></span><br><span class="line">    H-&gt;TableSize = NextPrime(TableSize);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 分配链表表头节点数组 */</span></span><br><span class="line">    H-&gt;Heads = (List)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct LNode)*H-&gt;TableSize);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 初始化表头节点 */</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;H-&gt;TableSize; i++) &#123;</span><br><span class="line">        H-&gt;Heads[<span class="number">0</span>].Data[<span class="number">0</span>] = <span class="string">&#x27;\0&#x27;</span>;</span><br><span class="line">        H-&gt;Heads.Next = <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> H;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以下是查找 Find 函数。首先调用 Hash 函数计算地址，得到关键字所在的 Heads 中单元的下标 Pos；P 则指向 Heads[Pos] 链表中真正的第一个元素。因为关键字是字符串，所以 while 循环条件判断要用 strcmp 函数来比较 Data 与 Key 的值。若找到了关键词，函数直接返回结点的地址，若找不到则返回空地址。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Position <span class="title">Find</span><span class="params">(HashTable H, ElementType Key)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    Position Pos = Hash(Key,H-&gt;TableSize);  <span class="comment">/* 找到该Key的位置 */</span></span><br><span class="line"></span><br><span class="line">    Index P = H-&gt;Heads[Pos].Next;   <span class="comment">/* 从该链表的第一个节点开始 */</span></span><br><span class="line">    <span class="comment">/* 当未到表尾，并且Key未找到时 */</span></span><br><span class="line">    <span class="keyword">while</span>(P &amp;&amp; <span class="built_in">strcmp</span>(P-&gt;Data,Key))</span><br><span class="line">        P=P-&gt;Next;</span><br><span class="line">    <span class="comment">/* 此时P指向找到的节点或者NULL */</span></span><br><span class="line">    <span class="keyword">return</span> P;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以下是插入函数 Insert。该函数首先调用 Find 函数，如果找到了关键词则不需要插入，返回插入不成功的信息；如果找不到关键词才需要插入。插入时，先申请一个新结点 NewCell，然后计算 Key 的地址 Pos，插入成为单链表 Heads[Pos] 的第一个结点。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Insert</span><span class="params">(HashTable H, ElementType Key)</span> </span>&#123;</span><br><span class="line">    Position P = Find(H, Key);</span><br><span class="line">    <span class="keyword">if</span>(!P) &#123;</span><br><span class="line"></span><br><span class="line">        Position NewCell = (Position)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct LNode));</span><br><span class="line">        <span class="built_in">strcpy</span>(NewCell-&gt;Data, Key);</span><br><span class="line">        Index Pos=Hash(Key,H-&gt;TableSize);</span><br><span class="line">        <span class="comment">/* 将NewCell插入为H-&gt;Heads[Pos]链表的第一个节点 */</span></span><br><span class="line">        NewCell-&gt;Next = H-&gt;Heads[Pos].Next;</span><br><span class="line">        H-&gt;Heads[Pos].Next =NewCell;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;关键词已存在&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>释放 CreateTable 所占用的内存空间可以调用如下 DestroyTable 函数：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DestoryTable</span><span class="params">(HashTable H)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    Position P, temp;</span><br><span class="line">    <span class="comment">/* 释放链表的每个节点 */</span></span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;H-&gt;TableSize; i++) &#123;</span><br><span class="line">        P = H-&gt;Heads[i].Next;</span><br><span class="line">        <span class="keyword">while</span>(P) &#123;</span><br><span class="line">            temp = P-&gt;Next;</span><br><span class="line">            <span class="built_in">free</span>(P);</span><br><span class="line">            P = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">free</span>(H-&gt;Heads); <span class="comment">/* 释放头结点数组 */</span></span><br><span class="line">    <span class="built_in">free</span>(H);    <span class="comment">/* 释放散列表节点 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>分离链接法的删除操作与链表的删除操作相似。不过需要先通过 Hash 函数得到链表的头结点，再在该链表中进行删除即可。</p>
+<h2 id="散列表的性能分析"><a href="#散列表的性能分析" class="headerlink" title="散列表的性能分析"></a>散列表的性能分析</h2><p>在上面的介绍中，我们已经用 ASL 来度量散列表的查找效率。查找过程中，关键词比较的次数，取决于产生冲突的多少。产生的冲突多，查找效率就高；产生的冲突多，查找效率就低.因此，影响产生冲突多少的因素，也就是影响查找效率的因素。主要有以下三个因素：</p>
+<ul>
+<li><p>散列函数是否均匀</p>
+</li>
+<li><p>处理冲突的方法</p>
+</li>
+<li><p>散列表的装填因子</p>
+</li>
+</ul>
+<h3 id="线性探测法的查找性能"><a href="#线性探测法的查找性能" class="headerlink" title="线性探测法的查找性能"></a>线性探测法的查找性能</h3><p>可以证明，线性探测法的期望探测次数满足下列公式：</p>
+
+
+<h3 id="平方探测法和双散列探测法的查找性能"><a href="#平方探测法和双散列探测法的查找性能" class="headerlink" title="平方探测法和双散列探测法的查找性能"></a>平方探测法和双散列探测法的查找性能</h3><p>可以证明，平方探测法和双散列探测法的期望探测次数满足下列公式：</p>
+
+
+<p>下图表示了上面几种探测法的期望探测次数与装填因子之间的关系：</p>
+
+
+<p>由图可知，当装填因子 &lt; 0.5 的时候，各种探测法的期望探测次数都不大，也比较接近。随着装填因子的增大，线性探测法的期望探测次数增加较快，不成功查找和插入操作的期望探测次数明显比成功查找的期望探测次数要大。合理的装填因子应该不超过0.85。</p>
+<h3 id="分离链接法的查找性能"><a href="#分离链接法的查找性能" class="headerlink" title="分离链接法的查找性能"></a>分离链接法的查找性能</h3><p>我们把分离链接法中的每个链表的平均长度定义成装填因子，因此装填因子有可能超过 1。</p>
+<p>不难证明，其期望探测次数为：</p>
+
+
+<h2 id="散列的特点"><a href="#散列的特点" class="headerlink" title="散列的特点"></a>散列的特点</h2><p>1.选择合适的 h(key)，散列法的查找效率期望是常数 O(1)，它几乎与关键字的空间的大小 N 无关，也适合于关键字直接比较计算量大的问题；</p>
+<p>2.它是以较小的装填因子为前提，因此，散列方法是一个以空间换时间；</p>
+<p>3.散列方法的存储对关键字是随机的，不便于顺序查找关键字，也不适合于范围查找，或最大值最小值查找。</p>
+<h3 id="开放地址法的特点"><a href="#开放地址法的特点" class="headerlink" title="开放地址法的特点"></a>开放地址法的特点</h3><p>1.散列表是一个数组，存储效率高，随即查找；</p>
+<p>2.散列表有聚集现象</p>
+<h3 id="分离链接法的特点"><a href="#分离链接法的特点" class="headerlink" title="分离链接法的特点"></a>分离链接法的特点</h3><p>1.散列表是顺序存储和链式存储的结合，链表部分的存储效率和查找效率都比较低；</p>
+<p>2.关键字删除不需要懒惰删除法，因此没有存储垃圾；</p>
+<p>3.太小的装填因子可能导致空间浪费，大的装填因子又会付出更多的时间代价。不均匀的链表长度导致时间效率严重下降。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE/" rel="tag"># 散列查找</a>
+              <a href="/tags/%E6%95%A3%E5%88%97%E8%A1%A8/" rel="tag"># 散列表</a>
+              <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" rel="tag"># 哈希表</a>
+              <a href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag"># C语言</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/12/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%913/" rel="prev" title="数据结构——树（下）">
+      <i class="fa fa-chevron-left"></i> 数据结构——树（下）
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/12/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E5%9B%BE/" rel="next" title="数据结构——图">
+      数据结构——图 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%A3%E5%88%97%E5%87%BD%E6%95%B0%E7%9A%84%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">散列函数的构造方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E5%85%B3%E9%94%AE%E8%AF%8D%E7%9A%84%E6%95%A3%E5%88%97%E5%87%BD%E6%95%B0%E6%9E%84%E9%80%A0"><span class="nav-number">2.1.</span> <span class="nav-text">数字关键词的散列函数构造</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%85%B3%E9%94%AE%E8%AF%8D%E7%9A%84%E6%95%A3%E5%88%97%E5%87%BD%E6%95%B0%E6%9E%84%E9%80%A0"><span class="nav-number">2.2.</span> <span class="nav-text">字符串关键词的散列函数构造</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E5%86%B2%E7%AA%81%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">处理冲突的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E6%94%BE%E5%9C%B0%E5%9D%80%E6%B3%95"><span class="nav-number">3.1.</span> <span class="nav-text">开放地址法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E7%A6%BB%E9%93%BE%E6%8E%A5%E6%B3%95"><span class="nav-number">3.2.</span> <span class="nav-text">分离链接法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%A3%E5%88%97%E8%A1%A8%E7%9A%84%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90"><span class="nav-number">4.</span> <span class="nav-text">散列表的性能分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E6%8E%A2%E6%B5%8B%E6%B3%95%E7%9A%84%E6%9F%A5%E6%89%BE%E6%80%A7%E8%83%BD"><span class="nav-number">4.1.</span> <span class="nav-text">线性探测法的查找性能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%B3%E6%96%B9%E6%8E%A2%E6%B5%8B%E6%B3%95%E5%92%8C%E5%8F%8C%E6%95%A3%E5%88%97%E6%8E%A2%E6%B5%8B%E6%B3%95%E7%9A%84%E6%9F%A5%E6%89%BE%E6%80%A7%E8%83%BD"><span class="nav-number">4.2.</span> <span class="nav-text">平方探测法和双散列探测法的查找性能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E7%A6%BB%E9%93%BE%E6%8E%A5%E6%B3%95%E7%9A%84%E6%9F%A5%E6%89%BE%E6%80%A7%E8%83%BD"><span class="nav-number">4.3.</span> <span class="nav-text">分离链接法的查找性能</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%A3%E5%88%97%E7%9A%84%E7%89%B9%E7%82%B9"><span class="nav-number">5.</span> <span class="nav-text">散列的特点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E6%94%BE%E5%9C%B0%E5%9D%80%E6%B3%95%E7%9A%84%E7%89%B9%E7%82%B9"><span class="nav-number">5.1.</span> <span class="nav-text">开放地址法的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E7%A6%BB%E9%93%BE%E6%8E%A5%E6%B3%95%E7%9A%84%E7%89%B9%E7%82%B9"><span class="nav-number">5.2.</span> <span class="nav-text">分离链接法的特点</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Sillywa"
+      src="/images/logo.png">
+  <p class="site-author-name" itemprop="name">Sillywa</p>
+  <div class="site-description" itemprop="description">个人学习记录博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Sillywa" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Sillywa" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sillywa</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+<div>
+<span id="timeDate"></span><span id="times"></span>
+</div>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("12/03/2018 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "Running for "+dnum+" Days ";
+        document.getElementById("times").innerHTML = hnum + " Hours " + mnum + " m " + snum + " s";
+    }
+    setInterval("createtime()",250);
+</script>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

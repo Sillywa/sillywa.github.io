@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"sillywa.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="问题：如何快速搜索到需要的关键词？ 我们知道查找的本质是已知一个对象，找到该对象的位置。因此如果我们在安排位置时，通过一个”散列函数“来计算出对象的位置进行存放，当要查找这个对象时，再通过相同的”散列函数“即可直接计算出对象的位置。 因此其时间复杂度几乎是：O(1)，即查找时间与问题规模无关！   那么问题就来了，我们如何构造出一个比较好的散列函数，如果多个关键词通过某个散列函数计算出了相同的位置">
+  <meta name="description" content="散列查找解决的一个基本问题是：如何快速搜索到需要的关键词？ 我们知道查找的本质是已知一个对象，找到该对象的位置。因此如果我们在安排位置时，通过一个”散列函数“来计算出对象的位置进行存放，当要查找这个对象时，再通过相同的”散列函数“即可直接计算出对象的位置。 因此其时间复杂度几乎是：O(1)，即查找时间与问题规模无关！">
 <meta property="og:type" content="article">
 <meta property="og:title" content="散列查找">
 <meta property="og:url" content="https://sillywa.com/2019/12/16/%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE/index.html">
 <meta property="og:site_name" content="Sillywa&#39;s Blog">
-<meta property="og:description" content="问题：如何快速搜索到需要的关键词？ 我们知道查找的本质是已知一个对象，找到该对象的位置。因此如果我们在安排位置时，通过一个”散列函数“来计算出对象的位置进行存放，当要查找这个对象时，再通过相同的”散列函数“即可直接计算出对象的位置。 因此其时间复杂度几乎是：O(1)，即查找时间与问题规模无关！   那么问题就来了，我们如何构造出一个比较好的散列函数，如果多个关键词通过某个散列函数计算出了相同的位置">
+<meta property="og:description" content="散列查找解决的一个基本问题是：如何快速搜索到需要的关键词？ 我们知道查找的本质是已知一个对象，找到该对象的位置。因此如果我们在安排位置时，通过一个”散列函数“来计算出对象的位置进行存放，当要查找这个对象时，再通过相同的”散列函数“即可直接计算出对象的位置。 因此其时间复杂度几乎是：O(1)，即查找时间与问题规模无关！">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-12-16T11:58:21.000Z">
-<meta property="article:modified_time" content="2020-09-23T08:49:49.899Z">
+<meta property="article:modified_time" content="2020-09-23T11:45:39.990Z">
 <meta property="article:author" content="Sillywa">
 <meta property="article:tag" content="散列查找">
 <meta property="article:tag" content="散列表">
@@ -227,7 +227,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-23 16:49:49" itemprop="dateModified" datetime="2020-09-23T16:49:49+08:00">2020-09-23</time>
+                <time title="修改时间：2020-09-23 19:45:39" itemprop="dateModified" datetime="2020-09-23T19:45:39+08:00">2020-09-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -257,10 +257,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>问题：如何快速搜索到需要的关键词？</p>
+        <p>散列查找解决的一个基本问题是：如何快速搜索到需要的关键词？</p>
 <p>我们知道查找的本质是已知一个对象，找到该对象的位置。因此如果我们在安排位置时，通过一个”散列函数“来计算出对象的位置进行存放，当要查找这个对象时，再通过相同的”散列函数“即可直接计算出对象的位置。</p>
 <p>因此其时间复杂度几乎是：O(1)，即查找时间与问题规模无关！</p>
-<!--- more --->
+<a id="more"></a>
 
 <p>那么问题就来了，我们如何构造出一个比较好的散列函数，如果多个关键词通过某个散列函数计算出了相同的位置，我们如何解决这种冲突。</p>
 <p>所以散列查找法的两项基本工作就是：</p>
@@ -462,12 +462,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2019/12/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%913/" rel="prev" title="数据结构——树（下）">
-      <i class="fa fa-chevron-left"></i> 数据结构——树（下）
+    <a href="/2019/12/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%913/" rel="prev" title="堆,哈夫曼树及集合">
+      <i class="fa fa-chevron-left"></i> 堆,哈夫曼树及集合
     </a></div>
       <div class="post-nav-item">
-    <a href="/2019/12/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E5%9B%BE/" rel="next" title="数据结构——图">
-      数据结构——图 <i class="fa fa-chevron-right"></i>
+    <a href="/2019/12/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E5%9B%BE/" rel="next" title="图的结构及遍历">
+      图的结构及遍历 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>

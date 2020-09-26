@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"sillywa.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="前言本文主要介绍常用的 Linux 命令。   Linux系统 pwd 打印当前工作目录 cd 改变目录1234567cd &#x2F;usr&#x2F;bin  绝对路径从根目录出发，到达目标目录cd .&#x2F;usr 相对路径从工作目录出发，到达目标目录cd .. 到达父目录cd(cd ~) 到达家目录，如果未root用户，pwd会打印出 &#x2F;root，其上一层为 根目录&amp;#x2F">
+  <meta name="description" content="前言本文主要介绍常用的 Linux 命令。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="学习Linux基本命令">
 <meta property="og:url" content="https://sillywa.com/2018/12/06/%E5%AD%A6%E4%B9%A0Linux%E5%91%BD%E4%BB%A4%EF%BC%88%E4%B8%80%EF%BC%89/index.html">
 <meta property="og:site_name" content="Sillywa&#39;s Blog">
-<meta property="og:description" content="前言本文主要介绍常用的 Linux 命令。   Linux系统 pwd 打印当前工作目录 cd 改变目录1234567cd &#x2F;usr&#x2F;bin  绝对路径从根目录出发，到达目标目录cd .&#x2F;usr 相对路径从工作目录出发，到达目标目录cd .. 到达父目录cd(cd ~) 到达家目录，如果未root用户，pwd会打印出 &#x2F;root，其上一层为 根目录&amp;#x2F">
+<meta property="og:description" content="前言本文主要介绍常用的 Linux 命令。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-12-06T05:34:03.000Z">
-<meta property="article:modified_time" content="2020-09-23T08:52:28.437Z">
+<meta property="article:modified_time" content="2020-09-23T11:59:26.419Z">
 <meta property="article:author" content="Sillywa">
 <meta property="article:tag" content="Linux 命令">
 <meta name="twitter:card" content="summary">
@@ -224,7 +224,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-23 16:52:28" itemprop="dateModified" datetime="2020-09-23T16:52:28+08:00">2020-09-23</time>
+                <time title="修改时间：2020-09-23 19:59:26" itemprop="dateModified" datetime="2020-09-23T19:59:26+08:00">2020-09-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -254,37 +254,75 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本文主要介绍常用的 Linux 命令。</p>
-<!--- more --->
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文主要介绍常用的 Linux 命令。</p>
+<a id="more"></a>
 
-<h1 id="Linux系统"><a href="#Linux系统" class="headerlink" title="Linux系统"></a>Linux系统</h1><ul>
+<h2 id="Linux系统"><a href="#Linux系统" class="headerlink" title="Linux系统"></a>Linux系统</h2><ul>
 <li><code>pwd</code> 打印当前工作目录</li>
-<li><code>cd</code> 改变目录<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;bin  绝对路径从根目录出发，到达目标目录</span><br><span class="line">cd .&#x2F;usr 相对路径从工作目录出发，到达目标目录</span><br><span class="line">cd .. 到达父目录</span><br><span class="line">cd(cd ~) 到达家目录，如果未root用户，pwd会打印出 &#x2F;root，其上一层为 根目录&#x2F;</span><br><span class="line">cd &#x2F; (cd -) 回到根目录</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-<li><code>ls</code> 列出目录内容<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ls -l 使用长格式显示结果</span><br><span class="line">ls -t 按修改时间排序</span><br><span class="line">ls -r 以相反的顺序显示</span><br><span class="line">ls -S 按文件大小对结果进行排序</span><br><span class="line">ls -R [文件夹] 列出文件树</span><br><span class="line">......</span><br></pre></td></tr></table></figure></li>
-<li><code>file</code> 确定文件类型<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file filename</span><br></pre></td></tr></table></figure></li>
-<li><code>less</code> 查看文件内容<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">less &#x2F;etc&#x2F;passwd</span><br></pre></td></tr></table></figure></li>
+<li><code>cd</code> 改变目录</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/bin  绝对路径从根目录出发，到达目标目录</span><br><span class="line">cd ./usr 相对路径从工作目录出发，到达目标目录</span><br><span class="line">cd .. 到达父目录</span><br><span class="line">cd(cd ~) 到达家目录，如果未root用户，pwd会打印出 /root，其上一层为 根目录/</span><br><span class="line">cd / (cd -) 回到根目录</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>ls</code> 列出目录内容</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ls -l 使用长格式显示结果</span><br><span class="line">ls -t 按修改时间排序</span><br><span class="line">ls -r 以相反的顺序显示</span><br><span class="line">ls -S 按文件大小对结果进行排序</span><br><span class="line">ls -R [文件夹] 列出文件树</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>file</code> 确定文件类型</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file filename</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>less</code> 查看文件内容</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">less /etc/passwd</span><br></pre></td></tr></table></figure>
+
+<ul>
 <li><code>touch</code> 新建文件</li>
 </ul>
-<h1 id="操作文件与目录"><a href="#操作文件与目录" class="headerlink" title="操作文件与目录"></a>操作文件与目录</h1><ul>
-<li><code>mkdir</code> 创建目录<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir dir1              创建单个目录</span><br><span class="line">mkdir dir1 dir2 dir3    创建多个目录</span><br><span class="line">mkdir -p dir&#123;1..9&#125;      创建多个目录a1到a9</span><br><span class="line">mkdir -p a&#123;1..3&#125;&#x2F;b&#123;1..3&#125;创建多个目录a1到a3，并且在每个目录下创建b1到b3</span><br></pre></td></tr></table></figure></li>
-<li><code>cp</code> 复制文件或目录<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cp file1 file2          将文件file1复制到file2中,file2内容将会被覆盖</span><br><span class="line">cp -r dir1 dir2         复制目录时一定要加 -r，如果dir2目录存在，则会复制到dir2目录下和mv是一样的道理</span><br><span class="line">cp file1 file2 dir1     将多个文件复制到一个目录下</span><br></pre></td></tr></table></figure>
-<code>cp</code>命令选项</li>
+<h2 id="操作文件与目录"><a href="#操作文件与目录" class="headerlink" title="操作文件与目录"></a>操作文件与目录</h2><ul>
+<li><code>mkdir</code> 创建目录</li>
 </ul>
-<p><code>cp</code>在覆盖已存在的文件时默认情况下是 <code>cp -i</code>，即需要用户确认，我们可以这样 <code>\cp</code> 即可无需确认</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-i          在覆盖一个已存在的文件前，提示用户进行确认。</span><br><span class="line">-r          递归复制目录及其内容。复制目录时需要这个选项</span><br><span class="line">-u          将文件从一个目录复制到另一个目录时，只会复制目标目录不存在的文件或是目标目录相应文件的更新文件</span><br><span class="line">-v          复制文件时显示信息性消息</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir dir1              创建单个目录</span><br><span class="line">mkdir dir1 dir2 dir3    创建多个目录</span><br><span class="line">mkdir -p dir&#123;1..9&#125;      创建多个目录a1到a9</span><br><span class="line">mkdir -p a&#123;1..3&#125;/b&#123;1..3&#125;创建多个目录a1到a3，并且在每个目录下创建b1到b3</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li><code>mv</code> 重命名或移动文件和目录<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mv item1 item2              将文件或目录item1移动或重命名为item2</span><br><span class="line">mv item1 item2 item3 dir1   将多个条目移动到dir1目录下</span><br></pre></td></tr></table></figure>
-<code>mv</code>命令选项与<code>cp</code>大致相同，<code>mv</code>没有<code>-r</code>选项<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-i          在覆盖一个已存在的文件前，提示用户进行确认。</span><br><span class="line">-u          将文件从一个目录移动到另一个目录时，只会移动目标目录不存在的文件或是目标目录相应文件的更新文件</span><br><span class="line">-v          移动时显示信息性消息</span><br></pre></td></tr></table></figure></li>
-<li><code>rm</code> 删除文件或目录<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rm -r item1 item2 item3         删除item1,item2,item3,删除目录时需要-r</span><br><span class="line">rm *.html                       删除以.html结尾的文件</span><br></pre></td></tr></table></figure>
-<code>rm</code>命令选项<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-i          删除前提示用户确认</span><br><span class="line">-r          递归删除目录及其内容。删除目录时需要这个选项</span><br><span class="line">-f          忽略不存在的文件，并无需提示确认</span><br><span class="line">-v          删除时显示信息性消息</span><br></pre></td></tr></table></figure></li>
-<li><code>ln</code> 创建硬链接和符号链接<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ln file hard-link-name      创建file文件的硬链接</span><br><span class="line">ln -s file sym-link-name    创建file文件的符号链接，符号链接指向源文件，与源文件内容保持一致</span><br></pre></td></tr></table></figure>
-<code>file</code>为相对于<code>sym-link-name</code>的文件，即为相对路径，当然也可以是绝对路径<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s ..&#x2F;file sym-link-name     file在当前目录的父目录中，即file相对于sym-link-name的位置</span><br></pre></td></tr></table></figure>
-
-</li>
+<li><code>cp</code> 复制文件或目录</li>
 </ul>
-<h1 id="读写文件"><a href="#读写文件" class="headerlink" title="读写文件"></a>读写文件</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;I am fine&quot;                        打印 I am fine</span><br><span class="line">echo &quot;I am fine&quot; &gt; &#x2F;root&#x2F;test.txt       将 I am fine写入&#x2F;root&#x2F;test.txt中</span><br><span class="line">echo &quot;I am fine&quot; &gt;&gt; &#x2F;root&#x2F;test.txt      将 I am fine追加到&#x2F;root&#x2F;test.txt末尾</span><br><span class="line">grep &quot;关键字&quot; test.txt                  在test.txt中查找含有关键字的行并打印</span><br><span class="line">grep -v &quot;关键字&quot; test.txt               在test.txt中查找不含有关键字的行并打印</span><br><span class="line">grep ^&quot;关键字&quot; test.txt                 在test.txt中查找以关键字开头的行并打印</span><br><span class="line">grep $&quot;关键字&quot; test.txt                 在test.txt中查找以关键字结尾的行并打印</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cp file1 file2          将文件file1复制到file2中,file2内容将会被覆盖</span><br><span class="line">cp -r dir1 dir2         复制目录时一定要加 -r，如果dir2目录存在，则会复制到dir2目录下和mv是一样的道理</span><br><span class="line">cp file1 file2 dir1     将多个文件复制到一个目录下</span><br></pre></td></tr></table></figure>
 
-<h1 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -l | grep &quot;关键字&quot; &gt; &#x2F;root&#x2F;test.txt  列出当前目录文件信息并交给grep过滤，最后写入&#x2F;root&#x2F;test.txt</span><br></pre></td></tr></table></figure>
+<p><code>cp</code>命令选项</p>
+<p><code>cp</code>在覆盖已存在的文件时默认情况下是 <code>cp -i</code>，即需要用户确认，我们可以这样 <code>\cp</code> 即可无需确认</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-i          在覆盖一个已存在的文件前，提示用户进行确认。</span><br><span class="line">-r          递归复制目录及其内容。复制目录时需要这个选项</span><br><span class="line">-u          将文件从一个目录复制到另一个目录时，只会复制目标目录不存在的文件或是目标目录相应文件的更新文件</span><br><span class="line">-v          复制文件时显示信息性消息</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>mv</code> 重命名或移动文件和目录</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mv item1 item2              将文件或目录item1移动或重命名为item2</span><br><span class="line">mv item1 item2 item3 dir1   将多个条目移动到dir1目录下</span><br></pre></td></tr></table></figure>
+
+<p><code>mv</code>命令选项与<code>cp</code>大致相同，<code>mv</code>没有<code>-r</code>选项</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-i          在覆盖一个已存在的文件前，提示用户进行确认。</span><br><span class="line">-u          将文件从一个目录移动到另一个目录时，只会移动目标目录不存在的文件或是目标目录相应文件的更新文件</span><br><span class="line">-v          移动时显示信息性消息</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>rm</code> 删除文件或目录</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rm -r item1 item2 item3         删除item1,item2,item3,删除目录时需要-r</span><br><span class="line">rm *.html                       删除以.html结尾的文件</span><br></pre></td></tr></table></figure>
+
+<p><code>rm</code>命令选项</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-i          删除前提示用户确认</span><br><span class="line">-r          递归删除目录及其内容。删除目录时需要这个选项</span><br><span class="line">-f          忽略不存在的文件，并无需提示确认</span><br><span class="line">-v          删除时显示信息性消息</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>ln</code> 创建硬链接和符号链接</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ln file hard-link-name      创建file文件的硬链接</span><br><span class="line">ln -s file sym-link-name    创建file文件的符号链接，符号链接指向源文件，与源文件内容保持一致</span><br></pre></td></tr></table></figure>
+
+<p><code>file</code>为相对于<code>sym-link-name</code>的文件，即为相对路径，当然也可以是绝对路径</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s ../file sym-link-name     file在当前目录的父目录中，即file相对于sym-link-name的位置</span><br></pre></td></tr></table></figure>
+
+<h1 id="读写文件"><a href="#读写文件" class="headerlink" title="读写文件"></a>读写文件</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;I am fine&quot;                        打印 I am fine</span><br><span class="line">echo &quot;I am fine&quot; &gt; /root/test.txt       将 I am fine写入/root/test.txt中</span><br><span class="line">echo &quot;I am fine&quot; &gt;&gt; /root/test.txt      将 I am fine追加到/root/test.txt末尾</span><br><span class="line">grep &quot;关键字&quot; test.txt                  在test.txt中查找含有关键字的行并打印</span><br><span class="line">grep -v &quot;关键字&quot; test.txt               在test.txt中查找不含有关键字的行并打印</span><br><span class="line">grep ^&quot;关键字&quot; test.txt                 在test.txt中查找以关键字开头的行并打印</span><br><span class="line">grep $&quot;关键字&quot; test.txt                 在test.txt中查找以关键字结尾的行并打印</span><br></pre></td></tr></table></figure>
+
+<h2 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -l | grep &quot;关键字&quot; &gt; /root/test.txt  列出当前目录文件信息并交给grep过滤，最后写入/root/test.txt</span><br></pre></td></tr></table></figure>
+
     </div>
 
     
@@ -367,7 +405,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.</span> <span class="nav-text">Linux系统</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E6%96%87%E4%BB%B6%E4%B8%8E%E7%9B%AE%E5%BD%95"><span class="nav-number">3.</span> <span class="nav-text">操作文件与目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%BB%E5%86%99%E6%96%87%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">读写文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%A1%E9%81%93"><span class="nav-number">5.</span> <span class="nav-text">管道</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.</span> <span class="nav-text">Linux系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E6%96%87%E4%BB%B6%E4%B8%8E%E7%9B%AE%E5%BD%95"><span class="nav-number">3.</span> <span class="nav-text">操作文件与目录</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%BB%E5%86%99%E6%96%87%E4%BB%B6"><span class="nav-number"></span> <span class="nav-text">读写文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%A1%E9%81%93"><span class="nav-number">1.</span> <span class="nav-text">管道</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

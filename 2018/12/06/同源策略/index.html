@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"sillywa.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="“同源政策”是浏览器安全的基石，其设计目的是为了保证信息安全，防止恶意的网站窃取数据。所谓“同源”必须满足以下三个方面：  协议相同 域名相同 端口相同（默认端口是80，可以省略）    如果是非同源的，以下行为会受到限制：  Cookie、LocalStorage和IndexDB无法读取 DOM无法获取 AJAX请求不能发送  接下来我们主要讲解如何解决以上三个方面的问题。 一、CookieCo">
+  <meta name="description" content="“同源政策”是浏览器安全的基石，其设计目的是为了保证信息安全，防止恶意的网站窃取数据。所谓“同源”必须满足以下三个方面：  协议相同 域名相同 端口相同（默认端口是80，可以省略）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="同源策略及其解决方案">
 <meta property="og:url" content="https://sillywa.com/2018/12/06/%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5/index.html">
 <meta property="og:site_name" content="Sillywa&#39;s Blog">
-<meta property="og:description" content="“同源政策”是浏览器安全的基石，其设计目的是为了保证信息安全，防止恶意的网站窃取数据。所谓“同源”必须满足以下三个方面：  协议相同 域名相同 端口相同（默认端口是80，可以省略）    如果是非同源的，以下行为会受到限制：  Cookie、LocalStorage和IndexDB无法读取 DOM无法获取 AJAX请求不能发送  接下来我们主要讲解如何解决以上三个方面的问题。 一、CookieCo">
+<meta property="og:description" content="“同源政策”是浏览器安全的基石，其设计目的是为了保证信息安全，防止恶意的网站窃取数据。所谓“同源”必须满足以下三个方面：  协议相同 域名相同 端口相同（默认端口是80，可以省略）">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-12-06T05:32:16.000Z">
-<meta property="article:modified_time" content="2020-09-23T08:50:57.352Z">
+<meta property="article:modified_time" content="2020-09-23T11:57:04.833Z">
 <meta property="article:author" content="Sillywa">
 <meta property="article:tag" content="浏览器">
 <meta name="twitter:card" content="summary">
@@ -224,7 +224,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-23 16:50:57" itemprop="dateModified" datetime="2020-09-23T16:50:57+08:00">2020-09-23</time>
+                <time title="修改时间：2020-09-23 19:57:04" itemprop="dateModified" datetime="2020-09-23T19:57:04+08:00">2020-09-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -260,7 +260,7 @@
 <li>域名相同</li>
 <li>端口相同（默认端口是80，可以省略）</li>
 </ol>
-<!--- more --->
+<a id="more"></a>
 
 <p>如果是非同源的，以下行为会受到限制：</p>
 <ul>
@@ -269,17 +269,13 @@
 <li><code>AJAX</code>请求不能发送</li>
 </ul>
 <p>接下来我们主要讲解如何解决以上三个方面的问题。</p>
-<h3 id="一、Cookie"><a href="#一、Cookie" class="headerlink" title="一、Cookie"></a>一、Cookie</h3><p><code>Cookie</code>只有同源的网站才能获取，但是如果两个网页的一级域名相同，只是二级域名不同，可以设置相同的<code>document.domain</code>，两个网页就可以共享<code>cookie</code>了。</p>
+<h2 id="一、Cookie"><a href="#一、Cookie" class="headerlink" title="一、Cookie"></a>一、Cookie</h2><p><code>Cookie</code>只有同源的网站才能获取，但是如果两个网页的一级域名相同，只是二级域名不同，可以设置相同的<code>document.domain</code>，两个网页就可以共享<code>cookie</code>了。</p>
 <blockquote>
-<p>很多人都误把带<code>www</code>当成一级域名，把其他前缀的当成二级域名，是错误的。正确的域名划分为：</p>
-<ol>
-<li>顶级域名：<code>.com</code></li>
-<li>一级域名：<code>baidu.com</code></li>
-<li>二级域名：<code>tieba.baidu.com</code></li>
-</ol>
+<p>很多人都误把带<code>www</code>当成一级域名，把其他前缀的当成二级域名，是错误的。正确的域名划分为：<br>1.顶级域名：<code>.com</code><br>2.一级域名：<code>baidu.com</code><br>3.二级域名：<code>tieba.baidu.com</code></p>
 <p>举例来说，A网页是<code>http://w1.sillywa.com/a.html</code>，B网页是<code>http://w2.sillywa.com/b.html</code>，我们可以设置</p>
 </blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.domain = <span class="string">&#x27;sillywa.com&#x27;</span></span><br></pre></td></tr></table></figure>
+
 <p>这样两个网页就可以共享<code>Cookie</code>了。</p>
 <p>注意，这种方法只是用于<code>Cookie</code>和<code>iframe</code>，<code>LocalStorage</code>和<code>IndexDB</code>无法通过这种方法规避同源政策，而是要是用<code>PostMessage API</code>，下面我们会介绍。</p>
 <h3 id="二、iframe"><a href="#二、iframe" class="headerlink" title="二、iframe"></a>二、iframe</h3><p>如果两个网页不同源，就没法拿到对方的<code>DOM</code>。典型的例子是<code>iframe</code>窗口和用<code>window.open</code>方法打开的窗口，它们与父窗口无法通信。</p>
@@ -292,16 +288,21 @@
 <h4 id="1-片段标识符"><a href="#1-片段标识符" class="headerlink" title="1.片段标识符"></a>1.片段标识符</h4><p>片段标识符指的是<code>URL</code>中<code>#</code>后面的内容，比如<code>http://sillywa.com/a.html#fragment</code>中的<code>#fragment</code>，如果只是改变片段标识符，页面不会重新刷新。</p>
 <p>父窗口可以把信息写入子窗口的片段标识符：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> src = originURL + <span class="string">&#x27;#&#x27;</span> + data</span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">&#x27;myIframe&#x27;</span>).src = src</span><br></pre></td></tr></table></figure>
+
 <p>子窗口通过监听<code>hashchange</code>事件得到通知：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onhashchange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">window</span>.location.hash)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h4 id="2-window-name"><a href="#2-window-name" class="headerlink" title="2.window.name"></a>2.window.name</h4><p>浏览器窗口有<code>window.name</code>属性。这个属性的最大特点是，无论是否同源，只要在同一个窗口里，前一个网页设置了这个属性，后一个网页可以读取它。</p>
 <h4 id="3-window-postMessage"><a href="#3-window-postMessage" class="headerlink" title="3. window.postMessage"></a>3. window.postMessage</h4><p><code>HTML5</code>为了解决跨窗口通讯问题引入了一个新的<code>API</code>：跨文档通信<code>API</code>。这个<code>API</code>为<code>window</code>新增了一个<code>window.postMessage()</code>方法，允许跨窗口通讯，不论这两个窗口是否同源。举例来说：假设父窗口为：<code>http://aaa.com</code>，子窗口为：<code>http://bbb.com</code></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 父窗口向子窗口发送消息</span></span><br><span class="line"><span class="keyword">var</span> popup = <span class="built_in">window</span>.open(<span class="string">&#x27;http://bbb.com&#x27;</span>, <span class="string">&#x27;title&#x27;</span>);</span><br><span class="line">popup.postMessage(<span class="string">&#x27;Hello World!&#x27;</span>, <span class="string">&#x27;http://bbb.com&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
 <p><code>postMessage()</code>方法的第一个参数是具体的信息内容，第二个参数是接收消息的窗口的源（<code>origin</code>），即”协议 + 域名 + 端口”。也可以设为*，表示不限制域名，向所有窗口发送。</p>
 <p>同样，子窗口向父窗口发送消息可以这样写：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.opener.postMessage(<span class="string">&#x27;Nice to see you&#x27;</span>, <span class="string">&#x27;http://aaa.com&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
 <p>父窗口和子窗口都可以通过<code>message</code>事件，监听对方的消息：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">&#x27;message&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(e.data)</span><br><span class="line">&#125;,<span class="literal">false</span>)</span><br></pre></td></tr></table></figure>
+
 <p><code>message</code>事件的<code>event</code>对象有以下三个属性：</p>
 <ol>
 <li><code>event.source：</code>发送消息的窗口</li>
@@ -310,6 +311,7 @@
 </ol>
 <p>下面的例子是，子窗口通过<code>event.source</code>属性引用父窗口，然后发送消息。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">&#x27;message&#x27;</span>, receiveMessage);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">receiveMessage</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  event.source.postMessage(<span class="string">&#x27;Nice to see you!&#x27;</span>, <span class="string">&#x27;*&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>如果我们将发送的消息改为<code>LocalStorage</code>，则可以互相读取<code>LocalStorage</code>。</p>
 <h3 id="三、AJAX"><a href="#三、AJAX" class="headerlink" title="三、AJAX"></a>三、AJAX</h3><p>同样<code>AJAX</code>请求也会受到同源策略的影响，除了使用代理服务器外，还有一下方法可以实现跨域：</p>
 <ul>
@@ -319,11 +321,13 @@
 </ul>
 <h4 id="1-jsonp"><a href="#1-jsonp" class="headerlink" title="1.jsonp"></a>1.jsonp</h4><p><code>jsonp</code>想必大家都很了解，其由两部分组成：回调函数和数据。其基本思路是：动态插入<code>script</code>标签，向服务器请求<code>json</code>数据，返回的数据将在回调函数里获得。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addScriptTag</span>(<span class="params">src</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">  script.setAttribute(<span class="string">&quot;type&quot;</span>,<span class="string">&quot;text/javascript&quot;</span>);</span><br><span class="line">  script.src = src;</span><br><span class="line">  <span class="built_in">document</span>.body.appendChild(script);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 定义回调函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;Your public IP address is: &#x27;</span> + data.ip);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  addScriptTag(<span class="string">&#x27;http://example.com/ip?callback=foo&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>上面代码通过动态添加<code>&lt;script&gt;</code>元素，向服务器<code>example.com</code>发出请求。注意，该请求的查询字符串有一个<code>callback</code>参数，用来指定回调函数的名字，这对于<code>JSONP</code>是必需的。</p>
 <h4 id="2-WebScoket"><a href="#2-WebScoket" class="headerlink" title="2.WebScoket"></a>2.WebScoket</h4><p><code>WebScoket</code>不同于<code>http</code>，它提供一种双向通讯的功能，即客户端可以向服务器请求数据，同时服务器也可以向客户端发送数据。而<code>http</code>只能是单向的。</p>
 <p>同时<code>WebScoket</code>使用<code>ws:\//</code>（非加密）和<code>wss:\//</code>（加密）作为协议前缀。该协议不实行同源政策，只要服务器支持，就可以通过它进行跨源通信。</p>
 <p>要创建<code>WebScoket</code>，先实例化一个<code>WebScoket</code>对象并传入要连接的<code>URL</code>：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> scoket = <span class="keyword">new</span> WebScoket(<span class="string">&quot;ws://www.example.com/server.php&quot;</span>)</span><br></pre></td></tr></table></figure>
+
 <p>实例化<code>WebScoket</code>对象之后，浏览器会马上尝试建立连接。与<code>XHR</code>类似，<code>WebScoket</code>也有一系列表示当前状态的<code>readyState</code>属性，如下：</p>
 <ul>
 <li><code>WebScoket.OPENING</code>  (0)：正在建立连接</li>
@@ -337,19 +341,26 @@
 
 <p><code>WebScoket</code>连接之后，就可以发送和就收数据。要发送数据可以调用<code>send()</code>方法，并传入字符串，例如：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> scoket = <span class="keyword">new</span> WebScoket(<span class="string">&quot;ws://www.example.com/server.php&quot;</span>)</span><br><span class="line">scoket.send(<span class="string">&#x27;hello word&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
 <p>因为<code>WebScoket</code>只能发送纯文本数据，所以对于复杂的数据类型我们应先将其序列化转化为json字符串</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> message = &#123;</span><br><span class="line">    name: <span class="string">&#x27;sillywa&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line">scoket.send(<span class="built_in">JSON</span>.stringify(message))</span><br></pre></td></tr></table></figure>
+
 <p>同样服务器必须先解析再读取数据。</p>
 <p>当服务器向客户端发来消息时，<code>WebScoket</code>对象就会触发<code>message</code>事件。这个<code>message</code>事件与其它传递消息的协议类似，也就是把返回的数据保存在<code>event.data</code>的属性中。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scoket.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(event.data)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>与通过<code>send()</code>发送到服务器的数据一样，<code>event.data</code>中返回的数据也是字符串。</p>
 <p><code>WebScoket</code>对象还有其他三个事件，在连接生命周期的不同阶段触发。</p>
 <ul>
 <li><code>open：</code>在成功建立连接时触发</li>
 <li><code>error</code>：在发生错误时触发，连接不能持续</li>
-<li><code>close：</code>在连接关闭时触发<br><code>WebScoket</code>对象不支持<code>DOM2</code>级事件侦听器，因此必须使用<code>DOM0</code>级语法分别定义每个事件处理程序。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> scoket = <span class="keyword">new</span> WebScoket(<span class="string">&quot;ws://www.example.com/server.php&quot;</span>)</span><br><span class="line">scoket.onopen = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;connection start&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line">scoket.onerror = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;connection error&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line">scoket.onclose = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(event)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-在这三个事件中只有<code>close</code>的<code>event</code>对象有额外的信息。这个事件的对象有三个额外的属性：<code>wasClean、code、reason</code>。其中<code>wasClean</code>是一个布尔值，表示连接是否已经明确地关闭；<code>code</code>是服务器返回的数值状态码；<code>reason</code>是一个字符串，包含服务器发回的信息。<h4 id="3-CORS"><a href="#3-CORS" class="headerlink" title="3.CORS"></a>3.CORS</h4><code>CORS</code>是一个<code>W3C</code>标准，全称是”跨域资源共享”（<code>Cross-origin resource sharing</code>）。</li>
+<li><code>close：</code>在连接关闭时触发</li>
 </ul>
+<p><code>WebScoket</code>对象不支持<code>DOM2</code>级事件侦听器，因此必须使用<code>DOM0</code>级语法分别定义每个事件处理程序。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> scoket = <span class="keyword">new</span> WebScoket(<span class="string">&quot;ws://www.example.com/server.php&quot;</span>)</span><br><span class="line">scoket.onopen = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;connection start&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line">scoket.onerror = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;connection error&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line">scoket.onclose = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(event)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这三个事件中只有<code>close</code>的<code>event</code>对象有额外的信息。这个事件的对象有三个额外的属性：<code>wasClean、code、reason</code>。其中<code>wasClean</code>是一个布尔值，表示连接是否已经明确地关闭；<code>code</code>是服务器返回的数值状态码；<code>reason</code>是一个字符串，包含服务器发回的信息。</p>
+<h4 id="3-CORS"><a href="#3-CORS" class="headerlink" title="3.CORS"></a>3.CORS</h4><p><code>CORS</code>是一个<code>W3C</code>标准，全称是”跨域资源共享”（<code>Cross-origin resource sharing</code>）。</p>
 <p>它允许浏览器向跨源服务器，发出<code>XMLHttpRequest</code>请求，从而克服了<code>AJAX</code>只能同源使用的限制。</p>
 <p>相比<code>jsonp</code>只能发送<code>get</code>请求，<code>CORS</code>允许发送任何类型的请求。但<code>CORS</code>要求浏览器和服务器同时支持。目前所有浏览器都支持，<code>IE</code>需要<code>IE10</code>以上。</p>
 <p>整个<code>CORS</code>通讯过程中都是浏览器自动完成，不需要用户的参与。<code>CORS</code>通讯和同源的<code>AJAX</code>请求没有区别。浏览器一旦发现<code>AJAX</code>请求跨域，就会自动添加一些头部信息，有时候还会多出一次附加请求。</p>
@@ -460,7 +471,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81Cookie"><span class="nav-number">1.</span> <span class="nav-text">一、Cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81iframe"><span class="nav-number">2.</span> <span class="nav-text">二、iframe</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E7%89%87%E6%AE%B5%E6%A0%87%E8%AF%86%E7%AC%A6"><span class="nav-number">2.1.</span> <span class="nav-text">1.片段标识符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-window-name"><span class="nav-number">2.2.</span> <span class="nav-text">2.window.name</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-window-postMessage"><span class="nav-number">2.3.</span> <span class="nav-text">3. window.postMessage</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81AJAX"><span class="nav-number">3.</span> <span class="nav-text">三、AJAX</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-jsonp"><span class="nav-number">3.1.</span> <span class="nav-text">1.jsonp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-WebScoket"><span class="nav-number">3.2.</span> <span class="nav-text">2.WebScoket</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-CORS"><span class="nav-number">3.3.</span> <span class="nav-text">3.CORS</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81Cookie"><span class="nav-number">1.</span> <span class="nav-text">一、Cookie</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81iframe"><span class="nav-number">1.1.</span> <span class="nav-text">二、iframe</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E7%89%87%E6%AE%B5%E6%A0%87%E8%AF%86%E7%AC%A6"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.片段标识符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-window-name"><span class="nav-number">1.1.2.</span> <span class="nav-text">2.window.name</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-window-postMessage"><span class="nav-number">1.1.3.</span> <span class="nav-text">3. window.postMessage</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81AJAX"><span class="nav-number">1.2.</span> <span class="nav-text">三、AJAX</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-jsonp"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.jsonp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-WebScoket"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.WebScoket</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-CORS"><span class="nav-number">1.2.3.</span> <span class="nav-text">3.CORS</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

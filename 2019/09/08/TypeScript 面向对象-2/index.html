@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"sillywa.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="前面介绍了 TypeScript 面向对象的基本特性，现在我们接着前面继续学习 TypeScript 面向对象的其他特性，包含 readonly 修饰符、参数属性、存储器、静态属性、抽象类。   readonly 修饰符readonly 关键字将属性设置为只读的，只读属性必须在声明时或构造函数里被初始化。 1234567891011121314151617181920212223class Per">
+  <meta name="description" content="前面介绍了 TypeScript 面向对象的基本特性，现在我们接着前面继续学习 TypeScript 面向对象的其他特性，包含 readonly 修饰符、参数属性、存储器、静态属性、抽象类。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TypeScript 面向对象(二)">
 <meta property="og:url" content="https://sillywa.com/2019/09/08/TypeScript%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-2/index.html">
 <meta property="og:site_name" content="Sillywa&#39;s Blog">
-<meta property="og:description" content="前面介绍了 TypeScript 面向对象的基本特性，现在我们接着前面继续学习 TypeScript 面向对象的其他特性，包含 readonly 修饰符、参数属性、存储器、静态属性、抽象类。   readonly 修饰符readonly 关键字将属性设置为只读的，只读属性必须在声明时或构造函数里被初始化。 1234567891011121314151617181920212223class Per">
+<meta property="og:description" content="前面介绍了 TypeScript 面向对象的基本特性，现在我们接着前面继续学习 TypeScript 面向对象的其他特性，包含 readonly 修饰符、参数属性、存储器、静态属性、抽象类。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-09-08T07:42:57.000Z">
-<meta property="article:modified_time" content="2020-09-23T08:55:31.679Z">
+<meta property="article:modified_time" content="2020-09-23T08:58:57.493Z">
 <meta property="article:author" content="Sillywa">
 <meta property="article:tag" content="TS">
 <meta name="twitter:card" content="summary">
@@ -224,7 +224,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-23 16:55:31" itemprop="dateModified" datetime="2020-09-23T16:55:31+08:00">2020-09-23</time>
+                <time title="修改时间：2020-09-23 16:58:57" itemprop="dateModified" datetime="2020-09-23T16:58:57+08:00">2020-09-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -255,7 +255,7 @@
 
       
         <p>前面介绍了 TypeScript 面向对象的基本特性，现在我们接着前面继续学习 TypeScript 面向对象的其他特性，包含 readonly 修饰符、参数属性、存储器、静态属性、抽象类。</p>
-<!--- more --->
+<a id="more"></a>
 
 <h2 id="readonly-修饰符"><a href="#readonly-修饰符" class="headerlink" title="readonly 修饰符"></a>readonly 修饰符</h2><p>readonly 关键字将属性设置为只读的，只读属性必须在声明时或构造函数里被初始化。</p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Person &#123;</span><br><span class="line">  <span class="keyword">readonly</span> name: <span class="built_in">string</span>;</span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params">my_name: <span class="built_in">string</span>, <span class="keyword">readonly</span> age: <span class="built_in">number</span></span>) &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = my_name;</span><br><span class="line">  &#125;</span><br><span class="line">  getName(): <span class="built_in">string</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.name;</span><br><span class="line">  &#125;</span><br><span class="line">  getAge(): <span class="built_in">number</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> p1 = <span class="keyword">new</span> Person(<span class="string">&quot;sillywa&quot;</span>, <span class="number">23</span>);</span><br><span class="line"></span><br><span class="line">p1.getName();</span><br><span class="line">p1.getAge();</span><br><span class="line">p1.name;</span><br><span class="line">p1.age;</span><br><span class="line"></span><br><span class="line">p1.name = <span class="string">&quot;hahah&quot;</span>;      <span class="comment">// 错误，name是只读属性</span></span><br><span class="line">p1.age = <span class="number">45</span>;            <span class="comment">// 错误，age是只读属性</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>

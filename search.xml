@@ -158,6 +158,143 @@
       </tags>
   </entry>
   <entry>
+    <title>防抖和节流</title>
+    <url>/2021/02/28/%E9%98%B2%E6%8A%96%E5%92%8C%E8%8A%82%E6%B5%81/</url>
+    <content><![CDATA[<p>前面在实现 Vue 里面的滚动加载时，我们监听页面的滚动事件，然后不断获取元素距离页面顶部的距离。</p>
+<a id="more"></a>
+
+<p>代码如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">window</span>.onscroll = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> el = <span class="built_in">document</span>.querySelector(<span class="string">&quot;.el&quot;</span>)</span><br><span class="line">    <span class="keyword">const</span> viewPortHeight = <span class="built_in">window</span>.innerHeight || <span class="built_in">document</span>.documentElement.clientHeight || <span class="built_in">document</span>.body.clientHeight </span><br><span class="line">    <span class="keyword">const</span> top = el.getBoundingClientRect() &amp;&amp; el.getBoundingClientRect().top</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;top&#x27;</span>, top)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但是在执行过程中，当我们轻轻滚动一下，浏览器会打印出很多 top 的值，说明函数执行的频率相当高。</p>
+<p>但是我们不希望页面的滚动事件频繁的执行，毕竟浏览器的性能是有限的，所以对于这种情况就需要我们进行优化。</p>
+<h2 id="防抖（debounce）"><a href="#防抖（debounce）" class="headerlink" title="防抖（debounce）"></a>防抖（debounce）</h2><p>基于以上需求，首先提出一种思路：<strong>在第一次触发事件的时候，不立即执行函数，而是等待一个时间期限 delay</strong>然后：</p>
+<ul>
+<li>如果在这个时间 delay 内没有再次触发该事件，那么久执行函数</li>
+<li>如果在这个事件 delay 内再次触发该事件，那么当前的计时器取消，重新开始计时</li>
+</ul>
+<p>实现效果：短时间内大量触发同一事件，只执行一次函数</p>
+<p>实现：根据以上分析，我们肯定需要使用 setTimeout 这个函数，同时还需要保存计时器，以方便后续取消计时。那么函数的实现方法如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">fn 为需要防抖的函数</span></span><br><span class="line"><span class="comment">delay 为时间期限</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">fn, delay</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 初始化计时器</span></span><br><span class="line">	<span class="keyword">let</span> timer = <span class="literal">null</span></span><br><span class="line">	<span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(timer) &#123;</span><br><span class="line">            <span class="comment">// 如果正在进行一个计时过程，说明在 delay 事件内重复触发该事件，所以取消当前的计时</span></span><br><span class="line">			<span class="built_in">clearTimeout</span>(timer)</span><br><span class="line">		&#125;</span><br><span class="line">        <span class="comment">// 新建一个计时器</span></span><br><span class="line">		timer = <span class="built_in">setTimeout</span>(fn, delay)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后可以配合之前的代码进行使用：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">window</span>.onscroll = debounce(showTop, <span class="number">1000</span>)</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showTop</span>(<span class="params">el</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> viewPortHeight = <span class="built_in">window</span>.innerHeight || <span class="built_in">document</span>.documentElement.clientHeight || <span class="built_in">document</span>.body.clientHeight </span><br><span class="line">    <span class="keyword">const</span> top = el.getBoundingClientRect() &amp;&amp; el.getBoundingClientRect().top</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;top&#x27;</span>, top)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此时运行代码并滚动，会发现必须停止滚动 1000ms以后，才会打印出 top 的值。</p>
+<p>这样我们就是先了防抖函数，现在给出防抖的定义：</p>
+<blockquote>
+<p>短时间内连续触发相同的事件,防抖就是让在某个时间期限内事件处理函数只执行一次</p>
+</blockquote>
+<h2 id="节流（throttle）"><a href="#节流（throttle）" class="headerlink" title="节流（throttle）"></a>节流（throttle）</h2><p>思考上面方案就可以发现一个问题：<strong>在限定时间内不断触发事件,只要不停止触发,理论上就永远不会执行函数输出结果。</strong></p>
+<p>但是如果我们希望：<strong>即使用户不断触发事件,也能在某个时间间隔之后给出反馈呢</strong>。</p>
+<p>其实这就类似于<strong>定时开放的函数，也就是让函数执行一次后，在某个时间段内暂时失去效果，即使触发事件，函数也不会执行，过了这段时间再重新激活（类似于技能冷却）。</strong></p>
+<p>实现效果：如果短时间内大量触发同一事件，那么在函数执行一次之后，该函数在指定的时间期限内不再工作，直至过了这段时间才重新生效。</p>
+<p>实现：这里可以借助 setTimeout 来实现，并加上一个状态位 valid 表示函数是否可执行。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">fn ,delay</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 初始化 valid = true 表示函数可执行</span></span><br><span class="line">    <span class="keyword">let</span> valid = <span class="literal">true</span></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!valid) &#123;</span><br><span class="line">            <span class="comment">// 如果函数不可执行，直接 return</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 如果函数可执行， 放入任务队列等待执行</span></span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            fn()</span><br><span class="line">            <span class="comment">// 函数执行完成，valid 设为 true 表示函数可执行</span></span><br><span class="line">            valid = <span class="literal">true</span></span><br><span class="line">        &#125;, delay)</span><br><span class="line">        <span class="comment">// valid 设为 false，表示正在等待执行该函数，函数暂时不可用</span></span><br><span class="line">        valid = <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是，节流函数并不止上面这种方案，也可以直接将 setTimeout 返回的标记当作条件判断当前定时器是否存在，如果存在表示还在冷却，并且在执行 fn 之后消除定时器表示激活。</p>
+<h2 id="应用场景举例"><a href="#应用场景举例" class="headerlink" title="应用场景举例"></a>应用场景举例</h2><ol>
+<li>搜索框 input 事件，例如要支持输入实时搜索可以使用节流方案（间隔一段时间就必须查询相关内容），或者实现输入间隔大于某个值，就当作用户输入完成，然后开始搜索</li>
+<li>页面 resize 事件，常用于需要做页面适配的时候。需要根据最终呈现的页面情况进行 DOM 渲染，这种情况一般用防抖，因为只需要判断最后一次的变化情况</li>
+<li>页面滚动实现懒加载，可以使用防抖，因此在页面滚动过程中最终都会无法滚动，从而执行函数。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>JavaScript 基础</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Vue中实现滚动加载</title>
+    <url>/2021/02/28/Vue%E4%B8%AD%E5%AE%9E%E7%8E%B0%E6%BB%9A%E5%8A%A8%E5%8A%A0%E8%BD%BD/</url>
+    <content><![CDATA[<p>最近在做一个 vue 商城的项目，项目中要求首先加载第一页商城的商品列表，当用户滚动查看商品时，在快到达列表底部的时候提前加载第一页商品列表，即诸如淘宝、天猫、京东商城的滚动懒加载。</p>
+<a id="more"></a>
+
+<p>分析需求：关键是如何判断在滚动的时候到达列表底部。我们可以在列表底部放一个 div ，判断该 div 出现在可视区域中的时候，即滚动到列表底部。那么如何判断一个元素是否在可视区域中出现呢？</p>
+<h2 id="判断元素是否出现在可视区域"><a href="#判断元素是否出现在可视区域" class="headerlink" title="判断元素是否出现在可视区域"></a>判断元素是否出现在可视区域</h2><p>首先我们来总结一下几个关键的概念</p>
+<h3 id="偏移量"><a href="#偏移量" class="headerlink" title="偏移量"></a>偏移量</h3><p>偏移量（offset dimension），元素的可见大小由其高度、宽度决定，包括所有的内边距、滚动条和边框大小，<strong>不包含外边距</strong>。以下是获取元素偏移量的方法：</p>
+<ul>
+<li><p>offsetHeight = content + padding + border + scrollX</p>
+<p>元素在垂直方向上占用的空间大小，以像素计算。包含元素的高度、边框、内边距和元素的水平滚动条（如果存在且渲染的话），不包含:before或:after等伪类元素的高度。</p>
+<p>如果元素被隐藏（例如 元素或者元素的祖先之一的元素的style.display被设置为none），则返回0</p>
+<p>这个属性会被四舍五入为整数，如果需要一个浮点数值，请使用 <code>element.getBoundingClientRect()</code></p>
+</li>
+<li><p>offsetWidth =  content + padding + border + scrollY</p>
+<p>元素在水平方向上占用的空间大小，以像素计算。包含元素的宽度、边框、内边距和元素的竖直滚动条（如果存在且渲染的话），不包含:before或:after等伪类元素的高度。</p>
+</li>
+<li><p>offsetLeft</p>
+<p>元素的左外边框至包含元素的左内边框之间的像素值。</p>
+</li>
+<li><p>offsetTop</p>
+<p>元素的上外边框至包含元素的上内边框之间的像素距离。</p>
+</li>
+</ul>
+<p>如下图所示：</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/11/7/166ec314e1bda0b5?w=532&h=307&f=png&s=27678" alt="偏移量图示"></p>
+<h3 id="客户区域大小"><a href="#客户区域大小" class="headerlink" title="客户区域大小"></a>客户区域大小</h3><p>客户区域大小有以下两个属性：</p>
+<ul>
+<li><p>clientWidth = content + padding</p>
+<p>clientWidth是元素内容区域宽度加上左右内边距宽度</p>
+</li>
+<li><p>clientHeight = content + padding</p>
+<p>clientWidth是元素内容区域高度加上左右内边距高度</p>
+</li>
+</ul>
+<p>可以通过如下方法来确定浏览器视口大小：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> viewPort = &#123;</span><br><span class="line">	width: <span class="built_in">document</span>.body.clientWidth || <span class="built_in">document</span>.documentElement.clientWidth,</span><br><span class="line">	height: <span class="built_in">document</span>.body.clientHeight || <span class="built_in">document</span>.documentElement.clientHeight</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>客户区大小不包括滚动条、边框、外边距。</p>
+<h3 id="滚动大小"><a href="#滚动大小" class="headerlink" title="滚动大小"></a>滚动大小</h3><ul>
+<li>scrollHeight：在没有滚动条的情况下，元素内容的总高度，即 clientHeight</li>
+<li>scrollWidth</li>
+<li>scrollLeft：被隐藏在内容区域左侧的像素数。通过设置这个属性可以改变元素的滚动位置。</li>
+<li>scrollTop</li>
+</ul>
+<p>scrollWidth 和 scrollHeight 主要用于确定元素内容的实际大小。</p>
+<p>scrollLeft 和 scrollTop属性既可以确定元素当前滚动的状态，也可以设置元素的滚动位 置。在元素尚未被滚动时，这两个属性的值都等于 0。如果元素被垂直滚动了，那么 scrollTop 的值 会大于 0，且表示元素上方不可见内容的像素高度。如果元素被水平滚动了，那么 scrollLeft 的值会 大于 0，且表示元素左侧不可见内容的像素宽度。这两个属性都是可以设置的，因此将元素的 scrollLeft 和 scrollTop 设置为 0，就可以重置元素的滚动位置。</p>
+<h3 id="确定元素大小"><a href="#确定元素大小" class="headerlink" title="确定元素大小"></a>确定元素大小</h3><p>getBoundingClientRect：一般来 说，right 和 left 的差值与 offsetWidth 的值相等，而 bottom 和 top 的差值与 offsetHeight 相等。</p>
+<h3 id="实现判断元素在可视区内"><a href="#实现判断元素在可视区内" class="headerlink" title="实现判断元素在可视区内"></a>实现判断元素在可视区内</h3><ol>
+<li><p>方法一</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isInViewPort</span>(<span class="params">el</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">const</span> viewPortHeight = <span class="built_in">window</span>.innerHeight || <span class="built_in">document</span>.body.clientHeight || <span class="built_in">document</span>.documentElement.clientHeight</span><br><span class="line">	<span class="keyword">const</span> elOffsetTop = el.offsetTop</span><br><span class="line">	<span class="keyword">const</span> dScrollTop = <span class="built_in">document</span>.documentElement.scrollTop</span><br><span class="line">	<span class="keyword">const</span> top = elOffsetTop - dScrollTop</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> top &lt;= viewPortHeight</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="2">
+<li><p>方法二</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isInViewPort</span> (<span class="params">el</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> viewPortHeight = <span class="built_in">window</span>.innerHeight || <span class="built_in">document</span>.documentElement.clientHeight || <span class="built_in">document</span>.body.clientHeight </span><br><span class="line">    <span class="keyword">const</span> top = el.getBoundingClientRect() &amp;&amp; el.getBoundingClientRect().top</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;top&#x27;</span>, top)</span><br><span class="line">    <span class="keyword">return</span> top  &lt;= viewPortHeight</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="Vue-滚动加载的实现"><a href="#Vue-滚动加载的实现" class="headerlink" title="Vue 滚动加载的实现"></a>Vue 滚动加载的实现</h2><p>设计一个 FooterLine 组件，判断该组件是否将要出现在视图中，如将要出现则进行加载。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class&#x3D;&quot;footer&quot;&gt;</span><br><span class="line">    &lt;p&gt;加载中...&lt;&#x2F;p&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  export default &#123;</span><br><span class="line">    name: &quot;FooterLine&quot;, </span><br><span class="line">  &#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">.footer &#123;</span><br><span class="line">  font-size: 12px;</span><br><span class="line">  position: relative;</span><br><span class="line">  text-align: center;</span><br><span class="line">  margin:12px;</span><br><span class="line">&#125;</span><br><span class="line">.footer p::after, .footer p::before &#123;</span><br><span class="line">  content:&quot;&quot;;</span><br><span class="line">  position: absolute;</span><br><span class="line">  width:40%;</span><br><span class="line">  height: 1px;</span><br><span class="line">  background: #bab6b6;</span><br><span class="line">  top: 6px;</span><br><span class="line">  right: 0;</span><br><span class="line">&#125;</span><br><span class="line"> .footer p::before &#123;</span><br><span class="line">   left: 0;</span><br><span class="line"> &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+
+<p>接下来监听页面的滚动事件，当 isInViewPort 函数返回 true 时，表明组件即将进入页面，触发函数加载数据：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">mounted() &#123;</span><br><span class="line">    <span class="keyword">const</span> line = <span class="built_in">document</span>.querySelector(<span class="string">&quot;.footer&quot;</span>)</span><br><span class="line">    <span class="built_in">window</span>.onscroll = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(isInViewPort(line)) &#123;</span><br><span class="line">            <span class="built_in">this</span>.$emit(<span class="string">&quot;arrive-bottom&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p>这样实现之后我们发现，当页面不断滚动的时候，控制台会不断打印出 top 值，并且当 top  &lt;= viewPortHeight 时会不断发送 http 请求数据，显然这对页面的性能影响很严重，并且也可能导致不断发送重复请求。经过思考，我们可以使用 vue 提供的 watch 来解决该问题。具体思路是：</p>
+<ul>
+<li>首先定义一个数据 IsEmit= false，使用 watch 监听该数据的更改</li>
+<li>监听页面的滚动事件，当滚动到接近底部的时候，将 IsEmit 修改为 true</li>
+<li>watch 监听到 IsEmit 的修改，并且 IsEmit 修改为 true 时，触发函数加载数据。这样即使继续滚动也不会不断发送重复请求</li>
+</ul>
+<p>具体代码实现如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    name: <span class="string">&quot;FooterLine&quot;</span>,</span><br><span class="line">    data() &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            IsEmit: <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    watch: &#123;</span><br><span class="line">        IsEmit(newValue) &#123;</span><br><span class="line">            <span class="keyword">if</span>(newValue) &#123;</span><br><span class="line">                <span class="built_in">this</span>.$emit(<span class="string">&quot;arrive-bottom&quot;</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    mounted() &#123;</span><br><span class="line">        <span class="keyword">const</span> line = <span class="built_in">document</span>.querySelector(<span class="string">&quot;.footer&quot;</span>)</span><br><span class="line">        <span class="built_in">window</span>.onscroll = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">this</span>.isInViewPort(line)) &#123;</span><br><span class="line">                <span class="built_in">this</span>.IsEmit = <span class="literal">true</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                 <span class="built_in">this</span>.IsEmit = <span class="literal">false</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        isInViewPort (el) &#123;</span><br><span class="line">            <span class="keyword">const</span> viewPortHeight = <span class="built_in">window</span>.innerHeight || <span class="built_in">document</span>.documentElement.clientHeight || <span class="built_in">document</span>.body.clientHeight </span><br><span class="line">            <span class="keyword">const</span> top = el.getBoundingClientRect() &amp;&amp; el.getBoundingClientRect().top</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&#x27;top&#x27;</span>, top)</span><br><span class="line">            <span class="keyword">return</span> top  &lt;= viewPortHeight</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述方法利用 vue 的特性结局了不会重复发送 http 请求的问题，但是依然没有解决控制台不断打印 top 值的问题，即<strong>在页面滚动过程中，滚动事件执行的过于频繁，但是我们并不希望这么频繁的执行</strong>。</p>
+<p>基于以上问题，我们可以利用防抖函数和节流函数来解决。</p>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>vue</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>this全面解析</title>
     <url>/2020/09/30/this%E5%85%A8%E9%9D%A2%E8%A7%A3%E6%9E%90/</url>
     <content><![CDATA[<p>this 是 JavaScript 中最复杂的机制之一。它是一个很特别的关键字，被自动定义在所有函数的作用域中。与<a href="/2018/12/07/%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F/" title="词法作用域">词法作用域</a>不同，this 是在运行时进行绑定的，并不是在编写时，它的上下文取决于函数调用的各种条件。this的绑定和函数声明的位置没有任何关系，只取决于函数的调用方式。</p>
@@ -271,7 +408,7 @@
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// 这里的 this 在词法上继承 foo</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="built_in">this</span>.a);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    a: <span class="number">2</span></span><br><span class="line">&#125;;</span><br><span class="line">foo.call(obj);  <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>JavaScript基础</category>
+        <category>JavaScript 基础</category>
       </categories>
       <tags>
         <tag>this</tag>

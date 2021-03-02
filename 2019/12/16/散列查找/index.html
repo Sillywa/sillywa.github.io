@@ -27,14 +27,31 @@
 <meta property="og:site_name" content="Sillywa&#39;s Blog">
 <meta property="og:description" content="散列查找解决的一个基本问题是：如何快速搜索到需要的关键词？ 我们知道查找的本质是已知一个对象，找到该对象的位置。因此如果我们在安排位置时，通过一个”散列函数“来计算出对象的位置进行存放，当要查找这个对象时，再通过相同的”散列函数“即可直接计算出对象的位置。 因此其时间复杂度几乎是：O(1)，即查找时间与问题规模无关！">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://sillywa.com/2019/12/16/%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE/1.png">
+<meta property="og:image" content="https://sillywa.com/2019/12/16/%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE/2.png">
+<meta property="og:image" content="https://sillywa.com/2019/12/16/%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE/3.png">
+<meta property="og:image" content="https://sillywa.com/2019/12/16/%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE/4.png">
+<meta property="og:image" content="https://sillywa.com/2019/12/16/%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE/5.png">
+<meta property="og:image" content="https://sillywa.com/2019/12/16/%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE/6.png">
+<meta property="og:image" content="https://sillywa.com/2019/12/16/%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE/7.png">
+<meta property="og:image" content="https://sillywa.com/2019/12/16/%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE/8.png">
+<meta property="og:image" content="https://sillywa.com/2019/12/16/%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE/9.png">
+<meta property="og:image" content="https://sillywa.com/2019/12/16/%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE/10.png">
+<meta property="og:image" content="https://sillywa.com/2019/12/16/%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE/11.png">
+<meta property="og:image" content="https://sillywa.com/2019/12/16/%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE/12.png">
+<meta property="og:image" content="https://sillywa.com/2019/12/16/%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE/13.png">
+<meta property="og:image" content="https://sillywa.com/2019/12/16/%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE/14.png">
+<meta property="og:image" content="https://sillywa.com/2019/12/16/%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE/15.png">
+<meta property="og:image" content="https://sillywa.com/2019/12/16/%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE/16.png">
 <meta property="article:published_time" content="2019-12-16T11:58:21.000Z">
-<meta property="article:modified_time" content="2020-09-23T11:45:39.990Z">
+<meta property="article:modified_time" content="2021-03-02T03:30:45.707Z">
 <meta property="article:author" content="Sillywa">
 <meta property="article:tag" content="散列查找">
 <meta property="article:tag" content="散列表">
 <meta property="article:tag" content="哈希表">
 <meta property="article:tag" content="C语言">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sillywa.com/2019/12/16/%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE/1.png">
 
 <link rel="canonical" href="https://sillywa.com/2019/12/16/%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE/">
 
@@ -227,7 +244,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-23 19:45:39" itemprop="dateModified" datetime="2020-09-23T19:45:39+08:00">2020-09-23</time>
+                <time title="修改时间：2021-03-02 11:30:45" itemprop="dateModified" datetime="2021-03-02T11:30:45+08:00">2021-03-02</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -286,7 +303,7 @@
 <p>例：有 n=11 个对象的集合 {18,23,11,20,2,7,27,30,42,15,34}。符号表的大小 TableSize = 17（通常为素数），选取散列函数如下：</p>
 <p>h(key) = key mod TableSize (求余)</p>
 <p>用这个散列函数对 11 个对象建立查找表，如下所示：</p>
-
+<img src="/2019/12/16/%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE/1.png" class="" title="散列表">
 
 <ul>
 <li><p>存放：<br>如果新插入35，h(35)=1，该位置已有对象，冲突</p>
@@ -303,7 +320,7 @@
 <h3 id="数字关键词的散列函数构造"><a href="#数字关键词的散列函数构造" class="headerlink" title="数字关键词的散列函数构造"></a>数字关键词的散列函数构造</h3><p>1.直接定址法</p>
 <p>如果我们要统计人口的年龄分布情况（0——120），那么对于年龄这个关键词可以直接作为地址，即 h(key) = key。</p>
 <p>如果要统计的是 1990 年以后出任的人口分布情况，那么对于出生年份这个关键词可以减去 1990 作为地址，即 h(key) = key-1990。</p>
-
+<img src="/2019/12/16/%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE/2.png" class="" title="直接定址法">
 
 <p>总之，取关键词的某个线性函数值为散列地址，即</p>
 <p>h(key) = a X key + b   (a,b为常数)</p>
@@ -316,13 +333,13 @@
 <p>比如：取手机号 key 的后 4 位作为地址：</p>
 <p>散列函数位：h(key) = atoi(key+7)</p>
 <h3 id="字符串关键词的散列函数构造"><a href="#字符串关键词的散列函数构造" class="headerlink" title="字符串关键词的散列函数构造"></a>字符串关键词的散列函数构造</h3><p>1.一个简单的散列函数——ASCII码加和法</p>
-
+<img src="/2019/12/16/%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE/3.png" class="" title="ASCII码加和法">
 
 <p>2.简单的改进——前3个字符移位法</p>
-
+<img src="/2019/12/16/%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE/4.png" class="" title="前3个字符移位法">
 
 <p>3.好的散列函数——移位法</p>
-
+<img src="/2019/12/16/%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE/5.png" class="" title="好的散列函数——移位法">
 
 <h2 id="处理冲突的方法"><a href="#处理冲突的方法" class="headerlink" title="处理冲突的方法"></a>处理冲突的方法</h2><p>在前面的散列函数构造过程中，我们努力使散列地址均匀分布在整个地址空间，但实际应用中，冲突只能尽量减少，而不能完全避免。接下来我们讨论在冲突发生时，如何有效地解决它。常用的处理冲突的方法有开放地址法（Open Addressing）和链地址法（Linear Probing）。</p>
 <h3 id="开放地址法"><a href="#开放地址法" class="headerlink" title="开放地址法"></a>开放地址法</h3><p>一旦产生了冲突（该地址已有其它元素），就按照某种规则去寻找另一空地址。</p>
@@ -335,7 +352,7 @@
 <p>散列表长 TableSize=13（装填因子 9/13=0.69）；</p>
 <p>散列函数为：h(key) = key mod 11。</p>
 <p>用线性探测法处理冲突，列出一次插入后的散列表，并估算查找性能。</p>
-
+<img src="/2019/12/16/%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE/6.png" class="" title="线性探测">
 
 <p>注意”聚集“现象。</p>
 <p>散列表查找性能分析</p>
@@ -346,7 +363,7 @@
 </li>
 </ul>
 <p>散列表如下：</p>
-
+<img src="/2019/12/16/%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE/7.png" class="" title="散列表">
 
 <p>分析：</p>
 <p>ASLs：查找表中关键词的平均查找比较次数（其冲突次数加 1）</p>
@@ -357,16 +374,16 @@
 <p>2.平方探测法——二次探测</p>
 <p><strong>以增量序列 1，-1，4，-4，9，-9，…，q^2，-q^2，且 q &lt;= [TableSize/2] 循环试探下一个存储地址。</strong></p>
 <p>设关键词序列为 {47,7,29,11,9,84,54,20,30}，散列表长度 TableSize = 11，散列函数为：h(key) = key mod 11。用平方探测法处理冲突，列出依次插入后的散列表，并估算ASLs。</p>
-
+<img src="/2019/12/16/%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE/8.png" class="" title="key">
 
 <p>ASLs = (1+1+2+1+1+3+1+4+4)/9 = 2</p>
 <p><strong>是否有空间，平方探测（二次探测）就能找到？</strong></p>
-
+<img src="/2019/12/16/%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE/9.png" class="" title="key">
 
 <p><strong>有证明表明，如果散列表的长度 TableSize 是某个 4k+3（k是正整数）形式的素数时，平方探测法就可以检测到整个散列表空间。</strong>这一点很重要，使我们能够放心使用平方探测法的理论保证。</p>
 <p>在开放地址的散列表中，不能进行标准的删除操作，因为相应的单元可能引起过冲突，数据对象绕过它存在了别处。为此开放地址散列表需要“惰性删除”，即需要增加一个“删除标记”，而并不是真正的删除它。这样可以不影响查找，但额外的存储负担增加了代码的复杂性。</p>
 <p>以下是开放地址法的类型声明：</p>
-
+<img src="/2019/12/16/%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE/10.png" class="" title="开放地址法的类型声明">
 
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXTABLESIZE 100000     <span class="comment">/* 允许开辟的最大散列表长度 */</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> ElementType;        <span class="comment">/* 关键词类型 */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> Index;              <span class="comment">/* 散列地址类型 */</span></span><br><span class="line"><span class="keyword">typedef</span> Index Position;         <span class="comment">/* 数据所在位置与散列地址是同一类型 */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 散列单元的状态，分别对应：有合法元素、空单元、有已删除元素 */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">enum</span> &#123; Legitimate, Empty, Deleted &#125; EntryType;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">HashEntry</span> <span class="title">Cell</span>;</span>  <span class="comment">/* 散列表单元类型 */</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">HashEntry</span> &#123;</span></span><br><span class="line">    ElementType Data;   <span class="comment">/* 存放的元素 */</span></span><br><span class="line">    EntryType Info;     <span class="comment">/* 单元状态 */</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">TblNode</span>* <span class="title">HashTable</span>;</span>  <span class="comment">/* 散列表类型 */</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">TblNode</span> &#123;</span>        <span class="comment">/* 散列表节点定义 */</span></span><br><span class="line">    <span class="keyword">int</span> TableSize;      <span class="comment">/* 散列表的最大长度 */</span></span><br><span class="line">    Cell *Cells;        <span class="comment">/* 存放散列单元的数组 */</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
@@ -382,14 +399,14 @@
 
 <p>开放地址法的删除操作只需要该改变单元的状态 Info 即可。</p>
 <p>3.双散列探测法</p>
-
+<img src="/2019/12/16/%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE/11.png" class="" title="双散列探测法">
 
 <p>4.再散列（Rehashing）</p>
 <p>当散列表元素太多时（即装填因子太大时），查找效率就会下降；实用的装填因子一般取<strong>0.5——0.85</strong>。</p>
 <p>当装填因子过大时，解决的方法就是加倍扩大散列表，这个过程叫做**”再散列”**。</p>
 <h3 id="分离链接法"><a href="#分离链接法" class="headerlink" title="分离链接法"></a>分离链接法</h3><p>分离链接法就是将相应位置上冲突的所有关键词存储在同一个单链表里面。</p>
 <p>设关键字序列为{47,7,29,11,16,92,22,8,3,50,37,89,94,21}，散列函数取：h(key) = key mod 11；用分离链接法处理冲突，结果如下：</p>
-
+<img src="/2019/12/16/%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE/12.png" class="" title="分离链接法">
 
 <p>表中有 9 个结点只需查找 1 次，5 个结点需要查找 2 次，查找成功的平均查找次数：</p>
 <p>ASLs = (9+5*2)/14 = 1.36</p>
@@ -420,18 +437,18 @@
 </li>
 </ul>
 <h3 id="线性探测法的查找性能"><a href="#线性探测法的查找性能" class="headerlink" title="线性探测法的查找性能"></a>线性探测法的查找性能</h3><p>可以证明，线性探测法的期望探测次数满足下列公式：</p>
-
+<img src="/2019/12/16/%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE/13.png" class="" title="线性探测法的查找性能">
 
 <h3 id="平方探测法和双散列探测法的查找性能"><a href="#平方探测法和双散列探测法的查找性能" class="headerlink" title="平方探测法和双散列探测法的查找性能"></a>平方探测法和双散列探测法的查找性能</h3><p>可以证明，平方探测法和双散列探测法的期望探测次数满足下列公式：</p>
-
+<img src="/2019/12/16/%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE/14.png" class="" title="平方探测法和双散列探测法的查找性能">
 
 <p>下图表示了上面几种探测法的期望探测次数与装填因子之间的关系：</p>
-
+<img src="/2019/12/16/%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE/15.png" class="" title="平方探测法和双散列探测法的查找性能图表">
 
 <p>由图可知，当装填因子 &lt; 0.5 的时候，各种探测法的期望探测次数都不大，也比较接近。随着装填因子的增大，线性探测法的期望探测次数增加较快，不成功查找和插入操作的期望探测次数明显比成功查找的期望探测次数要大。合理的装填因子应该不超过0.85。</p>
 <h3 id="分离链接法的查找性能"><a href="#分离链接法的查找性能" class="headerlink" title="分离链接法的查找性能"></a>分离链接法的查找性能</h3><p>我们把分离链接法中的每个链表的平均长度定义成装填因子，因此装填因子有可能超过 1。</p>
 <p>不难证明，其期望探测次数为：</p>
-
+<img src="/2019/12/16/%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE/16.png" class="" title="分离链接法的查找性能">
 
 <h2 id="散列的特点"><a href="#散列的特点" class="headerlink" title="散列的特点"></a>散列的特点</h2><p>1.选择合适的 h(key)，散列法的查找效率期望是常数 O(1)，它几乎与关键字的空间的大小 N 无关，也适合于关键字直接比较计算量大的问题；</p>
 <p>2.它是以较小的装填因子为前提，因此，散列方法是一个以空间换时间；</p>

@@ -27,6 +27,16 @@
 <meta property="og:site_name" content="Sillywa&#39;s Blog">
 <meta property="og:description" content="二叉搜索树始终特殊的二叉树,它主要用于解决动态查找问题,能够比较快速地查找出想要的元素.而平衡二叉树是对二叉搜索树的改进,它本身也是一颗平衡二叉树,它保证查找所有结点的比较次数的平均值即树的“平均查找长度”最小.">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://sillywa.com/2019/12/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%912/1.png">
+<meta property="og:image" content="https://sillywa.com/2019/12/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%912/2.png">
+<meta property="og:image" content="https://sillywa.com/2019/12/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%912/3.png">
+<meta property="og:image" content="https://sillywa.com/2019/12/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%912/4.png">
+<meta property="og:image" content="https://sillywa.com/2019/12/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%912/5.png">
+<meta property="og:image" content="https://sillywa.com/2019/12/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%912/6.png">
+<meta property="og:image" content="https://sillywa.com/2019/12/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%912/7.png">
+<meta property="og:image" content="https://sillywa.com/2019/12/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%912/8.png">
+<meta property="og:image" content="https://sillywa.com/2019/12/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%912/9.png">
+<meta property="og:image" content="https://sillywa.com/2019/12/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%912/10.png">
 <meta property="article:published_time" content="2019-12-14T12:48:52.000Z">
 <meta property="article:modified_time" content="2020-09-23T11:52:07.163Z">
 <meta property="article:author" content="Sillywa">
@@ -34,6 +44,7 @@
 <meta property="article:tag" content="二叉搜索树">
 <meta property="article:tag" content="平衡二叉树">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sillywa.com/2019/12/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%912/1.png">
 
 <link rel="canonical" href="https://sillywa.com/2019/12/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%912/">
 
@@ -297,13 +308,13 @@
 <h3 id="二叉搜索树的删除"><a href="#二叉搜索树的删除" class="headerlink" title="二叉搜索树的删除"></a>二叉搜索树的删除</h3><p>考虑三种情况：</p>
 <ul>
 <li><p>要删除的是叶结点：直接删除，并修改其父节点指针——置为 NULL</p>
-
+<img src="/2019/12/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%912/1.png" class="" title="情况1">
 </li>
 <li><p>要删除的结点只有一个孩子节点：将其父节点的指针指向要删除结点的孩子节点</p>
-
+<img src="/2019/12/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%912/2.png" class="" title="情况2">
 </li>
 <li><p>要删除结点有左、右两颗子树：用另一结点替换被删除结点：右子树中最小元素 或 左子树中最大元素</p>
-
+<img src="/2019/12/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%912/3.png" class="" title="情况3">
 
 </li>
 </ul>
@@ -311,14 +322,14 @@
 
 <h2 id="平衡二叉树"><a href="#平衡二叉树" class="headerlink" title="平衡二叉树"></a>平衡二叉树</h2><p>对于二叉搜索树进行查找的时间复杂度是由是由查找过程中的比较次数来衡量的，比较是从根结点到叶结点的路径进行的，它取决于树的深度。树深在最好情况下是 logN，所以二叉搜索树在最好情况的查找复杂度是 O(logN)。但这一结论是由完全二叉树导出的，事实上 N 个结点的二叉树深度取决于其树枝的分布情况。当二叉树退化为一颗单枝树的极端情况下，查找时间复杂度将是线性的 O(N)。</p>
 <p>假定二叉树中每个结点的查找概率都是相同的，我们称查找所有结点的比较次数的平均值为树的“平均查找长度”(Average Search Length,ASL)。如下图所示，可以得到各二叉树的平均查找长度：</p>
-
+<img src="/2019/12/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%912/4.png" class="" title="ASL计算示例">
 
 <p>上述示例表明，一棵树的 ASL 值越小，它的结构越好，与完全二叉树越接近，对它的查找时间复杂度也越接近 O(logN)。因此为了保证二叉树查找的对数级查找时间效率。设计出了平衡二叉树这一数据结构。</p>
 <h3 id="平衡二叉树的定义"><a href="#平衡二叉树的定义" class="headerlink" title="平衡二叉树的定义"></a>平衡二叉树的定义</h3><p>平衡二叉树又称 AVL 树，它也是一颗二叉搜索树。</p>
 <blockquote>
 <p>定义：AVL树是一颗空树或者是具有以下性质的非空二叉搜索树：<br>1.任一结点的左右子树均为 AVL 树；<br>2.根结点左右子树的高度差的绝对值不超过 1。</p>
 </blockquote>
-
+<img src="/2019/12/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%912/5.png" class="" title="AVL树">
 
 <blockquote>
 <p>定义：对于二叉树中的任一结点 T，其平衡因子（Balance Factor，BF）定义为 BF(T) = hL - hR，其中 hL 和 hR 分别为左右子树的高度。</p>
@@ -328,19 +339,19 @@
 <p>h = 0,   n0 = 1<br>h = 1,   n1 = 2<br>h = 2,   n2 = 4<br>h = 3,   n3 = 7<br>…</p>
 <p>依次类推可以得到：nh = n(h-1) + n(h-2) + 1；</p>
 <p>求高度（边的长度）为 h 的平衡二叉树的最少结点数要么左边少一层要么右边少一层，因此高度（边的长度）为 h 的平衡二叉树的最少结点数 nh 等于高度（边的长度）为 h-1 的平衡二叉树的最少结点数 + 高度（边的长度）为 h-2 的平衡二叉树的最少结点数。</p>
-
+<img src="/2019/12/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%912/6.png" class="">
 
 <h3 id="平衡二叉树的调整"><a href="#平衡二叉树的调整" class="headerlink" title="平衡二叉树的调整"></a>平衡二叉树的调整</h3><p>1.右单旋</p>
-
+<img src="/2019/12/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%912/7.png" class="" title="右单旋">
 
 <p>2.左单旋</p>
-
+<img src="/2019/12/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%912/8.png" class="" title="左单旋">
 
 <p>3.左-右双旋</p>
-
+<img src="/2019/12/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%912/9.png" class="" title="左-右双旋">
 
 <p>4.右-左双旋</p>
-
+<img src="/2019/12/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%912/10.png" class="" title="右-左双旋">
 
     </div>
 
@@ -442,14 +453,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-count">48</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">

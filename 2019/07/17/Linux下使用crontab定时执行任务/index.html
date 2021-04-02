@@ -27,11 +27,13 @@
 <meta property="og:site_name" content="Sillywa&#39;s Blog">
 <meta property="og:description" content="起因最近在做一个小项目，要求能定时利用 pm2 重启某个进程，即定时执行 pm2 restart xxx。 今天刚好发现 Linux 下可以使用 crontab 来定时执行一些脚本或命令，于是我就开始研究如何利用 crontab 搭配 pm2 定时重启某个进程。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://sillywa.com/2019/07/17/Linux%E4%B8%8B%E4%BD%BF%E7%94%A8crontab%E5%AE%9A%E6%97%B6%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1/1.png">
 <meta property="article:published_time" content="2019-07-17T11:40:39.000Z">
 <meta property="article:modified_time" content="2020-09-23T08:58:57.492Z">
 <meta property="article:author" content="Sillywa">
 <meta property="article:tag" content="crontab">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sillywa.com/2019/07/17/Linux%E4%B8%8B%E4%BD%BF%E7%94%A8crontab%E5%AE%9A%E6%97%B6%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1/1.png">
 
 <link rel="canonical" href="https://sillywa.com/2019/07/17/Linux%E4%B8%8B%E4%BD%BF%E7%94%A8crontab%E5%AE%9A%E6%97%B6%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1/">
 
@@ -266,7 +268,7 @@
 
 <p>当首次使用 <code>crontab -l</code> 时，会提示当前用户下没有定时任务。</p>
 <p>这时我们可以使用 <code>crontab -e</code> 创建一个定时任务，创建时会要求我们选择编辑器，这里我们选择 vim.tiny。如果第一次编辑器选错了，可以运行 <code>sudo select-editor</code>命令重新选择。</p>
-
+<img src="/2019/07/17/Linux%E4%B8%8B%E4%BD%BF%E7%94%A8crontab%E5%AE%9A%E6%97%B6%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1/1.png" class="" title="[选择编辑器]">
 
 <p>然后我们可以写定时任务了，这里我们输入如下代码，然后保存退出。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* * * * * echo 123 &gt;&gt; &#x2F;test.log</span><br></pre></td></tr></table></figure>
@@ -391,14 +393,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-count">48</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">

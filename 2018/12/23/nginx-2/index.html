@@ -27,11 +27,19 @@
 <meta property="og:site_name" content="Sillywa&#39;s Blog">
 <meta property="og:description" content="网站配置简单说明Nginx 主配置文件为  &#x2F;etc&#x2F;nginx&#x2F;nginx.conf   Nginx 的 server模块配置文件放在 &#x2F;etc&#x2F;nginx&#x2F;sites-available目录，该目录下默认有一个 default 文件，该文件为 server 模块文件。   我们可以看到 root 后面的路径就是我们网站存放的位置，因此你可以根据实际情况自己修改，我的网站是放在 &#x2F;var&#x2F;www">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://sillywa.com/2018/12/23/nginx-2/2.png">
+<meta property="og:image" content="https://sillywa.com/2018/12/23/nginx-2/1.png">
+<meta property="og:image" content="https://sillywa.com/2018/12/23/nginx-2/3.png">
+<meta property="og:image" content="https://sillywa.com/2018/12/23/nginx-2/4.png">
+<meta property="og:image" content="https://sillywa.com/2018/12/23/nginx-2/5.png">
+<meta property="og:image" content="https://sillywa.com/2018/12/23/nginx-2/6.png">
+<meta property="og:image" content="https://sillywa.com/2018/12/23/nginx-2/7.png">
 <meta property="article:published_time" content="2018-12-23T13:26:36.000Z">
 <meta property="article:modified_time" content="2020-09-23T12:09:41.862Z">
 <meta property="article:author" content="Sillywa">
 <meta property="article:tag" content="Nginx">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sillywa.com/2018/12/23/nginx-2/2.png">
 
 <link rel="canonical" href="https://sillywa.com/2018/12/23/nginx-2/">
 
@@ -255,34 +263,34 @@
 
       
         <h3 id="网站配置简单说明"><a href="#网站配置简单说明" class="headerlink" title="网站配置简单说明"></a>网站配置简单说明</h3><p><code>Nginx</code> 主配置文件为  <code>/etc/nginx/nginx.conf</code></p>
-
+<img src="/2018/12/23/nginx-2/2.png" class="">
 
 <p><code>Nginx</code> 的 <code>server</code>模块配置文件放在 <code>/etc/nginx/sites-available</code>目录，该目录下默认有一个 <code>default</code> 文件，该文件为 <code>server</code> 模块文件。</p>
-
+<img src="/2018/12/23/nginx-2/1.png" class="">
 
 <p>我们可以看到 <code>root</code> 后面的路径就是我们网站存放的位置，因此你可以根据实际情况自己修改，我的网站是放在 <code>/var/www/sillywa.blog</code> 目录下，<code>Nginx</code> 会自动寻找该目录下的 <code>index.html</code> 文件。</p>
 <a id="more"></a>
 
 <p>其中 <code>server_name</code> 后面可以放我们的域名，多个域名用空格隔开</p>
 <p>我们可以自己在 <code>default</code> 文件中新建其他 <code>server</code> 模块，<code>nginx.conf</code> 的 <code>http</code> 模块默认包含该目录下所有的文件</p>
-
+<img src="/2018/12/23/nginx-2/3.png" class="">
 
 <p>不过通过上图我们发现<code>nginx.conf</code> 默认包含的是 <code>/etc/nginx/sites-enabled/*</code> 下的所有文件，但是我们发现该目录下有一个 <code>default</code> 软链接，该软链接指向<code>/etc/nginx/sites-available/default</code> 文件，因此，对<code>/etc/nginx/sites-available/default</code> 文件的修改会同步到 <code>/etc/nginx/sites-enabled/default</code> </p>
-
+<img src="/2018/12/23/nginx-2/4.png" class="">
 
 <p>当然，除了直接修改  <code>/etc/nginx/sites-available/default</code> 文件外，我们也可以在 <code>/etc/nginx/conf.d</code> 文件夹下自己添加 <code>server</code> 配置文件，文件以<code>.conf</code>结尾。</p>
 <h3 id="Nginx-与-NodeJS-简单结合"><a href="#Nginx-与-NodeJS-简单结合" class="headerlink" title="Nginx 与 NodeJS 简单结合"></a>Nginx 与 NodeJS 简单结合</h3><p>在 <code>Nginx</code> 中设置一个代理，让所有请求跳转到 <code>NodeJS</code> 服务的接口。</p>
 <p>这是我们写好的 <code>NodeJS</code> 代码：</p>
-
+<img src="/2018/12/23/nginx-2/5.png" class="">
 
 <p>在 <code>NodeJS</code> 中我们设置了允许跨域，同时提供一个 <code>post</code> 方法的接口， <code>NodeJS</code> 监听 8888 端口。于是，我们在 <code>Nginx</code> 中加入如下配置：</p>
 <p>可以在 <code>/etc/nginx/conf.d</code>文件夹下新建一个 <code>api.conf</code> 文件，然后写入如下配置：</p>
-
+<img src="/2018/12/23/nginx-2/6.png" class="">
 
 <p>其中的 <code>server_name</code> 是前端请求的 <code>api</code> 地址， <code>ssl</code> 是我们配置的 <code>ssl</code> 证书，可以参考<a href="/2018/12/22/nginx-1/" title="上一篇文章">上一篇文章</a>，<code>location</code> 做一个跳转，当有请求发到 <code>https://api.sillywa.com</code> 的时候， <code>Nginx</code> 会将请求转发到 <code>http://localhost:8888</code>，这样 <code>NodeJS</code> 就能接收到请求。</p>
 <p>由于我们在 <code>NodeJS</code> 中允许了跨域，因此可以不必在 <code>Nginx</code> 中进行其他设置。</p>
 <p>如果我们没有在 <code>NodeJS</code> 中做跨域， <code>Nginx</code> 中可以增加如下配置：</p>
-
+<img src="/2018/12/23/nginx-2/7.png" class="">
 
 
 
@@ -386,14 +394,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-count">48</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">

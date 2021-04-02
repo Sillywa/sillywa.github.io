@@ -27,8 +27,18 @@
 <meta property="og:site_name" content="Sillywa&#39;s Blog">
 <meta property="og:description" content="堆前面介绍过队列，它是一种先进先出的数据结构，队列中没有哪一个元素是有特权的，前面的元素未处理完，后面的只能等待。而本文章介绍的堆（Heap）正是考虑了适合于特权需求的数据结构，因此，堆也通常被称为“优先队列”（Priority Queue）。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://sillywa.com/2019/12/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%913/1.png">
+<meta property="og:image" content="https://sillywa.com/2019/12/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%913/2.png">
+<meta property="og:image" content="https://sillywa.com/2019/12/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%913/3.png">
+<meta property="og:image" content="https://sillywa.com/2019/12/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%913/4.png">
+<meta property="og:image" content="https://sillywa.com/2019/12/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%913/5.png">
+<meta property="og:image" content="https://sillywa.com/2019/12/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%913/6.png">
+<meta property="og:image" content="https://sillywa.com/2019/12/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%913/7.png">
+<meta property="og:image" content="https://sillywa.com/2019/12/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%913/8.png">
+<meta property="og:image" content="https://sillywa.com/2019/12/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%913/9.png">
+<meta property="og:image" content="https://sillywa.com/2019/12/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%913/10.png">
 <meta property="article:published_time" content="2019-12-15T09:20:02.000Z">
-<meta property="article:modified_time" content="2020-09-23T11:53:29.029Z">
+<meta property="article:modified_time" content="2021-04-02T07:43:29.178Z">
 <meta property="article:author" content="Sillywa">
 <meta property="article:tag" content="C语言">
 <meta property="article:tag" content="堆">
@@ -36,6 +46,7 @@
 <meta property="article:tag" content="哈夫曼编码">
 <meta property="article:tag" content="集合及运算">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sillywa.com/2019/12/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%913/1.png">
 
 <link rel="canonical" href="https://sillywa.com/2019/12/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%913/">
 
@@ -228,7 +239,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-23 19:53:29" itemprop="dateModified" datetime="2020-09-23T19:53:29+08:00">2020-09-23</time>
+                <time title="修改时间：2021-04-02 15:43:29" itemprop="dateModified" datetime="2021-04-02T15:43:29+08:00">2021-04-02</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -278,7 +289,7 @@
 </ul>
 <p>上面 4 种方式，其最坏时间复杂度都达到了 O(N)，而我们知道二叉搜索树的插入和删除操作代价为 O(logN)。因此我们可以利用树型结构来组织数据。</p>
 <p><strong>堆最常用放入结构是用二叉树表示，不特指的话，它是一颗完全二叉树。</strong>由于完全二叉树的排列及其规则，因此我们可以使用数组来实现堆的存储。</p>
-
+<img src="/2019/12/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%913/1.png" class="" title="堆的完全二叉树表示">
 
 <p>堆中的元素是按照完全二叉树的层序存储的，还需要注意的是所用数组的起始单元为 1，这样做的目的是更容易从子结点找到父结点。根据完全二叉树的性质，对于下标为 i 的结点，其父结点的下标为 [i/2]。反过来，找结点 i 的左右子结点也非常方便，分别为 2i 和 2i + 1。</p>
 <p>堆的两个特性：</p>
@@ -289,7 +300,7 @@
 </li>
 </ul>
 <p>注意：从根节点到任意节点路径上结点序列的有序性！</p>
-
+<img src="/2019/12/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%913/2.png" class="" title="堆示例">
 
 <h3 id="堆的抽象数据类型描述"><a href="#堆的抽象数据类型描述" class="headerlink" title="堆的抽象数据类型描述"></a>堆的抽象数据类型描述</h3><p>以最大堆为例介绍堆的抽象数据类型描述：</p>
 <p>类型名称：最大堆（MaxHeap）</p>
@@ -342,20 +353,20 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BuildHeap</span><span class="params">(MaxHeap H)</span> </span>&#123;</span><br><span class="line">    <span class="comment">/* 调整堆中的元素，使其满足有序性 */</span></span><br><span class="line">    <span class="comment">/* 这里假设所有 H-&gt;Size 个元素已经存在 H-&gt;Data[] 中 */</span></span><br><span class="line">    <span class="keyword">int</span> p;</span><br><span class="line">    <span class="comment">/* 从最后一个有孩子的父结点开始，到根结点1 */</span></span><br><span class="line">    <span class="keyword">for</span>(p = H-&gt;Size/<span class="number">2</span>; p&gt;=<span class="number">1</span>; p--) &#123;</span><br><span class="line">        PercDown(H,p);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>该算法的时间复杂度为 O(N)。证明如下：</p>
-
+<img src="/2019/12/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%913/3.png" class="" title="时间复杂度证明">
 
 <h2 id="哈夫曼树"><a href="#哈夫曼树" class="headerlink" title="哈夫曼树"></a>哈夫曼树</h2><p>首先看一个简单的例子，要求编写一个程序将百分制成绩转化成五分制成绩。首先给出一个简单的示例：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(score &lt; <span class="number">60</span>) grade = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(score &lt; <span class="number">70</span>) grade = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(score &lt; <span class="number">80</span>) grade = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(score &lt; <span class="number">90</span>) grade = <span class="number">4</span>;</span><br><span class="line"><span class="keyword">else</span> grade = <span class="number">5</span>;</span><br></pre></td></tr></table></figure>
 
 <p>其判定树如下：</p>
-
+<img src="/2019/12/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%913/4.png" class="" title="判定树1">
 
 <p>如果考虑学生的成绩分布概率：</p>
-
+<img src="/2019/12/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%913/5.png" class="" title="分布概率">
 
 <p>则该判定树的查找效率为：0.05x1 + 0.15x2 + 0.4x3 + 0.3x4 + 0.1x4 = 3.15</p>
 <p>如果根据概率修改判定树：</p>
-
+<img src="/2019/12/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%913/6.png" class="" title="判定树2">
 
 <p>则查找效率变为：0.05x3 + 0.15x3 + 0.4x2 + 0.3x2 + 0.1x2 = 2.2</p>
 <p>由此可见，同一问题采用不同的判定逻辑，计算效率是不一样的。那么是否能够找到最好的比较判定逻辑，使运算效率达到最高？即如何根据结点不同的查找频率构造更有效的搜索树？</p>
@@ -386,7 +397,7 @@
 <li><p>哈夫曼树的任意非叶结点的左右子树交换后仍是哈夫曼树；</p>
 </li>
 <li><p>对于同一组权值，存在不同构的两颗哈夫曼树。<br>如权值{1,2,3,3}，不同构的两颗哈夫曼树如下：</p>
-
+<img src="/2019/12/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%913/7.png" class="" title="不同构的两颗哈夫曼树">
 
 </li>
 </ul>
@@ -410,14 +421,14 @@
 </blockquote>
 <p>为了避免二义性，所有字符都有应该在二叉树的叶结点上，哈夫曼编码也称为前缀编码。</p>
 <p>因此采用哈夫曼树的生成方法可以满足以上要求。</p>
-
+<img src="/2019/12/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%913/8.png" class="" title="哈夫曼编码示例">
 
 <h2 id="集合及其运算"><a href="#集合及其运算" class="headerlink" title="集合及其运算"></a>集合及其运算</h2><p>集合是一种常用的数据表示方法。集合的运算包括交、并、补、差以及判定一个数据是否是某一集合中的元素。</p>
 <p>为了有效地对集合执行各种操作，可以用树结构表示集合，树的每个结点代表一个集合元素。</p>
-
+<img src="/2019/12/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%913/9.png" class="" title="集合的表示">
 
 <p>我们也可以采用数据形式存储集合，数组的每一项是一个结构体，结构体里面是元素值，以及其父元素对应的数组下标，负数代表根节点，非负数代表其父元素的数组下标。</p>
-
+<img src="/2019/12/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%913/10.png" class="" title="集合的表示">
 
 <p>因此可以定义如下结构体来表示集合：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXSIZE 1000    <span class="comment">/* 集合的最大容量 */</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> ElementType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    ElementType Data;</span><br><span class="line">    <span class="keyword">int</span> Parent;</span><br><span class="line">&#125; SetType;</span><br></pre></td></tr></table></figure>
@@ -541,14 +552,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-count">48</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">

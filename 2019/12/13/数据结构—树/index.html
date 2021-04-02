@@ -27,12 +27,22 @@
 <meta property="og:site_name" content="Sillywa&#39;s Blog">
 <meta property="og:description" content="树（Tree）是由 n 个结点构成的有限集合。当 n&#x3D;0 时，称为空树；对于任意一颗非空树，它具备以下特征：  树中有一个称为根的特殊节点，用 r 表示； 其余结点可分为 m 个互不相交的有限集 T1,T2,…,Tm，其中的每个集合本身又是一棵树，称为原来树的子树。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://sillywa.com/2019/12/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%91/1.png">
+<meta property="og:image" content="https://sillywa.com/2019/12/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%91/2.png">
+<meta property="og:image" content="https://sillywa.com/2019/12/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%91/3.png">
+<meta property="og:image" content="https://sillywa.com/2019/12/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%91/4.png">
+<meta property="og:image" content="https://sillywa.com/2019/12/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%91/5.png">
+<meta property="og:image" content="https://sillywa.com/2019/12/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%91/6.png">
+<meta property="og:image" content="https://sillywa.com/2019/12/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%91/7.png">
+<meta property="og:image" content="https://sillywa.com/2019/12/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%91/8.png">
+<meta property="og:image" content="https://sillywa.com/2019/12/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%91/9.png">
 <meta property="article:published_time" content="2019-12-13T06:20:00.000Z">
 <meta property="article:modified_time" content="2020-09-23T11:47:40.196Z">
 <meta property="article:author" content="Sillywa">
 <meta property="article:tag" content="C语言">
 <meta property="article:tag" content="树">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sillywa.com/2019/12/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%91/1.png">
 
 <link rel="canonical" href="https://sillywa.com/2019/12/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%91/">
 
@@ -271,7 +281,7 @@
 <p>树的一些基本术语：</p>
 <p>1.<strong>结点的度</strong>（Degree）：结点的子树个数<br>2.<strong>树的度</strong>：树的所有结点中最大的度数<br>3.<strong>叶结点</strong>（Leaf）：度为 0 的结点<br>4.<strong>父节点</strong>（Parent）：有子树的结点是其子树的根结点的父节点<br>5.<strong>子节点</strong>（Child）：若 A 结点是 B 结点的父节点，则称 B 结点是 A 结点的子节点；子节点也称孩子结点<br>6.<strong>兄弟节点</strong>（Sibling）：具有同一父节点的各节点彼此是兄弟节点<br>7.<strong>结点的层次</strong>（Level）：规定根节点在 1 层，其它任一结点的层次是其父节点层数加1<br>7.<strong>树的深度</strong>（Depth）：树中所有结点中的最大层次是这棵树的深度</p>
 <h2 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h2><h3 id="二叉树的定义"><a href="#二叉树的定义" class="headerlink" title="二叉树的定义"></a>二叉树的定义</h3><p>二叉树是一个有穷的结点集合。这个集合可以为空，若不为空，则它是由根节点和称为其左子树和右子树的两个互不相交的二叉树组成。一般来讲二叉树有以下 5 种基本形态：</p>
-
+<img src="/2019/12/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%91/1.png" class="" title="二叉树的五种基本形态">
 
 <p>需要注意的是二叉树的子树有左右顺序之分。</p>
 <p>特殊的二叉树：</p>
@@ -280,7 +290,7 @@
 <li>完美二叉树或满二叉树</li>
 <li>完全二叉树</li>
 </ul>
-
+<img src="/2019/12/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%91/2.png" class="" title="几种特殊的二叉树">
 
 <h3 id="二叉树的性质"><a href="#二叉树的性质" class="headerlink" title="二叉树的性质"></a>二叉树的性质</h3><ul>
 <li>二叉树第 i 层的最大结点数为 2^(i-1), i&gt;= 1</li>
@@ -294,12 +304,12 @@
 <li>结点为 i 的左孩子结点序号为 2i；</li>
 <li>结点为 i 的右孩子结点序号为 2i+1;</li>
 </ul>
- 
+<img src="/2019/12/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%91/3.png" class="" title="完全二叉树"> <img src="/2019/12/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%91/4.png" class="" title="完全二叉树存储结构">
 
 <p>一般二叉树如果采用这种结构可能造成极大的空间浪费，因此可采用链式存储结构。</p>
 <p>2.链式存储</p>
 <p>以下是二叉树的链式存储结构示意图：</p>
-
+<img src="/2019/12/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%91/5.png" class="" title="二叉树的链式存储结构">
 
 <p>因此可以用以下代码来表示如上结构：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> ElementType;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">TreeNode</span>* <span class="title">BinTree</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">TreeNode</span> &#123;</span></span><br><span class="line">    ElementType Data;</span><br><span class="line">    BinTree Left;</span><br><span class="line">    BinTree Right;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -311,7 +321,7 @@
 <li>先序遍历其左子树</li>
 <li>先序遍历其右子树</li>
 </ul>
-
+<img src="/2019/12/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%91/6.png" class="" title="二叉树先序遍历示意图">
 
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PreOrderTraversal</span><span class="params">(BinTree BT)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(BT) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,BT-&gt;Data);</span><br><span class="line">        PreOrderTraversal(BT-&gt;Left);</span><br><span class="line">        PreOrderTraversal(BT-&gt;Right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -322,7 +332,7 @@
 <li>访问根节点</li>
 <li>中序遍历其右子树</li>
 </ul>
-
+<img src="/2019/12/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%91/7.png" class="" title="二叉树中序遍历示意图">
 
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InOrderTraversal</span><span class="params">(BinTree BT)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(BT) &#123;</span><br><span class="line">        InOrderTraversal(BT-&gt;Left);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,BT-&gt;Data);</span><br><span class="line">        InOrderTraversal(BT-&gt;Right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -333,12 +343,12 @@
 <li>后序遍历其右子树</li>
 <li>访问根节点</li>
 </ul>
-
+<img src="/2019/12/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%91/8.png" class="" title="二叉树后序遍历示意图">
 
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PostOrderTraversal</span><span class="params">(BinTree BT)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(BT) &#123;</span><br><span class="line">        PostOrderTraversal(BT-&gt;Left);</span><br><span class="line">        PostOrderTraversal(BT-&gt;Right);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,BT-&gt;Data);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>先序、中序、后序遍历过程：遍历过程中经过结点的路线一样，只是访问各节点的时机不同。先序是第一次经过该结点就访问，中序是第二次经过该结点访问，后序是第三次经过该结点访问。</p>
-
+<img src="/2019/12/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E6%A0%91/9.png" class="" title="二叉树遍历示意图">
 
 <h3 id="二叉树的非递归遍历"><a href="#二叉树的非递归遍历" class="headerlink" title="二叉树的非递归遍历"></a>二叉树的非递归遍历</h3><p><strong>二叉树先序、中序、后序遍历的非递归算法实现的基本思路：使用堆栈。</strong></p>
 <p>1.先序遍历的非递归算法</p>
@@ -482,14 +492,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-count">48</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">

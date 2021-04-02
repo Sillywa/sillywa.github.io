@@ -27,12 +27,15 @@
 <meta property="og:site_name" content="Sillywa&#39;s Blog">
 <meta property="og:description" content="图的基本概念在树型结构中，结点间具有分支层次关系，每一层上的结点只能和上一层中的至多一个结点相关，但可能和下一层的多个节点相关。树的关系也叫一对多的关系，而在图状结构中，任意两个结点之间都可能相关，即结点的邻接关系可以是任意的。图的结构是任意两个数据对象之间都可能存在某种特定关系的数据结构，是一种多对多的关系。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://sillywa.com/2019/12/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E5%9B%BE/1.png">
+<meta property="og:image" content="https://sillywa.com/2019/12/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E5%9B%BE/2.png">
 <meta property="article:published_time" content="2019-12-24T04:43:00.000Z">
 <meta property="article:modified_time" content="2020-09-23T11:54:04.115Z">
 <meta property="article:author" content="Sillywa">
-<meta property="article:tag" content="C语言">
 <meta property="article:tag" content="图">
+<meta property="article:tag" content="C语言">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sillywa.com/2019/12/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E5%9B%BE/1.png">
 
 <link rel="canonical" href="https://sillywa.com/2019/12/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E5%9B%BE/">
 
@@ -276,7 +279,7 @@
 <p>5.<code>void DFS(Graph G, Vertex V, (*Visit)(Vertex))</code>：在图 G 中，从顶点 V 出发进行深度优先遍历；</p>
 <p>6.<code>void BFS(Graph G, Vertex V, (*Visit)(Vertex))</code>：在图 G 中，从顶点 V 出发进行广度优先遍历。</p>
 <h2 id="图的存储结构"><a href="#图的存储结构" class="headerlink" title="图的存储结构"></a>图的存储结构</h2><h3 id="邻接矩阵"><a href="#邻接矩阵" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h3><p>所谓邻接矩阵的存储结构，就是用矩阵表示图中各顶点之间的邻接关系和权值。以下是一个无向图的临界矩阵表示：</p>
-
+<img src="/2019/12/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E5%9B%BE/1.png" class="" title="无向图的临界矩阵">
 
 <p>从图的邻接矩阵存储方法容易看出这种表示具有以下特点:</p>
 <p>1.无向图的邻接矩阵一定是个对称矩阵。因此在具体存放邻接矩阵时只需要存放上三角或者下三角的元素即可。所需要存储的元素个数是：|V|*(|V|-1)/2。</p>
@@ -291,7 +294,7 @@
 
 <p>邻接矩阵是一种表示各类图的简洁的数据结构。但是我们发现，不论图中边的数量或多或少，我们都花费了 O(|V|^2) 的存储空间，这对于稠密图来说是一种高效的存储方法。但是如果面对的是一个稀疏图，则邻接矩阵中的大多数项为 0 或 无穷，形成了所谓的稀疏矩阵，就会浪费很多空间。因此对于稀疏图，我们考虑另一种存储方法。</p>
 <h3 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h3><p>邻接表是一种图的顺序存储与链式存储相结合的存储方法。</p>
-
+<img src="/2019/12/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E5%9B%BE/2.png" class="" title="图的邻接表">
 
 <p>图的邻接表存储具有以下特点：</p>
 <p>1.方便查找任一顶点的所有邻接点。</p>
@@ -324,8 +327,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag"># C语言</a>
               <a href="/tags/%E5%9B%BE/" rel="tag"># 图</a>
+              <a href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag"># C语言</a>
           </div>
 
         
@@ -415,14 +418,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-count">48</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">

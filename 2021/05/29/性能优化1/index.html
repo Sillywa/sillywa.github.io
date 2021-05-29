@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"sillywa.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="网站作为一种信息传递的媒介，在如今各类的 Web 项目中，图像资源的使用占比越来越大，因此我们应当注意图像资源的使用方式。如果网站中的图像资源未进行恰当的优化，当网站访问量较大时会产生很大的带宽挑战，同时也会造成大尺寸图像请求时间过长等问题。 图像优化问题主要分为两个方面：图像的选取和使用和图像的加载和显示。本篇文章主要讨论图像的选取和使用。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端性能优化—图像优化">
+<meta property="og:url" content="https://sillywa.com/2021/05/29/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%961/index.html">
+<meta property="og:site_name" content="Sillywa&#39;s Blog">
+<meta property="og:description" content="网站作为一种信息传递的媒介，在如今各类的 Web 项目中，图像资源的使用占比越来越大，因此我们应当注意图像资源的使用方式。如果网站中的图像资源未进行恰当的优化，当网站访问量较大时会产生很大的带宽挑战，同时也会造成大尺寸图像请求时间过长等问题。 图像优化问题主要分为两个方面：图像的选取和使用和图像的加载和显示。本篇文章主要讨论图像的选取和使用。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://sillywa.com/2021/05/29/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%961/1.png">
+<meta property="article:published_time" content="2021-05-29T10:31:04.000Z">
+<meta property="article:modified_time" content="2021-05-29T10:37:18.619Z">
+<meta property="article:author" content="Sillywa">
+<meta property="article:tag" content="性能优化">
+<meta property="article:tag" content="图像">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sillywa.com/2021/05/29/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%961/1.png">
+
+<link rel="canonical" href="https://sillywa.com/2021/05/29/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%961/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>前端性能优化—图像优化 | Sillywa's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Sillywa's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://sillywa.com/2021/05/29/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%961/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/logo.png">
+      <meta itemprop="name" content="Sillywa">
+      <meta itemprop="description" content="个人学习记录博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sillywa's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          前端性能优化—图像优化
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-05-29 18:31:04 / 修改时间：18:37:18" itemprop="dateCreated datePublished" datetime="2021-05-29T18:31:04+08:00">2021-05-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">前端基础</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>网站作为一种信息传递的媒介，在如今各类的 Web 项目中，图像资源的使用占比越来越大，因此我们应当注意图像资源的使用方式。如果网站中的图像资源未进行恰当的优化，当网站访问量较大时会产生很大的带宽挑战，同时也会造成大尺寸图像请求时间过长等问题。</p>
+<p>图像优化问题主要分为两个方面：图像的选取和使用和图像的加载和显示。本篇文章主要讨论图像的选取和使用。</p>
+<a id="more"></a>
+
+<h2 id="图像基础"><a href="#图像基础" class="headerlink" title="图像基础"></a>图像基础</h2><p>图像文件可分为两类：矢量图和位图，每种类型都有自己的优缺点和适用场景。</p>
+<h3 id="矢量图"><a href="#矢量图" class="headerlink" title="矢量图"></a>矢量图</h3><p>矢量图中的图形元素被定义为一个对象，包括颜色、大小、形状及屏幕位置等信息。</p>
+<p><strong>矢量图适合于如文本、logo、控件图标及二维码等形状简单的几何图形</strong>。</p>
+<p>矢量图的优点是能够在任何缩放比例之下呈现同样清晰的展示效果。</p>
+<p>矢量图的缺点是对细节的展示效果不够丰富。对于足够复杂的图像，如果要达到照片的效果，通过 SVG 绘制会使得文件大的离谱，即便如此也很难达到照片的真实效果。</p>
+<h3 id="位图"><a href="#位图" class="headerlink" title="位图"></a>位图</h3><p>位图是通过对矩阵中的栅格进行编码来表示的图像，图像的栅格像素点越多，且每个像素点所能表达的颜色范围越广，则位图图像整体的显示效果就会越逼真。</p>
+<p>位图的优点是能提供较为真实复杂的细节体验，但位图会受屏幕分辨率的影响。</p>
+<p>常见的位图有：JPEG、GIF、PNG、WebP</p>
+<h3 id="有损压缩和无损压缩"><a href="#有损压缩和无损压缩" class="headerlink" title="有损压缩和无损压缩"></a>有损压缩和无损压缩</h3><p>图像资源优化的根本思想是压缩，压缩是降低源文件大小的有效方式。图像压缩可分为有损压缩和无损压缩。</p>
+<p>具体在选择压缩方式时，我们需要结合具体的业务需求考虑。如果业务上对图像的质量要求较高，则考虑使用无损压缩。</p>
+<h2 id="图像格式"><a href="#图像格式" class="headerlink" title="图像格式"></a>图像格式</h2><h3 id="JPEG"><a href="#JPEG" class="headerlink" title="JPEG"></a>JPEG</h3><p>JPEG使用的是一种有损压缩算法。</p>
+<p><strong>用途</strong>：用作<strong>背景图、轮播图或者一些商品的 banner 图</strong>。但是由于有损压缩，当<strong>处理 Logo 或者图标</strong>时，需要较强的线条感或者强烈的颜色对比的时候，使用 JPEG 可能<strong>会出现边界模糊的不加体验</strong>，另外JPEG<strong>不支持透明度</strong>。</p>
+<p>JPEG包含多种压缩模式，其中常见的有<strong>基于基线的和渐进式</strong>的。</p>
+<ul>
+<li>基线模式：图像加载顺序是自上而下的，当网络较差时，图象是自上而下加载显示的</li>
+<li>渐进式：将图像文件分为多次扫描，首先展示一个低质量模糊的图像，最后扫描到的图像信息不断增多，每次扫描过后所展示的图像清晰度也会不断提升</li>
+</ul>
+<p>优缺点：渐进式解码速度要比基线慢，另外渐进式压缩得到的图像文件也不一定是最小的。</p>
+<p>在实际生活中，我们不难发现，目前渐进式的 JPEG 已经慢慢取代了基线 JPEG 了。在应用时，我们可以使用一些第三方工具来创建渐进式的图像，例如 imagemin、libjpeg、imageMagick。以下是使用 gulp 创建渐进式 JPEG 的代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> gulp = <span class="built_in">require</span>(<span class="string">&quot;gulp&quot;</span>)</span><br><span class="line"><span class="keyword">const</span> imagemin = <span class="built_in">require</span>(<span class="string">&quot;gulp-imagemin&quot;</span>)</span><br><span class="line">gulp.task(<span class="string">&quot;images&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    gulp.src(<span class="string">&quot;images/*.jpg&quot;</span>)</span><br><span class="line">    .pipe(imagemin(&#123;</span><br><span class="line">        progressive: <span class="literal">true</span></span><br><span class="line">    &#125;))</span><br><span class="line">    .pipe(gulp.dest(<span class="string">&quot;dist&quot;</span>))</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>在执行后见流程之后，gulp 会调用 imagemin 的方法把 images 文件夹下所有的 jpg 图像全部进行渐进式编码处理。</p>
+<h3 id="GIF"><a href="#GIF" class="headerlink" title="GIF"></a>GIF</h3><p>gif 主要是动画图片，但是相比于视频文件，gif 在解码阶段十分耗时，所以出于对性能的考虑，我们应该尽量谨慎选用 gif。</p>
+<h3 id="PNG"><a href="#PNG" class="headerlink" title="PNG"></a>PNG</h3><p>PNG 是一种无损压缩的高保真图片格式，相比于 JPEG，PNG支持透明度，对线条处理更加细腻，并增强了色彩的表现，不过缺点就是文件体积太大。</p>
+<p>优化 PNG：</p>
+<p>对于 PNG 图像，我们可以使用 imagemin-pngcrush 来进行优化：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> imagemin = <span class="built_in">require</span>(<span class="string">&quot;imagemin&quot;</span>)</span><br><span class="line"><span class="keyword">const</span> imageminPngcrudh = <span class="built_in">require</span>(<span class="string">&quot;imagemin-pngcrush&quot;</span>)</span><br><span class="line">imagemin([<span class="string">&quot;images/*.png&quot;</span>], <span class="string">&quot;build/images&quot;</span>, &#123;</span><br><span class="line">    plugins: [imageminPngcrush()]</span><br><span class="line">&#125;).then(<span class="function">()=&gt;</span><span class="built_in">console</span>.log(<span class="string">&quot;图像优化完成&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+<h3 id="WebP"><a href="#WebP" class="headerlink" title="WebP"></a>WebP</h3><p>前面的三种图像文件格式，在呈现位图方面各有优劣：GIF 能呈现动画；JPEG 虽然不支持透明度，但是图像文件的压缩比高；PNG 虽然文件尺寸较大，但支持透明且色彩表现力强。</p>
+<p>开发者在使用位图时对于这样的现状就需要先考虑选型。假如有一个统一的图像文件格式，具有之前格式的所有优点就好了。WebP 由此产生。</p>
+<p>根据 WebP 官方网站给出的实验数据，当使用 WebP 有损文件时，文件尺寸会比 JPEG 小 25%-34%，而使用 WebP 无损文件时，文件尺寸会比 PNG 小 26%。</p>
+<p>但是 WebP 存在一定的兼容性问题</p>
+<img src="/2021/05/29/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%961/1.png" class="" title="兼容性问题">
+
+<p>从图中可以看出，除了 IE 浏览器不支持外，其他大部分浏览器都已经支持 WebP。</p>
+<p>如何使用 WebP？</p>
+<p>我们可以借助工具将原有的 jpg 或者 png 转换为 WebP 格式：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">loader: [&#123;</span><br><span class="line">    test: <span class="regexp">/\.(jpe?g|png)$/</span>I,</span><br><span class="line">    loaders:[</span><br><span class="line">    	<span class="string">&quot;file-loader&quot;</span>,</span><br><span class="line">    	<span class="string">&quot;webp-loader?&#123;quality: 13&#125;&quot;</span></span><br><span class="line">    ]</span><br><span class="line">&#125;]</span><br></pre></td></tr></table></figure>
+
+<p>这里值得注意的是，尽量不要使用低质量的 JPEG 格式进行转换，建议使用高质量的 JPEG 图像进行转换。</p>
+<p>兼容性处理？</p>
+<p>目前 WebP 不适用于所有浏览器，因此在使用时需要做兼容性处理。</p>
+<p>通常处理的思路有两种：</p>
+<ul>
+<li><p>一种是在前端通过 userAgent 判断浏览器版本，然后根据版本选择加载不同的图像。</p>
+</li>
+<li><p>另一种是可以通过  <code>&lt;picture&gt;</code>  标签来选择显示图像的格式，在  <code>&lt;picture&gt;</code>  标签中添加多个 <code>&lt;source&gt;</code> 标签元素，以及一个包含旧图像格式的 <code>&lt;img&gt;</code> 标签，当浏览器在解析 DOM 的时候，便会对  <code>&lt;picture&gt;</code> 标签中的多个图像源依次进行检测。如果都不支持，就会使用 <code>&lt;img&gt;</code> 标记兼容显示出旧的图像格式。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">picture</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">source</span> <span class="attr">srcset</span>=<span class="string">&quot;/path/image.webp&quot;</span> <span class="attr">type</span>=<span class="string">&quot;image/webp&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;/path/image.jpg&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">picture</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>tips:  <code>&lt;picture&gt;</code>  标签的 <code>&lt;source&gt;</code> 标签里面还可以有 media 属性，可以根据不同的 media 来显示不同大小的图像，因此 <code>&lt;picture&gt;</code> 的常见使用场景：</p>
+<ul>
+<li>艺术指导(Art direction) —— 针对不同 <code>media</code> 条件裁剪或修改图像</li>
+<li>遇到所有浏览器都不支持的特定格式时，提供不同的图像格式</li>
+</ul>
+</li>
+</ul>
+<h3 id="SVG"><a href="#SVG" class="headerlink" title="SVG"></a>SVG</h3><p>前面介绍的几种图像都是位图，而 SVG 是矢量图。SVG是基于 XML 语法描述图像形状的文件格式，适合用来表示 Logo 等图标图像。</p>
+<h3 id="Base64"><a href="#Base64" class="headerlink" title="Base64"></a>Base64</h3><p>Base64 是一种编码方式，它通过将图像的编码直接写入 HTML 或者 CSS 中实现图像的展示。</p>
+<p>使用该方式编码展示的图像，无需发送 HTTP 请求，浏览器会自动解析并展示该编码图像。由于 Base64 编码原理的特点，一般经过 Base64 编码后的图像大小会膨胀四分之三。因此，只有对于小图而言，Base64 才能发挥它真正的作用。因此在考虑使用 Base64 编码时，要考虑以下几个条件：</p>
+<ul>
+<li>图像文件的实际尺寸是否很小</li>
+<li>图像是否真的无法以雪碧图的形式进行引入</li>
+<li>图像文件的更新频率是否很低，以避免在使用 Base64 时，增加不必要的维护成本</li>
+</ul>
+<h2 id="格式选择建议"><a href="#格式选择建议" class="headerlink" title="格式选择建议"></a>格式选择建议</h2><ul>
+<li>尽量使用矢量图，凡是用到图标的场景，应尽可能使用矢量图</li>
+<li>对于位图使用的场景，首选 webp 格式</li>
+<li>考虑到新技术的兼容性问题，使用 picture 标签进行适配，包含动画时，使用 GIF；需要展示细节并且需要透明度时，使用 PNG；追求更高图像压缩比时，使用 JPEG。此外对于不同缩放比的响应式场景，可以使用不同尺寸的图像，让浏览器根据实际情况进行调用。</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>适合用矢量图的地方首选矢量图</li>
+<li>使用位图时首选webp，对不支持的浏览器场景进行兼容处理</li>
+<li>尽量为位图图像格式找到最佳质量设置</li>
+<li>删除图像文件中多余的元数据</li>
+<li>对图像文件进行必要的压缩</li>
+<li>为图像提供多种缩放尺寸的响应式资源</li>
+<li>对工程化通用图像处理流程尽量自动化</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" rel="tag"># 性能优化</a>
+              <a href="/tags/%E5%9B%BE%E5%83%8F/" rel="tag"># 图像</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/04/02/V8-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/" rel="prev" title="V8 垃圾回收机制">
+      <i class="fa fa-chevron-left"></i> V8 垃圾回收机制
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE%E5%83%8F%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">图像基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9F%A2%E9%87%8F%E5%9B%BE"><span class="nav-number">1.1.</span> <span class="nav-text">矢量图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%8D%E5%9B%BE"><span class="nav-number">1.2.</span> <span class="nav-text">位图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E6%8D%9F%E5%8E%8B%E7%BC%A9%E5%92%8C%E6%97%A0%E6%8D%9F%E5%8E%8B%E7%BC%A9"><span class="nav-number">1.3.</span> <span class="nav-text">有损压缩和无损压缩</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE%E5%83%8F%E6%A0%BC%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">图像格式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JPEG"><span class="nav-number">2.1.</span> <span class="nav-text">JPEG</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GIF"><span class="nav-number">2.2.</span> <span class="nav-text">GIF</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PNG"><span class="nav-number">2.3.</span> <span class="nav-text">PNG</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WebP"><span class="nav-number">2.4.</span> <span class="nav-text">WebP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVG"><span class="nav-number">2.5.</span> <span class="nav-text">SVG</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Base64"><span class="nav-number">2.6.</span> <span class="nav-text">Base64</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F%E9%80%89%E6%8B%A9%E5%BB%BA%E8%AE%AE"><span class="nav-number">3.</span> <span class="nav-text">格式选择建议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Sillywa"
+      src="/images/logo.png">
+  <p class="site-author-name" itemprop="name">Sillywa</p>
+  <div class="site-description" itemprop="description">个人学习记录博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Sillywa" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Sillywa" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">鄂ICP备 18031426号-1 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sillywa</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+<div>
+<span id="timeDate"></span><span id="times"></span>
+</div>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("12/03/2018 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "Running for "+dnum+" Days ";
+        document.getElementById("times").innerHTML = hnum + " Hours " + mnum + " m " + snum + " s";
+    }
+    setInterval("createtime()",250);
+</script>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
